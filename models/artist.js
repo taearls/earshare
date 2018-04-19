@@ -6,8 +6,6 @@ const artistSchema = new mongoose.Schema({
         type: String,
         required: true
       },
-      email: String,
-      password: String,
       genre: String,
       location: String,
       website: String,
