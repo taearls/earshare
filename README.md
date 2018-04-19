@@ -1,7 +1,3 @@
-# WDI Project 2
-
-Fullstack Application created by Tyler Earls and Zoe Reagan specifically for musicians and bands to promote and share live music events with an audience.
-
 ## User Story
 
 Three Schemas: Artist, Attendee, and Event.
@@ -20,7 +16,7 @@ Artist:
 -- Index: a list of all events they've created, button to create event, edit artist details
 -- Show: Details of the event, along with an edit and delete button
 
-Event: 
+Event:
 -- params: date, time, location, description, cost, other artists performing, how many people attending, photo
 -- Index: a list of all events
 -- Show: Details of an event to learn more about it
