@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-
 //attendee schema
 
 const attendeeSchema = new mongoose.Schema({
