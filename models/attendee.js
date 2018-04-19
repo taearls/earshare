@@ -1,6 +1,9 @@
 const mongoose = require('mongoose');
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> zoe
 //attendee schema
 
 const attendeeSchema = new mongoose.Schema({
