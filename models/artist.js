@@ -11,7 +11,8 @@ const artistSchema = new mongoose.Schema({
       website: String,
       img: String,
       description: String,
-      events: [Event.schema]
+      events: [Event.schema],
+      usersWithAccess: [Users.schema]
 });
 
 

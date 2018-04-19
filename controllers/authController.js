@@ -11,12 +11,13 @@ router.get('/', (req, res) => {
 	})
 })
 
+// ********USER LOGIN******
 
 router.post('/login', async (req, res, next) => {
 
 	try {
 		// find the artist
-		const artist = await Artist.findOne({name: req.body.name});
+		const user = await User.findOne({name: req.body.name});
 		// if the user is not in the database, it will return null
 		if (user) {
 			// if user is found
@@ -24,22 +25,27 @@ router.post('/login', async (req, res, next) => {
 			// bcrypt.compareSync returns true or false
 			if(bcrypt.compareSync(req.body.password, user.password)) {
 				req.session.loggedIn = true;
-				req.session.username = user.username;
-				res.redirect('/articles');
+				req.session.name = user.name;
+				res.redirect('/');
 			} else {
 				// if user password doesn't match input
-				req.session.message = "Username or password is incorrect. Please try again.";
+				req.session.message = "Name or password is incorrect. Please try again.";
 				res.redirect('/');
 			}
 		} else {
 			// if user isn't found
-			req.session.message = "Username or password is incorrect. Please try again.";
+			req.session.message = "Name or password is incorrect. Please try again.";
 			res.redirect('/');
 		}
 	} catch (err) {
 		next(err)
 	}
 })
+
+// *****REGISTER*****
+
+// if a user registers as an artist, we want to update the user profile with that information
+// the user show page will then have a link that goes to the artist show page
 
 router.post('/register', async (req, res, next) => {
 
@@ -50,19 +56,19 @@ router.post('/register', async (req, res, next) => {
 	const passwordHash = bcrypt.hashSync(password, bcrypt.genSaltSync(10));
 
 	const newUser = ({
-		username: req.body.username,
+		name: req.body.name,
 		password: passwordHash,
 		email: req.body.email
 	})
 	try {
 		// if the user was successfully created, let's create the session for that user
-		// check if username submitted already exists in the database
-		if (!User.findOne({username: req.body.username})) {
+		// check if name submitted already exists in the database
+		if (!User.findOne({name: req.body.name})) {
 			// if user doesn't already exist, create newUser
 			const user = await User.create(newUser);
 			if (user) {
 				req.session.loggedIn = true;
-				req.session.username = user.username;
+				req.session.name = user.name;
 				res.redirect('/articles');
 			} else {
 				req.sesson.message = "Sorry, it didn't work";
@@ -78,6 +84,19 @@ router.post('/register', async (req, res, next) => {
 	}
 
 })
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 module.exports = router;
