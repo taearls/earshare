@@ -16,14 +16,14 @@ router.get('/', (req, res) => {
 router.post('/login', async (req, res, next) => {
 
 	try {
-		// find the artist
+		// find the user
 		const user = await User.findOne({username: req.body.username});
 		// if the user is not in the database, it will return null
 		if (user) {
 			// if user is found
 			// now we need to compare the passwords 
 			// bcrypt.compareSync returns true or false
-			if(bcrypt.compareSync(req.body.password, user.password)) {
+			if (bcrypt.compareSync(req.body.password, user.password)) {
 				req.session.loggedIn = true;
 				req.session.username = user.username;
 				res.redirect('/user');
@@ -50,7 +50,6 @@ router.post('/login', async (req, res, next) => {
 router.post('/register', async (req, res, next) => {
 
 	// first thing to do is hash the password
-	// const { password, author, email } = req.body; // can destructure the object
 
 	const password = req.body.password;
 	const passwordHash = bcrypt.hashSync(password, bcrypt.genSaltSync(10));
@@ -71,7 +70,7 @@ router.post('/register', async (req, res, next) => {
 				req.session.name = user.username;
 				res.redirect('/user');
 			} else {
-				req.sesson.message = "Sorry, it didn't work";
+				req.sesson.message = "Sorry, registration was unsuccessful. Please try again.";
 				res.redirect('/home');
 			}
 		} else {
