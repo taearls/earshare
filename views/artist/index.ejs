@@ -6,18 +6,35 @@
 
 <body>
 
-	<h1>Artist Index Page</h1>
+
+  <header>
+
+    <h1>Artist Profilew</h1>
+
+      <nav>
+        <button class="btn btn-outline-info btn-lg"><a href="/">Browse</a></button>
+        <button class="btn btn-outline-info btn-lg"><a href="/user">User Profile</a></button>
+      </nav>  
+
+  </header>
 
 
 
-  <form class="" action="/artist/<%= artist.id %>" method="post"><br />
-    <input type="text" name="name" placeholder="name"><br />
-    <input type="text" name="genre" placeholder="genre"><br />
-    <input type="text" name="location" placeholder="location"><br />
-    <input type="text" name="website" placeholder="website"><br />
-    <input type="text" name="img" placeholder="img link"><br />
-    <textarea name="name" rows="4" cols="40">Description</textarea><br />
-    <button type="submit" name="button">Create artist</button>
-  </form>
+    <main>
+
+      <form class="" action="/artist/<%= artist.id %>" method="post"><br />
+
+        <input type="text" name="name" placeholder="name"><br />
+        <input type="text" name="genre" placeholder="genre"><br />
+        <input type="text" name="location" placeholder="location"><br />
+        <input type="text" name="website" placeholder="website"><br />
+        <input type="text" name="img" placeholder="img link"><br />
+        <textarea name="name" rows="4" cols="40">Description</textarea><br />
+        <button type="submit" name="button">Create artist</button>
+
+      </form>
+
+    </main>
+
 
 </html>
