@@ -17,7 +17,25 @@
   	</header>
 
   	<main>
-  		
+
+			<main>
+
+				<h2>Event Details</h2>
+				<ul>
+					<li>Name: <%= event.name %></li>
+					<li>Description: <%=event.description %></li>
+					<li>Venue: <%= event.venue %></li>
+					<li>Date: <%= event.date %></li>
+					<li>Interested: <%= event.meta.interested %></li>
+					<li>Going: <%= event.meta.going %></li>
+				</ul><br />
+
+				<a class="btn btn-outline-dark btn-sm" href="/user/<%= user.id %>/edit">Edit User</a>
+					<form action="/user/<%= user.id %>?_method=DELETE" method="POST">
+						<button class="btn btn-outline-danger btn-sm" type="submit">Delete User</button>
+				</form>
+			</main>
+
   	</main>
 
 </body>
