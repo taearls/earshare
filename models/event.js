@@ -4,7 +4,11 @@ const eventSchema = new mongoose.Schema({
       name: String,
       description: String,
       venue: String,
-      date: Date,
+      date: {
+      	type: Date,
+      	default: Date.now();
+      },
+      img: String,
       meta: {
           interested: Number,
           attending: Number

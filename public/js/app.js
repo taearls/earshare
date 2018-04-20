@@ -1,7 +1,7 @@
-console.log("connected");
+// console.log("connected");
 
 $('a').on('click', (e) => {
-    console.log(e.currentTarget.innerText);
+    // console.log(e.currentTarget.innerText);
 
     if(e.currentTarget.innerText === 'Login'){
 
@@ -18,6 +18,6 @@ $('a').on('click', (e) => {
         $('#login').toggleClass('invisible')
       }
     } else {
-      console.log("do nothing");
+      // console.log("do nothing");
     }
 });
