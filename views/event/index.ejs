@@ -19,8 +19,8 @@
   	<main>
 				<h2>List of Events</h2>
 				<ul>
-					<%for (let i = 0; i < event.length; i++) {%>
-						<li><a href="/event/<%=event[i].id%>"><%=events[i].name%></a></li>
+					<%for (let i = 0; i < events.length; i++) {%>
+						<li><a href="/event/<%=events[i].id%>"><%=events[i].name%></a></li>
 					<%}%>
 				</ul>
   	</main>

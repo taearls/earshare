@@ -30,9 +30,9 @@
 					<li>Going: <%= event.meta.going %></li>
 				</ul><br />
 
-				<a class="btn btn-outline-dark btn-sm" href="/user/<%= user.id %>/edit">Edit User</a>
-					<form action="/user/<%= user.id %>?_method=DELETE" method="POST">
-						<button class="btn btn-outline-danger btn-sm" type="submit">Delete User</button>
+				<a class="btn btn-outline-dark btn-sm" href="/event/<%= event.id %>/edit">Edit Event</a>
+					<form action="/event/<%= event.id %>?_method=DELETE" method="POST">
+						<button class="btn btn-outline-danger btn-sm" type="submit">Delete Event</button>
 				</form>
 			</main>
 
