@@ -11,8 +11,8 @@
 	    <h1>Artist Show Page</h1>
 
 	      <nav>
-	        <button class="btn btn-outline-info btn-lg">Browse</button>
-	        <button class="btn btn-outline-info btn-lg">User Profile</button>
+	        <button class="btn-outline-info btn-lg">Browse</button>
+	        <button class="btn-outline-info btn-lg">User Profile</button>
 	      </nav>
 
  	</header>
@@ -26,8 +26,13 @@
  	</main>
 
   <footer>
-      <button type="button" name="button"> <a href="/artist/edit"></a>Edit Artist</button>
-      <button type="button" name="button">Delete Artist</button>
+
+    <button class="btn btn-outline info btn-lrg" href="/artist/<%= artist.id %>/edit">Edit Artist</button>
+
+    <form action="/artist/<%= artist.id %>?_method=DELETE" method="POST">
+        <button class= "btn-outline info btn-lrg">Delete Artist</button>
+
   </footer>
+
   </body>
 </html>

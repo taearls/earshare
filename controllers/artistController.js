@@ -39,40 +39,42 @@ router.post('/', async (req, res, next) => {
 });
 
 
-
 // get show route
 router.get('/:id', async (req, res, next) => {
 	try {
-		res.render('artist/show.ejs');
+		const artistToUpdate = await Artist.findById(req.params.id);
+		res.render('artist/show.ejs', {
+			artist : artistToUpdate
+		});
 	} catch (err) {
 		next(err);
 	}
 })
-
-
-
 
 
 // get edit route
 
 router.get('/:id/edit', async (req, res, next) => {
+
 	try {
-		res.render('artist/edit.ejs');
+
+		res.render('artist/edit.ejs')
+
 	} catch (err) {
 		next(err);
 	}
-})
+});
 
 
 // put edit route
 router.put("/:id", async (req, res, next) => {
 	try {
-		// const artistEdit = {};
-  // 		artistEdit.name= req.body.name;
-  //  		artistEdit.genre = req.body.genre;
-		// artistEdit.location = req.body.location;
-		// artistEdit.website = req.body.website;
-		// artistEdit.imglink = req.body.imglink;
+		const artistEdit = {};
+  		artistEdit.name= req.body.name;
+   		artistEdit.genre = req.body.genre;
+			artistEdit.location = req.body.location;
+			artistEdit.website = req.body.website;
+			artistEdit.imglink = req.body.imglink;
 
 		const updatedArtist = await Artist.findByIdAndUpdate(req.params.id, req.body);
 
@@ -83,8 +85,17 @@ router.put("/:id", async (req, res, next) => {
 })
 
 
+//delete artist route
+//delete using the index of data in model
+router.delete('/:id', async (req, res, next) => {
+  try {
+    const deletedArtist = await Artist.findByIdAndRemove(req.params.id,)
+    res.redirect('/artist');
 
-
+  } catch(err) {
+    next(err)
+  }
+});
 
 
 
