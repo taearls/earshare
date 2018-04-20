@@ -19,8 +19,11 @@
 		<form action="/user/<%=index%>?_method=PUT" method="POST">
 			Username: <input type="text" name="username" placeholder="username" value="<%=user.username%>"> <br>
 			Email: <input type="text" name="email" placeholder="email" value="<%=user.email%>"> <br>
-			Password: <input type="password" name="password" placeholder="password"> <br>
-			<button class="btn btn-success mb-2" type="submit">Submit Your Changes</button>
+
+<!-- 		unable to edit password. if we set the value as the user password, the form will generate the password hash.
+			for this to work, I think we'd need to bcrypt the password that's submitted in this form.
+	Password: <input type="password" name="password" placeholder="password" value="<%=user.password%>"> <br>
+ -->		<button class="btn btn-success mb-2" type="submit">Submit Your Changes</button>
 		</form>
 	</main>
 
