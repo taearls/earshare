@@ -1,9 +1,11 @@
 const mongoose = require('mongoose');
+const Artist = require('./artist.js')
 
 const userSchema = new mongoose.Schema({
       username: String,
       password: String,
-      email: String
+      email: String,
+      artists: [Artist.schema]
 });
 
 
