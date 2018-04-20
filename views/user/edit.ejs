@@ -7,13 +7,12 @@
 
 	<header class="container">
 		<h1>User Edit Page</h1>
-		<h1 class="row col">
-			Edit User Information
-		</h1>
-		<nav class="row">
-				<a class="col" href="/">Home</a>
-				<a class="col" href="/users/">Photographer Index</a>
-		</nav>
+		<h1 class="row col">Edit User Information</h1>
+		<nav>
+      	  <button class="btn btn-outline-info btn-lg"><a href="/">Browse</a></button>
+      	  <button class="btn btn-outline-info btn-lg"><a href="/user">User Profile</a></button>
+      	</nav>  
+
 	</header>
 	<main class="container">
 		<form action="/user/<%=index%>?_method=PUT" method="POST">
@@ -22,8 +21,10 @@
 
 <!-- 		unable to edit password. if we set the value as the user password, the form will generate the password hash.
 			for this to work, I think we'd need to bcrypt the password that's submitted in this form.
-	Password: <input type="password" name="password" placeholder="password" value="<%=user.password%>"> <br>
- -->		<button class="btn btn-success mb-2" type="submit">Submit Your Changes</button>
+			Password: <input type="password" name="password" placeholder="password" value="<%=user.password%>"> <br>
+ -->		
+
+ 			<button class="btn btn-success mb-2" type="submit">Submit Your Changes</button>
 		</form>
 	</main>
 
