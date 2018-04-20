@@ -30,3 +30,25 @@ Attendee:
 -- Show: A list of events they've interacted with
 
 ## Wireframe
+
+![Image of Landing Page Wireframe](public/images/wireframes/project_2_wireframes/landing_page_wireframe.png)
+
+![Image of User Registration Wireframe](public/images/wireframes/project_2_wireframes/user_artist_registration.png)
+
+![Image of User Login Wireframe](public/images/wireframes/project_2_wireframes/user_login_wireframe.png)
+
+![Image of User Index](public/images/wireframes/project_2_wireframes/user_index_wireframe.png)
+
+![Image of Artist Registration](public/images/wireframes/project_2_wireframes/user_artist_registration.png)
+
+![Image of Artist Index Wireframe](public/images/wireframes/project_2_wireframes/artist_index.wireframe.png)
+
+![Image of Artist Create Event Wireframe](public/images/wireframes/project_2_wireframes/create_event_wireframe.png)
+
+![Image of Artist Invite User Wireframe](public/images/wireframes/project_2_wireframes/artist_invite_users_wireframe.png)
+
+![Image of Artist Edit Event Wireframe](public/images/wireframes/project_2_wireframes/edit_event_wireframe.png)
+
+![Image of Events Index Wireframe](public/images/wireframes/project_2_wireframes/events_index_wireframe.png)
+
+![Image of Events by Location Wireframe](public/images/wireframes/project_2_wireframes/wireframe_search_by_location.png)
