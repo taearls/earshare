@@ -12,7 +12,7 @@ const artistSchema = new mongoose.Schema({
       img: String,
       description: String,
       events: [Event.schema],
-      usersWithAccess: [Users.schema]
+      usersWithAccess: [User.schema]
 });
 
 
