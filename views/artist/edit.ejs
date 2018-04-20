@@ -5,14 +5,25 @@
     <title></title>
   </head>
   <body>
-    <form action="/artist/<%=index%>?_method=PUT" method="POST"><br />
-      <input type="text" name="name" placeholder="name"><br />
-      <input type="text" name="genre" placeholder="genre"><br />
-      <input type="text" name="location" placeholder="location"><br />
-      <input type="text" name="website" placeholder="website"><br />
-      <input type="text" name="img" placeholder="img link"><br />
-      <textarea name="name" rows="4" cols="40">Description</textarea><br />
-      <button type="submit" name="button">Edit artist</button>
-    </form>
+
+    <header>
+      <nav>
+        <button class="btn btn-outline-info btn-lg">Browse</button>
+        <button class="btn btn-outline-info btn-lg">User Profile</button>
+      </nav>
+    </header>
+
+    <main>
+      <form action="/artist/<%=index%>?_method=PUT" method="POST"><br />
+        <input type="text" name="name" placeholder="name"><br />
+        <input type="text" name="genre" placeholder="genre"><br />
+        <input type="text" name="location" placeholder="location"><br />
+        <input type="text" name="website" placeholder="website"><br />
+        <input type="text" name="img" placeholder="img link"><br />
+        <textarea name="name" rows="4" cols="40">Description</textarea><br />
+        <button type="submit" name="button">Edit artist</button>
+      </form>
+    </main>
+    
   </body>
 </html>
