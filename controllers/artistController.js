@@ -8,7 +8,7 @@ const User = require('../models/user');
 
 router.get('/', async (req, res, next) => {
 	try {
-		res.render('index.ejs');
+		res.render('artist/index.ejs');
 	} catch (err) {
 		next(err);
 	}
