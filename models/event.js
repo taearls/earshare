@@ -6,7 +6,7 @@ const eventSchema = new mongoose.Schema({
       venue: String,
       date: {
       	type: Date,
-      	default: Date.now();
+      	default: Date.now()
       },
       img: String,
       meta: {
