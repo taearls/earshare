@@ -30,12 +30,12 @@ router.post('/login', async (req, res, next) => {
 			} else {
 				// if user password doesn't match input
 				req.session.message = "Username or password is incorrect. Please try again.";
-				res.redirect('/home');
+				res.redirect('/');
 			}
 		} else {
 			// if user isn't found
 			req.session.message = "Username or password is incorrect. Please try again.";
-			res.redirect('/home');
+			res.redirect('/');
 		}
 	} catch (err) {
 		next(err)
@@ -55,28 +55,30 @@ router.post('/register', async (req, res, next) => {
 	const passwordHash = bcrypt.hashSync(password, bcrypt.genSaltSync(10));
 
 	const newUser = ({
-		name: req.body.username,
+		username: req.body.username,
 		password: passwordHash,
 		email: req.body.email
 	})
 	try {
-		// if the user was successfully created, let's create the session for that user
-		// check if name submitted already exists in the database
-		if (!User.findOne({username: req.body.username})) {
+		const foundUser = await User.findOne({username: req.body.username})
+
+		// // if the user was successfully created, let's create the session for that user
+		// // check if name submitted already exists in the database
+		if (foundUser == null) {
 			// if user doesn't already exist, create newUser
 			const user = await User.create(newUser);
 			if (user) {
 				req.session.loggedIn = true;
-				req.session.name = user.username;
+				req.session.username = user.username;
 				res.redirect('/user');
 			} else {
 				req.sesson.message = "Sorry, registration was unsuccessful. Please try again.";
-				res.redirect('/home');
+				res.redirect('/');
 			}
 		} else {
 			// if user exists, send message and redirect to login page
 			req.session.message = "User already exists.";
-			res.redirect('/home');
+			res.redirect('/');
 		}
 	} catch (err) {
 		next(err);
