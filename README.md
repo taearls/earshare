@@ -10,34 +10,34 @@ Events - concerts/shows/sets/etc.
 
 ### MVP
 
-Artist:
--- params: name (required), password, location, genre, description, members, website link, photo
--- Artist will be able to create, delete, and edit events
--- Artist will be able to invite users to have access to the artist page
--- Index: a list of all events they've created, button to create event, edit artist details
--- Show: Details of the event, along with an edit and delete button
--- Edit: Be able to edit Artist info
+Artist: <br>
+-- params: name (required), password, location, genre, description, members, website link, photo <br>
+-- Artist will be able to create, delete, and edit events <br>
+-- Artist will be able to invite users to have access to the artist page <br>
+-- Index: a list of all events they've created, button to create event, edit artist details <br>
+-- Show: Details of the event, along with an edit and delete button <br>
+-- Edit: Be able to edit Artist info <br>
 
-Event:
--- params: date, time, location, description, cost, other artists performing, how many people attending, photo
--- Index: a list of all events
--- Show: Details of an event to learn more about it
--- Edit: Be able to Edit Event Info
--- New: Create a new event
+Event: <br>
+-- params: date, time, location, description, cost, other artists performing, how many people attending, photo <br>
+-- Index: a list of all events <br>
+-- Show: Details of an event to learn more about it <br>
+-- Edit: Be able to Edit Event Info <br>
+-- New: Create a new event <br>
 
-User:
--- params: username, password, location
--- be able to view event index
--- be able to like it
--- mark if they're attending or interested in going
--- User will be able to become an artist
--- Index: toggle between a list of events and artists (later, include a search/filter function), will be able to register as an artist
--- Show: A list of events they've interacted with
--- Edit: Be able to change the user information if they want
+User: <br>
+-- params: username, password, location <br>
+-- be able to view event index <br>
+-- be able to like it <br>
+-- mark if they're attending or interested in going <br>
+-- User will be able to become an artist <br>
+-- Index: toggle between a list of events and artists (later, include a search/filter function), will be able to register as an artist <br>
+-- Show: A list of events they've interacted with <br>
+-- Edit: Be able to change the user information if they want <br>
 
-User registration:
--- User creates a username, password, registers an email
--- User gets redirected to the user index
+User registration: <br>
+-- User creates a username, password, registers an email <br>
+-- User gets redirected to the user index <br>
 
 
 
