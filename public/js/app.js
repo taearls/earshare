@@ -11,7 +11,7 @@ $('a').on('click', (e) => {
 
         }
 
-    } else if (e.currentTarget.innerText === 'Registration'){
+    } else if (e.currentTarget.innerText === 'Register'){
 
       if($('#registration').hasClass('invisible')){
         $('#registration').toggleClass('invisible')
