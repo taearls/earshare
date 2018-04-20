@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
-const Event = require('./event.js')
+const Event = require('./event.js');
+const User = require('./user.js');
 
 const artistSchema = new mongoose.Schema({
       name: {

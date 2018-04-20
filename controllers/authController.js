@@ -6,7 +6,7 @@ const bcrypt = require('bcrypt');
 router.get('/', (req, res) => {
 	const message = req.session.message;
 	req.session.message = null;
-	res.render('auth/login.ejs', {
+	res.render('auth/home.ejs', {
 		message: message
 	})
 })
@@ -30,12 +30,12 @@ router.post('/login', async (req, res, next) => {
 			} else {
 				// if user password doesn't match input
 				req.session.message = "Username or password is incorrect. Please try again.";
-				res.redirect('/');
+				res.redirect('/home');
 			}
 		} else {
 			// if user isn't found
 			req.session.message = "Username or password is incorrect. Please try again.";
-			res.redirect('/');
+			res.redirect('/home');
 		}
 	} catch (err) {
 		next(err)
@@ -72,12 +72,12 @@ router.post('/register', async (req, res, next) => {
 				res.redirect('/user');
 			} else {
 				req.sesson.message = "Sorry, it didn't work";
-				res.redirect('/');
+				res.redirect('/home');
 			}
 		} else {
 			// if user exists, send message and redirect to login page
 			req.session.message = "User already exists.";
-			res.redirect('/');
+			res.redirect('/home');
 		}
 	} catch (err) {
 		next(err);

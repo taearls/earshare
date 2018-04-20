@@ -43,8 +43,8 @@ app.use((req, res, next) => {
 // CONTROLLERS
 const artistController = require('./controllers/artistController');
 app.use('/artist', artistController);
-const attendeeController = require('./controllers/attendeeController');
-app.use('/attendee', attendeeController);
+const userController = require('./controllers/userController');
+app.use('/user', userController);
 const authController = require('./controllers/authController');
 app.use('/', authController);
 const eventController = require('./controllers/eventController');
