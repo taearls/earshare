@@ -14,27 +14,20 @@
       <nav>
         <button class="btn btn-outline-info btn-lg"><a href="/">Browse</a></button>
         <button class="btn btn-outline-info btn-lg"><a href="/user">User Profile</a></button>
-      </nav>  
+      </nav>
 
   </header>
 
+			<main>
+				<h2>List of Artists</h2>
+				<ul>
+					<%for (let i = 0; i < artists.length; i++) {%>
+						<li><a href="/artist/<%=artists[i].id%>"><%=artists[i].name%></a></li>
+					<%}%>
+				</ul>
+			</main>
 
 
-    <main>
-
-      <form class="" action="/artist/<%= artist.id %>" method="post"><br />
-
-        <input type="text" name="name" placeholder="name"><br />
-        <input type="text" name="genre" placeholder="genre"><br />
-        <input type="text" name="location" placeholder="location"><br />
-        <input type="text" name="website" placeholder="website"><br />
-        <input type="text" name="img" placeholder="img link"><br />
-        <textarea name="name" rows="4" cols="40">Description</textarea><br />
-        <button type="submit" name="button">Create artist</button>
-
-      </form>
-
-    </main>
 
 
 </html>

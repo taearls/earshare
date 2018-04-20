@@ -5,18 +5,40 @@ const Artist = require('../models/artist');
 const User = require('../models/user');
 
 // get index route
-
 router.get('/', async (req, res, next) => {
 		try {
-				const newArtist = await Artist.find();
+				const allArtists = await Artist.find();
 				res.render('artist/index.ejs', {
-					artist : newArtist
+					artists : allArtists
 				});
 
 		} catch(err) {
 			next(err)
 		}
 })
+
+//new artist get route
+router.get('/new', (req, res) => {
+  res.render('artist/new.ejs')
+});
+
+//new artist post route
+
+router.post('/', async (req, res, next) => {
+//need to use body-parser
+//also, properties in schema and input form MUST MATCH
+
+  try {
+    const createdArtist = await Artist.create(req.body);
+
+    res.redirect('/artist');
+
+  } catch(err) {
+    next(err)
+  }
+});
+
+
 
 // get show route
 router.get('/:id', async (req, res, next) => {
@@ -28,18 +50,7 @@ router.get('/:id', async (req, res, next) => {
 })
 
 
-//new artist post route
-router.post('/new', async (req, res, next) => {
-//need to use body-parser
-//also, properties in schema and input form MUST MATCH
 
-  try {
-    const createdArtist = await Artist.create(req.body);
-    res.redirect('artist/new.ejs');
-  } catch(err) {
-    next(err)
-  }
-});
 
 
 // // get edit route

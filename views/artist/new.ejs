@@ -5,25 +5,40 @@
     <title></title>
   </head>
   <body>
-    
+
   	<header>
 
-	    <h1>Artist Show Page</h1>
+	    <h1>Artist New Page</h1>
 
 	      <nav>
 	        <button class="btn btn-outline-info btn-lg"><a href="/">Browse</a></button>
 	        <button class="btn btn-outline-info btn-lg"><a href="/user">User Profile</a></button>
-	      </nav>  
+	      </nav>
 
- 	</header>
+ 	   </header>
 
- 	<main>
 
- 		<h4>Your Created Events</h4>
-   		<button type="button" name="event"> <a href="/event">Create New Event</a></button>
-   		<button type="button" name= "user"><a href="/user">Back to Browsing</a> </button>
 
- 	</main>
-    
+    <main>
+
+      <h4>Create New Artist</h4>
+
+      <form action="/artist" method="POST"><br />
+
+        <input type="text" name="name" placeholder="name"><br />
+        <input type="text" name="genre" placeholder="genre"><br />
+        <input type="text" name="location" placeholder="location"><br />
+        <input type="text" name="website" placeholder="website"><br />
+        <input type="text" name="img" placeholder="img link"><br />
+        <textarea name="description" rows="4" cols="40" placeholder="Description"></textarea><br />
+
+        <button type="submit" name="button">Create artist</button>
+
+      </form>
+
+    </main>
+
+
+
   </body>
 </html>
