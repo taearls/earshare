@@ -5,7 +5,28 @@
 </head>
 <body>
 
-	<h1>User Show Page</h1>
+	<header>
 
+		<h1>User Show Page</h1>
+		<h1> <%=user.username%> Info </h1>
+		<nav>
+			<ul>
+				<li><a href="/">Home</a></li>
+				<li><a href="/user/">User Index</a></li>
+			</ul>
+		</nav>
+	</header>
+	<main>
+
+		<h2>User Attributes</h2>
+		<ul>
+			<li>Username: <%= user.username %></li>
+			<li>Email: <%=user.email %></li>
+		</ul>
+		<a class="btn btn-outline-dark btn-sm" href="/user/<%= user.id %>/edit">Edit User</a>
+		<form action="/user/<%= user.id %>?_method=DELETE" method="POST">
+			<button class="btn btn-outline-danger btn-sm" type="submit">Delete User</button>
+		</form>
+	</main>
 </body>
 </html>
