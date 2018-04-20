@@ -8,7 +8,7 @@ const User = require('../models/user');
 
 router.get('/', async (req, res, next) => {
 	try {
-		res.render('index.ejs');
+		res.render('event/index.ejs');
 	} catch (err) {
 		next(err);
 	}
@@ -18,7 +18,7 @@ router.get('/', async (req, res, next) => {
 
 router.get('/:id/edit', async (req, res, next) => {
 	try {
-		res.render('edit.ejs');
+		res.render('event/edit.ejs');
 	} catch (err) {
 		next(err);
 	}
@@ -28,7 +28,7 @@ router.get('/:id/edit', async (req, res, next) => {
 
 router.get('/:id', async (req, res, next) => {
 	try {
-		res.render('show.ejs');
+		res.render('event/show.ejs');
 	} catch (err) {
 		next(err);
 	}

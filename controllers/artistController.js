@@ -7,18 +7,22 @@ const User = require('../models/user');
 // get index route
 
 router.get('/', async (req, res, next) => {
-	try {
-		res.render('index.ejs');
-	} catch (err) {
-		next(err);
-	}
+		try {
+				const newArtist = await Artist.find();
+				res.render('artist/index.ejs', {
+					artist : newArtist
+				});
+
+		} catch(err) {
+			next(err)
+		}
 })
 
 // get edit route
 
 router.get('/:id/edit', async (req, res, next) => {
 	try {
-		res.render('edit.ejs');
+		res.render('artist/edit.ejs');
 	} catch (err) {
 		next(err);
 	}
@@ -28,14 +32,13 @@ router.get('/:id/edit', async (req, res, next) => {
 
 router.get('/:id', async (req, res, next) => {
 	try {
-		res.render('show.ejs');
+		res.render('artist/show.ejs');
 	} catch (err) {
 		next(err);
 	}
 })
 
 // get new route
-
 
 
 

@@ -27,7 +27,7 @@ router.get("/:id", async (req, res, next) => {
 		const foundUser = await User.findById(req.params.id);
 		res.render('user/show.ejs', {
 			user: foundUser
-		})		
+		})
 	} catch (err) {
 		next(err);
 	}
@@ -63,7 +63,7 @@ router.delete("/:id", async (req, res, next) => {
 		const deletedUser = await User.findByIdAndRemove(req.params.id);
 
 		// WHEN WE CONNECT USER TO ARTIST AND EVENT:
-		
+
 		// check if all associated artists have no users remaining in usersWithAccess array if deletedUser is removed
 		// if they don't have any usersWithAccess remaining, delete artist
 		// if artist deleted, delete associated events too
