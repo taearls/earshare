@@ -45,12 +45,13 @@ router.get('/:id', async (req, res, next) => {
 	try {
 		const eventToUpdate = await Event.findById(req.params.id);
 		res.render('event/show.ejs', {
-			event : eventToUpdate
+			event: eventToUpdate
 		});
+
 	} catch (err) {
 		next(err);
 	}
-})
+});
 
 
 // get edit route
@@ -58,8 +59,10 @@ router.get('/:id', async (req, res, next) => {
 router.get('/:id/edit', async (req, res, next) => {
 
 	try {
-
-		res.render('event/edit.ejs')
+		const eventToUpdate = await Event.findById(req.params.id);
+		res.render('event/edit.ejs', {
+				event : eventToUpdate
+		});
 
 	} catch (err) {
 		next(err);
@@ -83,7 +86,7 @@ router.put("/:id", async (req, res, next) => {
 	} catch (err) {
 		next(err);
 	}
-})
+});
 
 
 //delete event route
@@ -97,10 +100,6 @@ router.delete('/:id', async (req, res, next) => {
     next(err)
   }
 });
-
-
-
-module.exports = router;
 
 
 
