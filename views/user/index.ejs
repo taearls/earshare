@@ -1,31 +1,64 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title></title>
+	<title>List of Users</title>
+	<link rel="stylesheet" href="../css/style.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<style>
+	body { padding-top: 10px; };
+	</style>
 </head>
+
+
 <body>
 	<header>
-		<h1>User Profile</h1>
-		<nav>
-			<nav>
-      	 		<button class="btn btn-outline-info btn-lg"><a href="/">Browse</a></button>
-      	  		<button class="btn btn-outline-info btn-lg"><a href="/user">User Profile</a></button>
-      		</nav>
+		<nav class="navbar navbar-inverse">
+				<div class="container-fluid">
 
-			<h6>Want to create an event?</h6>
-			<button type="button" class = "" name="createArtist"><a href="/artist/new">Become an artist!</a></button>
-			<button type="button" name="artistIndex"><a href="/artist">Browse Artists</a></button>
-		</nav>
+						<ul class="nav navbar-left">
+							<li class="active"><a href="/">Home</a></li>
+							<li><a href="/event">Events</a></li>
+							<li><a href="/artist">Artists</a></li>
+						</ul>
+
+						<ul class="nav navbar-right">
+							<li><a href="/artist/new"><span class="glyphicon glyphicon-plus"></span>Become an Artist</a></li>
+						</ul>
+					</div>
+				</div>
+			</nav>
+
+		</div>
 	</header>
-	<main>
-		<h2>List of Users</h2>
-		<ul>
-			<%for (let i = 0; i < users.length; i++) {%>
-				<li><a href="/user/<%=users[i].id%>"><%=users[i].username%></a></li>
-			<%}%>
-		</ul>
-	</main>
 
+
+	<div class="jumbotron">
+  <div class="container text-center">
+    <h1>Live Music Finder App</h1>
+    <p>Some dang ol' catchy byline will go here</p>
+  </div>
+	</div>
+
+	<div class="container-fluid bg-3 text-center">
+  <h3>Users</h3><br>
+  	<div class="row">
+    	<div class="col-sm-3">
+				<ul>
+					<%for (let i = 0; i < users.length; i++) {%>
+						<li><p><a href="/user/<%=users[i].id%>"><%=users[i].username%></a></p><br />
+						<img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image"></li>
+					<%}%>
+				</ul>
+	    </div>
+
+	  </div>
+	</div>
+
+	<footer class="container-fluid text-center">
+  	<p>Footer Here</p>
+	</footer>
 
 </body>
 </html>
