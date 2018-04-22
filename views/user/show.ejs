@@ -36,12 +36,13 @@
 	<div class="col-lg-12 col-sm-12">
 	    <div class="card hovercard">
 	        <div class="card-background">
-	            <img class="card-bkimg" alt="" src="">
+	            <img class="card-bkimg" alt="<%=user.username%>'s Avatar" src="<%=user.avatar%>">
 	            <!-- Img here-->
 	        </div>
-	        <div class="useravatar">
+<!-- 	    should image be here or above ^^??
+			<div class="useravatar">
 	            <img alt="" src="<%=user.avatar%>">
-	        </div>
+	        </div> -->
 	        <div class="card-info"> <span class="card-title"><h3> <%=user.username%>'s Info </h3></span>
 
 	        </div>
@@ -118,7 +119,7 @@
 	  		<p>Footer Here</p>
 		</footer>
 
-
-
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  		<script src="/js/app.js"></script>
 </body>
 </html>

@@ -48,7 +48,7 @@
 				<ul>
 					<%for (let i = 0; i < users.length; i++) {%>
 						<li><p><a href="/user/<%=users[i].id%>"><%=users[i].username%></a></p><br />
-						<img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image"></li>
+						<img src="<%=users[i].avatar%>" class="img-responsive" style="width:100%" alt="<%=users[i].name%>'s Avatar"></li>
 					<%}%>
 				</ul>
 	    </div>

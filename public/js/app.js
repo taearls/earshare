@@ -21,3 +21,7 @@ $('a').on('click', (e) => {
       // console.log("do nothing");
     }
 });
+
+
+// make any image invisible if there's no src attribute added
+$('img[src=""]').hide();
