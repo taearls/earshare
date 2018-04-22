@@ -19,7 +19,15 @@
 
  	<main>
 
-    <h4> <%=artist.name%> Members</h4>
+    <h4> <%=artist.name%> Attributes </h4>
+      <h6>Genre: <%=artist.genre%></h6>
+      <h6>Location: <%=artist.location%></h6>
+      <h6>Website: <%=artist.website%></h6>
+      <h6>Profile Picture: </h6> <img src="<%=artist.img%>">
+      <h6>Description: <%=artist.description%></h6>
+
+
+    <h4> <%=artist.name%> Members </h4>
       <ul>
         <% for (let i = 0; i < artist.usersWithAccess.length; i++) { -%>
           <li> <a href="/user/<%=artist.usersWithAccess[i].id%>"> <%= artist.usersWithAccess[i].username%></a></li>
