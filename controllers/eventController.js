@@ -19,8 +19,17 @@ router.get('/', async (req, res, next) => {
 })
 
 //new event get route
-router.get('/new', (req, res) => {
-  res.render('event/new.ejs')
+router.get('/new', async (req, res, next) => {
+
+	try {
+		const allArtists = await Artist.find();
+		res.render('event/new.ejs', {
+			artists: allArtists
+		})
+	} catch (err) {
+		next(err)
+	}
+
 });
 
 //new event post route
@@ -30,8 +39,10 @@ router.post('/', async (req, res, next) => {
 //also, properties in schema and input form MUST MATCH
 
   try {
+  	const artistHost = await Artist.findById(req.body.artistId)
     const createdEvent = await Event.create(req.body);
-
+	artistHost.events.push(createdEvent);
+	const savedArtist = await artistHost.save();
     res.redirect('/event');
 
   } catch(err) {
@@ -63,10 +74,10 @@ router.get('/:id/edit', async (req, res, next) => {
 		res.render('event/edit.ejs', {
 				event : eventToUpdate
 		});
-
 	} catch (err) {
 		next(err);
 	}
+
 });
 
 

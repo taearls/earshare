@@ -20,6 +20,13 @@
  	<main>
 
  		<h4>Your Created Events</h4>
+
+      <ul>
+      <% for (let i = 0; i < artist.events.length; i++) { -%>
+        <li>Events: <a href="/event/<%=artist.events[i].id%>"> <%= artist.events[i].name%></a></li>
+      <% } -%>
+      </ul>
+
    		<button type="button" name="event"> <a href="/event/new">Create New Event</a></button>
    		<button type="button" name="user"><a href="/user">Back to Browsing</a> </button>
 
@@ -27,10 +34,10 @@
 
   <footer>
 
-    <button class="btn btn-outline info btn-lrg" href="/artist/<%= artist.id %>/edit">Edit Artist</button>
+    <button class="btn btn-outline info btn-lrg" href="/artist/<%= artist.id %>/edit">Edit <%=artist.name%> </button>
 
     <form action="/artist/<%= artist.id %>?_method=DELETE" method="POST">
-        <button class= "btn-outline info btn-lrg">Delete Artist</button>
+        <button class= "btn-outline info btn-lrg">Delete <%=artist.name%> </button>
 
   </footer>
 

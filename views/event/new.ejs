@@ -20,7 +20,11 @@
   		<h4>Create New Event</h4>
 
       <form action="/event" method="POST"><br />
-
+        <select name="artistId">
+          <% for (let i = 0; i < artists.length; i++) { -%>
+            <option value="<%=artists[i].id%>"><%= artists[i].name %></option>
+          <% } -%>
+        </select> <br/>
         <input type="text" name="name" placeholder="name"><br />
         <input type="text" name="venue" placeholder="venue"><br />
         <input type="text" name="date" placeholder="date"><br />
