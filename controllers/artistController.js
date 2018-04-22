@@ -6,20 +6,28 @@ const User = require('../models/user');
 
 // get index route
 router.get('/', async (req, res, next) => {
-		try {
-				const allArtists = await Artist.find();
-				res.render('artist/index.ejs', {
-					artists : allArtists
-				});
+	try {
+		const allArtists = await Artist.find();
+		res.render('artist/index.ejs', {
+			artists : allArtists
+		});
 
-		} catch(err) {
-			next(err)
-		}
+	} catch(err) {
+		next(err);
+	}
 })
 
 //new artist get route
-router.get('/new', (req, res) => {
-  res.render('artist/new.ejs')
+router.get('/new', async (req, res, next) => {
+	try {
+		const allUsers = await User.find();
+		res.render('artist/new.ejs', {
+			users: allUsers
+		})
+	
+	} catch(err) {
+		next(err);
+	}
 });
 
 //new artist post route
@@ -29,7 +37,20 @@ router.post('/', async (req, res, next) => {
 //also, properties in schema and input form MUST MATCH
 
   try {
+
+ 	const userArtist = await User.findById(req.body.userId);
     const createdArtist = await Artist.create(req.body);
+
+    // add user to the artist's users with access (basically band members)
+    createdArtist.usersWithAccess.push(userArtist);
+    // add artist to the user's list of affiliated artists
+    userArtist.artists.push({
+    	name: createdArtist.name.toString(),
+    	id: createdArtist.id.toString()
+    });
+
+    const savedArtist = await createdArtist.save();
+    const savedUser = await userArtist.save();
 
     res.redirect('/artist');
 

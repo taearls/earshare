@@ -25,8 +25,10 @@ router.get('/', async (req, res, next) => {
 router.get("/:id", async (req, res, next) => {
 	try {
 		const foundUser = await User.findById(req.params.id);
+		const allArtists = await Artist.find();
 		res.render('user/show.ejs', {
-			user: foundUser
+			user: foundUser,
+			allArtists: allArtists
 		})
 	} catch (err) {
 		next(err);

@@ -24,6 +24,12 @@
       <h4>Create New Artist</h4>
 
       <form action="/artist" method="POST"><br />
+        
+        <select name="userId">
+          <% for (let i = 0; i < users.length; i++) { -%>
+            <option value="<%=users[i].id%>"><%= users[i].username %></option>
+          <% } -%>
+        </select> <br/>
 
         <input type="text" name="name" placeholder="name"><br />
         <input type="text" name="genre" placeholder="genre"><br />
