@@ -104,6 +104,8 @@ router.put("/:id", async (req, res, next) => {
 		const usersArtist = await User.find({"artists.id" : req.params.id});
 		let savedUsers;
 
+
+
 		// since there are multiple users being returned in an array, we have to iterate through them
 		// we also have to iterate through each user's array of artists
 		// so we need two for loops:

@@ -53,6 +53,26 @@ router.get("/:id/edit", async (req, res, next) => {
 router.put("/:id", async (req, res, next) => {
 	try {
 		const updatedUser = await User.findByIdAndUpdate(req.params.id, req.body);
+
+		const updatedArtists = await Artist.find();
+		// find all artists who have a user with the same id as the band member id
+
+		// have to declare this variable outside the loops
+		let savedArtists;
+		
+		// since there are multiple usersWithAccess being returned in an array, we have to iterate through them
+		// two for loops:
+
+		for (let i = 0; i < updatedArtists.length; i++) {
+			for (let j = 0; j < updatedArtists[i].usersWithAccess.length; j++) {
+				console.log(updatedArtists[i].usersWithAccess[j].id);
+				console.log(req.params.id, " this is req.params.id");
+				if (updatedArtists[i].usersWithAccess[j].id === req.params.id) {
+					updatedArtists[i].usersWithAccess[j].username = req.body.username;
+					savedArtists = await updatedArtists[i].save();
+				}
+			}
+		}
 		res.redirect("/user");
 	} catch (err) {
 		next(err);
