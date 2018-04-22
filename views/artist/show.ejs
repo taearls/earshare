@@ -19,6 +19,13 @@
 
  	<main>
 
+    <h4> <%=artist.name%> Members</h4>
+      <ul>
+        <% for (let i = 0; i < artist.usersWithAccess.length; i++) { -%>
+          <li> <a href="/user/<%=artist.usersWithAccess[i].id%>"> <%= artist.usersWithAccess[i].username%></a></li>
+        <% } -%>
+      </ul>
+
  		<h4>Your Created Events</h4>
 
       <ul>
