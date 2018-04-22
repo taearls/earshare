@@ -1,31 +1,61 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title></title>
+	<title>Edit User</title>
+	<link rel="stylesheet" href="../css/style.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<style>
+	body { padding-top: 10px; };
+	</style>
 </head>
 <body>
+	<header>
+		<nav class="navbar navbar-inverse">
+				<div class="container-fluid">
 
-	<header class="container">
-		<h1 class="row col">Edit <%=user.username%> Information</h1>
-		<nav>
-      	  <button class="btn btn-outline-info btn-lg"><a href="/artist">Browse</a></button>
-      	  <button class="btn btn-outline-info btn-lg"><a href="/user">User Profile</a></button>
-      	</nav>  
+						<ul class="nav navbar-left">
+							<li class="active"><a href="/">Home</a></li>
+							<li><a href="/event">Events</a></li>
+							<li><a href="/artist">Artists</a></li>
+						</ul>
 
-	</header>
-	<main class="container">
-		<form action="/user/<%=index%>?_method=PUT" method="POST">
-			Username: <input type="text" name="username" placeholder="username" value="<%=user.username%>"> <br>
-			Email: <input type="text" name="email" placeholder="email" value="<%=user.email%>"> <br>
+						<ul class="nav navbar-right">
+							<li><a href="/user/<%= user.id %>"><span class="glyphicon glyphicon-plus"></span>Back to Profile</a></li>
+						</ul>
+					</div>
+				</div>
+			</nav>
+		</header>
 
-<!-- 		unable to edit password. if we set the value as the user password, the form will generate the password hash.
-			for this to work, I think we'd need to bcrypt the password that's submitted in this form.
-			Password: <input type="password" name="password" placeholder="password" value="<%=user.password%>"> <br>
- -->		
 
- 			<button class="btn btn-success mb-2" type="submit">Submit Your Changes</button>
-		</form>
-	</main>
+		<div class="container-fluid text-center">
+			<div class="col-lg-12 col-sm-12">
+				<h1>Edit <%=user.username%>'s Information</h1>
+
+				<form class= "form-inline-block" action="/user/<%=index%>?_method=PUT" method="POST">
+
+					<label class= "control-label" for="updateUsername">Update Username:</label>
+					<input type="text" class= "form-control" name="username" id= "updateUsername" placeholder="username" value="<%=user.username%>"><br />
+
+					<label class= "control-label" for="updateUserEmail">Update Email:</label>
+					<input type="text" class= "form-control" name="email" placeholder="email" value="<%=user.email%>"><br />
+
+		<!-- 		unable to edit password. if we set the value as the user password, the form will generate the password hash.
+					for this to work, I think we'd need to bcrypt the password that's submitted in this form.
+					Password: <input type="password" name="password" placeholder="password" value="<%=user.password%>"> <br>
+		 -->
+
+					<button class="btn btn-success mb-2 btn-block" type="submit">Submit Your Changes</button>
+				</form>
+			</div>
+
+
+
+
+
+
 
 </body>
 </html>
