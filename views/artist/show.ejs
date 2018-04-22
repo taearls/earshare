@@ -34,7 +34,7 @@
 
   <footer>
 
-    <button class="btn btn-outline info btn-lrg" href="/artist/<%= artist.id %>/edit">Edit <%=artist.name%> </button>
+    <button class="btn btn-outline info btn-lrg"> <a href="/artist/<%= artist.id %>/edit">Edit <%=artist.name%> </a> </button>
 
     <form action="/artist/<%= artist.id %>?_method=DELETE" method="POST">
         <button class= "btn-outline info btn-lrg">Delete <%=artist.name%> </button>

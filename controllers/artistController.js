@@ -78,8 +78,10 @@ router.get('/:id', async (req, res, next) => {
 router.get('/:id/edit', async (req, res, next) => {
 
 	try {
-
-		res.render('artist/edit.ejs')
+		const artistToUpdate = await Artist.findById(req.params.id);
+		res.render('artist/edit.ejs', {
+			artist: artistToUpdate
+		})
 
 	} catch (err) {
 		next(err);
@@ -91,13 +93,32 @@ router.get('/:id/edit', async (req, res, next) => {
 router.put("/:id", async (req, res, next) => {
 	try {
 		const artistEdit = {};
-  		artistEdit.name= req.body.name;
+  		artistEdit.name = req.body.name;
    		artistEdit.genre = req.body.genre;
-			artistEdit.location = req.body.location;
-			artistEdit.website = req.body.website;
-			artistEdit.imglink = req.body.imglink;
+		artistEdit.location = req.body.location;
+		artistEdit.website = req.body.website;
+		artistEdit.img = req.body.img;
+		artistEdit.description = req.body.description;
+
+		// find all users who have an artist with the same id as the artist
+		const usersArtist = await User.find({"artists.id" : req.params.id});
+		let savedUsers;
+
+		// since there are multiple users being returned in an array, we have to iterate through them
+		// we also have to iterate through each user's array of artists
+		// so we need two for loops:
+
+		for (let i = 0; i < usersArtist.length; i++) {
+			for (let j = 0; j < usersArtist[i].artists.length; j++) {
+				if (usersArtist[i].artists[j].id === req.params.id) {
+					usersArtist[i].artists[j].name = req.body.name;
+					savedUsers = await usersArtist[i].save();
+				}
+			}
+		}
 
 		const updatedArtist = await Artist.findByIdAndUpdate(req.params.id, req.body);
+		const savedArtist = await updatedArtist.save();
 
 		res.redirect("/artist");
 	} catch (err) {
