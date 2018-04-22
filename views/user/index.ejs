@@ -48,7 +48,7 @@
 				<ul>
 					<%for (let i = 0; i < users.length; i++) {%>
 						<li><p><a href="/user/<%=users[i].id%>"><%=users[i].username%></a></p><br />
-						<img src="<%=users[i].avatar%>" class="img-responsive" style="width:100%" alt="<%=users[i].name%>'s Avatar"></li>
+						<img src="<%=users[i].avatar%>" id="userListPic" class="img-responsive" style="width:100%" alt="<%=users[i].name%>'s Avatar"></li>
 					<%}%>
 				</ul>
 	    </div>
@@ -59,6 +59,11 @@
 	<footer class="container-fluid text-center">
   	<p>Footer Here</p>
 	</footer>
+
+	
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  		<script src="/js/app.js"></script>
+
 
 </body>
 </html>

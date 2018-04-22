@@ -25,3 +25,6 @@ $('a').on('click', (e) => {
 
 // make any image invisible if there's no src attribute added
 $('img[src=""]').hide();
+
+// make image pics change to this if no input?
+// src="https://placehold.it/150x80?text=IMAGE"
