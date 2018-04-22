@@ -14,14 +14,14 @@
     </header>
 
     <main>
-      <h1> Edit <%=artist.name%></h1>
+      <h1> Edit <%=artist.name%>'s Information</h1>
       <form action="/artist/<%=artist.id%>?_method=PUT" method="POST"><br />
-        <input type="text" name="name" placeholder="name"><br />
-        <input type="text" name="genre" placeholder="genre"><br />
-        <input type="text" name="location" placeholder="location"><br />
-        <input type="text" name="website" placeholder="website"><br />
-        <input type="text" name="img" placeholder="img link"><br />
-        <textarea name="description" rows="4" cols="40" placeholder="Description"></textarea><br />
+        <input type="text" name="name" placeholder="Name" value="<%=artist.name%>"><br />
+        <input type="text" name="genre" placeholder="Genre" value="<%=artist.genre%>"><br />
+        <input type="text" name="location" placeholder="Location" value="<%=artist.location%>"><br />
+        <input type="text" name="website" placeholder="Website" value="<%=artist.website%>"><br />
+        <input type="text" name="img" placeholder="Image Link" value="<%=artist.img%>"><br />
+        <textarea name="description" rows="4" cols="40" placeholder="Description"><%=artist.description%></textarea><br />
         <button type="submit" name="button">Submit Changes</button>
       </form>
     </main>
