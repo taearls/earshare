@@ -2,12 +2,12 @@ const mongoose = require('mongoose');
 
 const eventSchema = new mongoose.Schema({
       name: String,
-      description: String,
       venue: String,
       date: {
       	type: String,
       	default: Date.now()
       },
+      description: String,
       img: String,
       meta: {
           interested: Number,

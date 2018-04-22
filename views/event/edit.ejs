@@ -22,11 +22,11 @@
 
 			<form action="/event/<%=event.id%>?_method=PUT" method="POST"><br />
 
-				<input type="text" name="name" placeholder="name"><br />
-				<input type="text" name="venue" placeholder="venue"><br />
-				<input type="text" name="date" placeholder="date"><br />
-				<input type="text" name="img" placeholder="image link"><br />
-				<textarea name="description" rows="4" cols="40" placeholder="Description"></textarea><br />
+				<input type="text" name="name" placeholder="Name" value="<%=event.name%>"><br />
+				<input type="text" name="venue" placeholder="Venue" value="<%=event.venue%>"><br />
+				<input type="text" name="date" placeholder="Date" value="<%=event.date%>"><br />
+				<input type="text" name="img" placeholder="Image Link" value="<%=event.img%>"><br />
+				<textarea name="description" rows="4" cols="40" placeholder="Description"><%=event.description%></textarea><br />
 
 				<button type="submit" name="button">Edit Event</button>
 
