@@ -142,7 +142,19 @@ router.put("/:id", async (req, res, next) => {
 //delete using the index of data in model
 router.delete('/:id', async (req, res, next) => {
   try {
-    const deletedEvent = await Event.findByIdAndRemove(req.params.id,)
+    const deletedEvent = await Event.findByIdAndRemove(req.params.id);
+    const allArtists = await Artist.find();
+    let savedArtists;
+    for (let i = 0; i < allArtists.length; i++) {
+    	for (let j = 0; j < allArtists[i].events.length; j++) {
+    		if (allArtists[i].events[j]._id.toString() === req.params.id.toString()) {
+    			console.log(allArtists[i].events);
+    			allArtists[i].events.splice(j, 1);
+    			savedArtists = await allArtists[i].save();
+    		}
+    	}
+    }
+
     res.redirect('/event');
 
   } catch(err) {

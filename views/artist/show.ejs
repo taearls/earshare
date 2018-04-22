@@ -22,7 +22,7 @@
     <h4> <%=artist.name%> Attributes </h4>
       <h6>Genre: <%=artist.genre%></h6>
       <h6>Location: <%=artist.location%></h6>
-      <h6>Website: <%=artist.website%></h6>
+      <h6>Website: <a href="//<%=artist.website%>"><%=artist.website%></a></h6>
       <h6>Profile Picture: </h6> <img src="<%=artist.img%>">
       <h6>Description: <%=artist.description%></h6>
 
@@ -38,7 +38,7 @@
 
       <ul>
       <% for (let i = 0; i < artist.events.length; i++) { -%>
-        <li><a href="/event/<%=artist.events[i].id%>"> <%= artist.events[i].name%></a></li>
+        <li><a href="/event/<%=artist.events[i]._id%>"> <%= artist.events[i].name%></a></li>
       <% } -%>
       </ul>
 
