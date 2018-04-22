@@ -64,7 +64,7 @@ router.post('/', async (req, res, next) => {
 router.get('/:id', async (req, res, next) => {
 	try {
 		const artistToUpdate = await Artist.findById(req.params.id);
-		console.log(artistToUpdate, " this is the artist in get show route");
+		// console.log(artistToUpdate, " this is the artist in get show route");
 		res.render('artist/show.ejs', {
 			artist : artistToUpdate
 		});
@@ -104,7 +104,7 @@ router.put("/:id", async (req, res, next) => {
 		// find all users who have an artist with the same id as the artist
 		const usersArtist = await User.find({"artists.id" : req.params.id});
 		let savedUsers;
-
+		console.log(usersArtist, " this is usersArtist");
 
 
 		// since there are multiple users being returned in an array, we have to iterate through them

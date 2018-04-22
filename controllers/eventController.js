@@ -93,17 +93,17 @@ router.get('/:id/edit', async (req, res, next) => {
 router.put("/:id", async (req, res, next) => {
 	try {
 		const eventEdit = {};
-  		eventEdit.name= req.body.name;
+  		eventEdit.name = req.body.name;
    		eventEdit.genre = req.body.genre;
 		eventEdit.location = req.body.location;
 		eventEdit.website = req.body.website;
 		eventEdit.img = req.body.img;
 		eventEdit.description = req.body.description;
-		console.log(req.body.description);
+
 		const updatedEvent = await Event.findByIdAndUpdate(req.params.id, req.body);
 
 		// find all artists who have an event with the same id as the event being changed
-		const hostArtists = await Artist.find({"events.id" : req.params.id});
+		const hostArtists = await Artist.find();
 		let savedArtists;
 
 		// since there are multiple artists being returned in an array, we have to iterate through them
@@ -113,7 +113,8 @@ router.put("/:id", async (req, res, next) => {
 
 		for (let i = 0; i < hostArtists.length; i++) {
 			for (let j = 0; j < hostArtists[i].events.length; j++) {
-				if (hostArtists[i].events[j].id === req.params.id) {
+				if (hostArtists[i].events[j]._id.toString() === req.params.id.toString()) {
+					// update all the keys of the object in the event array
 					hostArtists[i].events[j].name = req.body.name;
 					hostArtists[i].events[j].genre = req.body.genre;
 					hostArtists[i].events[j].location = req.body.location;
