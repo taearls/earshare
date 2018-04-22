@@ -64,6 +64,7 @@ router.post('/', async (req, res, next) => {
 router.get('/:id', async (req, res, next) => {
 	try {
 		const artistToUpdate = await Artist.findById(req.params.id);
+		console.log(artistToUpdate, " this is the artist in get show route");
 		res.render('artist/show.ejs', {
 			artist : artistToUpdate
 		});

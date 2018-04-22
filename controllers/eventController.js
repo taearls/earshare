@@ -41,7 +41,15 @@ router.post('/', async (req, res, next) => {
   try {
   	const artistHost = await Artist.findById(req.body.artistId)
     const createdEvent = await Event.create(req.body);
-	artistHost.events.push(createdEvent);
+    // this will populate the "affiliated artists"
+    createdEvent.hostArtists.push({
+    	name: artistHost.name.toString(),
+    	id: artistHost.id.toString()
+    });
+    const savedEvent = await createdEvent.save();
+
+    // this will make the event show up in the artist schema
+    artistHost.events.push(createdEvent);
 	const savedArtist = await artistHost.save();
     res.redirect('/event');
 

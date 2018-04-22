@@ -9,6 +9,10 @@ const eventSchema = new mongoose.Schema({
       },
       description: String,
       img: String,
+      hostArtists: [{
+          name: String,
+          id: String
+      }],
       meta: {
           interested: Number,
           attending: Number

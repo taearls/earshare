@@ -89,6 +89,11 @@
 
 									<div class="tab-pane fade in" id="tab4">
 					          <h3>Affiliated Artists</h3>
+					          	<ul>
+						          	<% for (let i = 0; i < event.hostArtists.length; i++) { -%>
+						          		<li><a href="/artist/<%=event.hostArtists[i].id%>"><%=event.hostArtists[i].name%></a></li>
+						          	<% } -%>
+					          	</ul>
 					        </div>
 					      </div>
 			    	</div>
