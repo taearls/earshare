@@ -110,6 +110,7 @@ router.put("/:id", async (req, res, next) => {
 		// we also have to iterate through each artists's array of events
 		// so we need two for loops:
 
+
 		for (let i = 0; i < hostArtists.length; i++) {
 			for (let j = 0; j < hostArtists[i].events.length; j++) {
 				if (hostArtists[i].events[j].id === req.params.id) {
@@ -120,13 +121,13 @@ router.put("/:id", async (req, res, next) => {
 					hostArtists[i].events[j].img = req.body.img;
 					hostArtists[i].events[j].description = req.body.description;
 
-					savedUsers = await usersArtist[i].save();
+					savedArtists = await hostArtists[i].save();
 				}
 			}
 		}
 
-		const savedEvent = await updatedEvent.save();
 
+		const savedEvent = await updatedEvent.save();
 
 
 		res.redirect("/event");
