@@ -2,29 +2,69 @@
 <html lang="" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title></title>
+    <title>Edit Artist</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <style>
+    body { padding-top: 10px; };
+    </style>
   </head>
+
   <body>
-
     <header>
-      <nav>
-        <button class="btn btn-outline-info btn-lg"><a href="/artist">Browse</a></button>
-        <button class="btn btn-outline-info btn-lg"><a href="/user">User Profile</a></button>
-      </nav>
-    </header>
+      <nav class="navbar navbar-inverse">
+          <div class="container-fluid">
 
-    <main>
-      <h1> Edit <%=artist.name%>'s Information</h1>
-      <form action="/artist/<%=artist.id%>?_method=PUT" method="POST"><br />
-        <input type="text" name="name" placeholder="Name" value="<%=artist.name%>"><br />
-        <input type="text" name="genre" placeholder="Genre" value="<%=artist.genre%>"><br />
-        <input type="text" name="location" placeholder="Location" value="<%=artist.location%>"><br />
-        <input type="text" name="website" placeholder="Website" value="<%=artist.website%>"><br />
-        <input type="text" name="img" placeholder="Image Link" value="<%=artist.img%>"><br />
-        <textarea name="description" rows="4" cols="40" placeholder="Description"><%=artist.description%></textarea><br />
-        <button type="submit" name="button">Submit Changes</button>
-      </form>
+              <ul class="nav navbar-left">
+                <li class="active"><a href="/">Home</a></li>
+                <li><a href="/event">Events</a></li>
+                <li><a href="/artist">Artists</a></li>
+              </ul>
+
+              <ul class="nav navbar-right">
+                <li><a href="/artist/<%=artist.id%>"><span class="glyphicon glyphicon-plus"></span>Back to Artist</a></li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+      </header>
+
+      <main>
+
+        <div class="container-fluid text-center">
+          <div class="col-lg-12 col-sm-12">
+            <h1> Edit <%=artist.name%>'s Information</h1>
+
+            <form action="/artist/<%=artist.id%>?_method=PUT" method="POST"><br />
+
+              <label class= "control-label" for="artistName">Edit Artist Name:</label>
+              <input type="text" class= "form-control" name="name" id= "artistName" value="<%=artist.name%>"><br />
+
+              <label class= "control-label" for="artistGenre">Edit Genre:</label>
+              <input type="text" class= "form-control" name="genre" value="<%=artist.genre%>"><br />
+
+              <label class= "control-label" for="artistLocation">Edit Location:</label>
+              <input type="text" class= "form-control" name="location" value="<%=artist.location%>"><br />
+
+              <label class= "control-label" for="artistWebsite">Edit Website:</label>
+              <input type="text" class= "form-control" name="website" value="<%=artist.website%>"><br />
+
+              <label class= "control-label" for="artistImage">Edit Image:</label>
+              <input type="text" class= "form-control" name="img" value="<%=artist.img%>"><br />
+
+              <label class= "control-label" for="artistDescription">Edit Artist Description:</label><br />
+              <textarea name="description" rows="12" cols="80" placeholder="Description"><%=artist.description%></textarea><br /><br />
+
+              <button class="btn btn-success mb-2 btn-block" type="submit">Submit Changes</button>
+            </form>
+          </div>
+
+
+      </div>
     </main>
-    
+
+
   </body>
 </html>
