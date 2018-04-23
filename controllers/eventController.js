@@ -121,10 +121,10 @@ router.put("/:id", async (req, res, next) => {
 		const eventEdit = {};
   		eventEdit.name = req.body.name;
    		eventEdit.genre = req.body.genre;
-		eventEdit.location = req.body.location;
-		eventEdit.website = req.body.website;
-		eventEdit.img = req.body.img;
-		eventEdit.description = req.body.description;
+			eventEdit.location = req.body.location;
+			eventEdit.website = req.body.website;
+			eventEdit.img = req.body.img;
+			eventEdit.description = req.body.description;
 
 		const updatedEvent = await Event.findByIdAndUpdate(req.params.id, req.body);
 

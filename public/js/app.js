@@ -26,13 +26,25 @@
 //     }
 // });
 
+//need to toggle create event button class
+$('#createNewEvent').on('click', e => {
+      if($('#createNewEvent').hasClass('invisible')){
+        $('#createNewEvent').toggleClass('invisible')
+      } else {
+
+      }
+});
+
 
 // make any image invisible if there's no src attribute added
 $('img[src=""]').hide();
 
+
 // make image pics change to this if no input?
 // src="https://placehold.it/150x80?text=IMAGE"
-
+$('<img>').error(function(){
+        $(this).attr('src', 'public/images/missing-image.png');
+});
 
 //modals
 
@@ -45,6 +57,7 @@ $('#registerModal').on('shown.bs.modal', function () {
   $('#myInput').trigger('focus')
 })
 
+
 $('.dropdown-item').on('click', function (event) {
 	target = event.currentTarget;
 	console.log(target.innerText, " this is the selected username");
@@ -53,16 +66,25 @@ $('.dropdown-item').on('click', function (event) {
 })
 
 //Artist Like Button
-$('#artistUserLike').on('click', function(event) {
-    target = event.currentTarget;
-    console.log(target, "this is the button clicked");
+$('#tab4').data('count', 0);
+$('#artistUserLike').click(function(){
+    $('#tab4').html(function() {
+      const $this = $(this),
+        count = $this.data('count') +1;
+      $this.data('count', count);
+      return count;
+    });
 });
 
 
+
 //Event Attend Button
-let attendance = 0;
-$('#eventAttendance').on('click', function(event) {
-    attendance++;
-    $('#tab3').html("current event attendance is: " + attendance);
-    
+$('#tab3').data('count', 0);
+$('#eventAttendance').click(function() {
+    $('#tab3').html(function() {
+        const $this = $(this),
+            count = $this.data('count') + 1;
+        $this.data('count', count);
+        return count;
+    });
 });
