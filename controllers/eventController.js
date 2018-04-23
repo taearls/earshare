@@ -7,29 +7,27 @@ const User = require('../models/user');
 // get index route
 
 router.get('/', async (req, res, next) => {
-		try {
-				const allEvents = await Event.find();
-				res.render('event/index.ejs', {
-					events : allEvents
-				});
+	try {
+		const allEvents = await Event.find();
+		res.render('event/index.ejs', {
+			events : allEvents
+		});
 
-		} catch(err) {
-			next(err)
-		}
+	} catch(err) {
+		next(err)
+	}
 })
 
 //new event get route
 router.get('/new', async (req, res, next) => {
-
 	try {
 		const allArtists = await Artist.find();
 		res.render('event/new.ejs', {
 			artists: allArtists
 		})
 	} catch (err) {
-		next(err)
+		next(err);
 	}
-
 });
 
 //new event post route
@@ -37,7 +35,6 @@ router.get('/new', async (req, res, next) => {
 router.post('/', async (req, res, next) => {
 //need to use body-parser
 //also, properties in schema and input form MUST MATCH
-
   try {
   	const artistHost = await Artist.findById(req.body.artistId)
     const createdEvent = await Event.create(req.body);
@@ -54,7 +51,7 @@ router.post('/', async (req, res, next) => {
     res.redirect('/event');
 
   } catch(err) {
-    next(err)
+    next(err);
   }
 });
 
@@ -66,7 +63,6 @@ router.get('/:id', async (req, res, next) => {
 		res.render('event/show.ejs', {
 			event: eventToUpdate
 		});
-
 	} catch (err) {
 		next(err);
 	}
@@ -76,7 +72,6 @@ router.get('/:id', async (req, res, next) => {
 // get edit route
 
 router.get('/:id/edit', async (req, res, next) => {
-
 	try {
 		const eventToUpdate = await Event.findById(req.params.id);
 		res.render('event/edit.ejs', {
@@ -85,7 +80,6 @@ router.get('/:id/edit', async (req, res, next) => {
 	} catch (err) {
 		next(err);
 	}
-
 });
 
 
@@ -148,7 +142,6 @@ router.delete('/:id', async (req, res, next) => {
     for (let i = 0; i < allArtists.length; i++) {
     	for (let j = 0; j < allArtists[i].events.length; j++) {
     		if (allArtists[i].events[j]._id.toString() === req.params.id.toString()) {
-    			console.log(allArtists[i].events);
     			allArtists[i].events.splice(j, 1);
     			savedArtists = await allArtists[i].save();
     		}
@@ -158,10 +151,8 @@ router.delete('/:id', async (req, res, next) => {
     res.redirect('/event');
 
   } catch(err) {
-    next(err)
+    next(err);
   }
 });
-
-
 
 module.exports = router;
