@@ -134,7 +134,19 @@ router.put("/:id", async (req, res, next) => {
 //delete using the index of data in model
 router.delete('/:id', async (req, res, next) => {
   try {
-    const deletedArtist = await Artist.findByIdAndRemove(req.params.id,)
+    const deletedArtist = await Artist.findByIdAndRemove(req.params.id);
+    const allEvents = await Event.find();
+    for (let i = 0; i < allEvents.length; i++) {
+    	for (let j = 0; j < deletedArtist.events.length; j++) {
+    		if (allEvents[i]._id.toString() === deletedArtist.events[j]._id.toString()) {
+    			// remove in event show page if there are no more affiliated artists
+    			allEvents[i].hostArtists.splice(deletedArtist.name.indexOf(), 1);
+    			if (allEvents[i].hostArtists.length === 0) {
+    				allEvents[i].remove();
+    			}
+    		}
+    	}
+    }
     res.redirect('/artist');
 
   } catch(err) {
