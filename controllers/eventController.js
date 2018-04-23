@@ -39,24 +39,53 @@ router.post('/', async (req, res, next) => {
 //need to use body-parser
 //also, properties in schema and input form MUST MATCH
   try {
-  	const artistHost = await Artist.findById(req.body.artistId)
+  	const artistHost = await Artist.findById(req.body.artistId);
     const createdEvent = await Event.create(req.body);
+		const eventAttendee = await User.findById(req.body.userId);
     // this will populate the "affiliated artists"
     createdEvent.hostArtists.push({
     	name: artistHost.name.toString(),
     	id: artistHost.id.toString()
     });
+
+		//need to push users who will attend event
+		createdEvent.eventAttendee.push({
+			name: eventAttendee.name.toString(),
+			id: 	eventAttendee.id.toString()
+		})
     const savedEvent = await createdEvent.save();
 
     // this will make the event show up in the artist schema
     artistHost.events.push(createdEvent);
-	const savedArtist = await artistHost.save();
+		const savedArtist = await artistHost.save();
     res.redirect('/event');
 
   } catch(err) {
     next(err);
   }
 });
+
+
+// route to add new member to artist
+router.get('/:eventId/addAttendee/:userId', async (req, res, next) => {
+	try {
+		const addedUser = await User.findById(req.params.userId);
+		const savedUser = await addedUser.save();
+		const eventList = await Event.findById(req.params.eventId);
+		for (let i = 0; i < event.savedUser.length; i++) {
+			if (savedUser.username === event.addedUser[i].username) {
+				res.redirect('/event/' + req.params.eventId);
+			} else if (i === (event.addedUser.length - 1)) {
+				event.addedUser.push(savedUser);
+				const newAttendee = await eventList.save();
+				res.redirect('/event/' + req.params.eventId);
+			}
+		}
+	} catch (err) {
+		next(err);
+	}
+})
+
 
 
 // get show route

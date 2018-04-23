@@ -48,24 +48,21 @@ $('#registerModal').on('shown.bs.modal', function () {
 $('.dropdown-item').on('click', function (event) {
 	target = event.currentTarget;
 	console.log(target.innerText, " this is the selected username");
-	// $("#bandMembers").append("<li><a href='#'>"+ target.innerText + "</a></li>");
+
 
 })
 
-// $('.dr')
-// const addMember = () => {
-//  target = document.getElementsByClassName('dropdown-item');
-// 	  	for (let j = 0; j < target.length; j++) {
-// 	    target[j].addEventListener('click', function (event) {
-// 	       if (users[i].username.toString() === target.innerText.toString()) {
-// 	          currentUser = users[i];
-// 	          id = users[i].id;
-// 	       }
+//Artist Like Button
+$('#artistUserLike').on('click', function(event) {
+    target = event.currentTarget;
+    console.log(target, "this is the button clicked");
+});
 
-// 	       target = event.currentTarget;
-// 	       console.log(target.innerText, " this is the selected username");
-// 	       $("#bandMembers").append("<li><a href=" + "/user/" + id + ">" + target.innerText + "</a></li>");
 
-// 	      });
-//   }
-// };
+//Event Attend Button
+let attendance = 0;
+$('#eventAttendance').on('click', function(event) {
+    attendance++;
+    $('#tab3').html("current event attendance is: " + attendance);
+    
+});

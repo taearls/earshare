@@ -28,7 +28,7 @@ router.get('/new', async (req, res, next) => {
 			users: allUsers,
 			currentUser: user
 		})
-	
+
 	} catch(err) {
 		next(err);
 	}
@@ -75,10 +75,10 @@ router.get('/:artistId/addUser/:userId', async (req, res, next) => {
 			} else if (i === (band.usersWithAccess.length - 1)) {
 				band.usersWithAccess.push(savedUser);
 				const savedBand = await band.save();
-				res.redirect('/artist/' + req.params.artistId);				
+				res.redirect('/artist/' + req.params.artistId);
 			}
 		}
-		
+
 
 
 		// res.redirect('/artist/' + req.params.artistId);
@@ -87,12 +87,14 @@ router.get('/:artistId/addUser/:userId', async (req, res, next) => {
 	}
 })
 
+
+
 // get show route
 router.get('/:id', async (req, res, next) => {
 	try {
 		const artistToUpdate = await Artist.findById(req.params.id);
 		const allUsers = await User.find();
-		
+
 		// use this to keep track of current artist; on our site they have to go to the artist show page to create an event
 		req.session.currentArtist = artistToUpdate.name.toString();
 
