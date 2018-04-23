@@ -2,63 +2,168 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <link rel="stylesheet" href="/css/style.css">
-    <title></title>
+    <title>Music App Landing Page</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <style>
+      body { padding-top: 10px; };
+    </style>
   </head>
   <body>
 
-    <div class="container">
-      <div class="row">
-				<header>
-					<h1>Live Music Finder App</h1>
-					<h2>Landing Page</h2>
 
+    <header>
+      <nav class="navbar navbar-inverse">
+          <div class="container-fluid">
 
-<!--           login/register tabs
- -->      <ul class="nav nav-tabs">
+              <ul class="nav navbar-left">
+                <li class="active"><a href="/">Home</a></li>
+                <li><a href="/event">Events</a></li>
+                <li><a href="/artist">Artists</a></li>
+              </ul>
 
-              <li class="nav-item">
-                <a class="nav-link active" href="#">Login</a>
-              </li>
-
-              <li class="nav-item">
-                <a class="nav-link" href="#">Register</a>
-              </li>
-  
-          </ul>
-
-	      </div>
-			</header>
-
-				</main>
-      <% if (message) { -%>
-		      <p style="background-color: pink"><%= message %></p>
-	     <% } -%>
-
-        <div class="row">
-            <form action="/login" method="POST" id="login">
-              <div class="form-group">
-                <h4>Sign In!</h4>
-                  <input type="text" name="username" placeholder="username">
-                  <input type="password" name="password" placeholder="password">
-                  <button type="submit">Submit</button>
-              </div>
-            </form>
-
-            <form action="/register" method="POST" class="invisible" id="registration">
-              <div class="form-group">
-                <h4>Sign up!</h4>
-                  <input type="text" name="username" placeholder="username">
-                  <input type="text" name="email" placeholder="email">
-                  <input type="password" name="password" placeholder="password">
-                  <button type="submit">Register</button>
-              </div>
-            </form>
-
+            </div>
           </div>
+        </nav>
+      </header>
+
+      <main>
+
+      <div class="jumbotron">
+        <div class="container text-center">
+          <h1>Live Music Finder App</h1>
+          <p>Some dang ol' catchy byline will go here</p>
+        </div>
+      </div>
+
+
+       <div class="container">
+           <div class="row">
+               <div class="col-md-12">
+                   <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                       <ol class="carousel-indicators">
+                           <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                           <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+                           <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+                       </ol>
+                       <div class="carousel-inner">
+                           <div class="item active">
+                               <img src="http://placehold.it/1200x500/3498db/2980b9" alt="First slide">
+                               <div class="carousel-caption">
+                                   <h3>
+                                       Band name</h3>
+                                   <p>
+                                       Dummy text</p>
+                               </div>
+                           </div>
+                           <div class="item">
+                               <img src="http://placehold.it/1200x500/9b59b6/8e44ad" alt="Second slide">
+                               <div class="carousel-caption">
+                                   <h3>
+                                       Another band name</h3>
+                                   <p>
+                                       Different dummy text</p>
+                               </div>
+                           </div>
+                           <div class="item">
+                               <img src="http://placehold.it/1200x500/34495e/2c3e50" alt="Third slide">
+                               <div class="carousel-caption">
+                                   <h3>
+                                       A third band name</h3>
+                                   <p>
+                                       More dummy text </p>
+                               </div>
+                           </div>
+                       </div>
+                       <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+                           <span class="glyphicon glyphicon-chevron-left"></span></a><a class="right carousel-control"
+                               href="#carousel-example-generic" data-slide="next"><span class="glyphicon glyphicon-chevron-right">
+                               </span></a>
+                   </div>
+                   <div class="main-text hidden-xs">
+                       <div class="col-md-12 text-center">
+                           <h1>
+                               This is a live music finding app</h1>
+                           <h3>
+                               If you register, you can do neat things like become an artist and create events!
+                           </h3>
+                           <div class="">
+                             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#loginModal">
+                               Sign Up Here!
+                             </button>
+                           </div>
+                       </div>
+                   </div>
+               </div>
+           </div>
+       </div>
+       <div id="push">
+       </div>
+
+       <!-- Modal -->
+       <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
+         <div class="modal-dialog" role="document">
+           <div class="modal-content">
+             <div class="modal-header">
+               <h5 class="modal-title" id="exampleModalLabel">Register or Sign In Below</h5>
+               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                 <span aria-hidden="true">&times;</span>
+               </button>
+             </div>
+             <div class="modal-body">
+               <% if (message) { -%>
+                  <p style="background-color: pink"><%= message %></p>
+               <% } -%>
+
+               <ul class="nav nav-tabs">
+
+                   <li class="nav-item">
+                     <a class="nav-link active" href="#">Login</a>
+                   </li>
+
+                     <li class="nav-item">
+                       <a class="nav-link" href="#">Register</a>
+                     </li>
+
+                   </ul>
+
+
+                   <div class="row">
+                   <form action="/login" method="POST" id="login">
+                     <div class="form-group">
+                       <h4>Sign In!</h4>
+                         <input type="text" name="username" placeholder="username">
+                         <input type="password" name="password" placeholder="password">
+                         <button type="submit">Submit</button>
+                     </div>
+                   </form>
+
+                   <form action="/register" method="POST" class="invisible" id="registration">
+                     <div class="form-group">
+                       <h4>Sign up!</h4>
+                         <input type="text" name="username" placeholder="username">
+                         <input type="text" name="email" placeholder="email">
+                         <input type="password" name="password" placeholder="password">
+                         <button type="submit">Register</button>
+                     </div>
+                   </form>
+
+                 </div>
+             </div>
+             <div class="modal-footer">
+               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+             </div>
+           </div>
+         </div>
+       </div>
+
+
+
 
       </div>
+    </div>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>

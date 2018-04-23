@@ -28,3 +28,10 @@ $('img[src=""]').hide();
 
 // make image pics change to this if no input?
 // src="https://placehold.it/150x80?text=IMAGE"
+
+
+//modals
+
+$('#loginModal').on('shown.bs.modal', function () {
+  $('#myInput').trigger('focus')
+})
