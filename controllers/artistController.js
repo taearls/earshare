@@ -63,6 +63,20 @@ router.post('/', async (req, res, next) => {
   }
 });
 
+router.get('/:artistId/addUser/:userId', async (req, res, next) => {
+	try {
+		const addedUser = await User.findById(req.params.userId);
+		const savedUser = await addedUser.save();
+		const band = await Artist.findById(req.params.artistId);
+		band.usersWithAccess.push(savedUser);
+		const savedBand = await band.save();
+
+
+		res.redirect('/artist/' + req.params.artistId);
+	} catch (err) {
+		next(err);
+	}
+})
 
 // get show route
 router.get('/:id', async (req, res, next) => {
@@ -81,6 +95,7 @@ router.get('/:id', async (req, res, next) => {
 		next(err);
 	}
 })
+
 
 
 // get edit route

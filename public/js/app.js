@@ -1,3 +1,7 @@
+
+// const User = require('../models/user.js');
+// console.log(User);
+
 // console.log("connected");
 
 // $('a').on('click', (e) => {
@@ -40,3 +44,28 @@ $('#loginModal').on('shown.bs.modal', function () {
 $('#registerModal').on('shown.bs.modal', function () {
   $('#myInput').trigger('focus')
 })
+
+$('.dropdown-item').on('click', function (event) {
+	target = event.currentTarget;
+	console.log(target.innerText, " this is the selected username");
+	// $("#bandMembers").append("<li><a href='#'>"+ target.innerText + "</a></li>");
+
+})
+
+// $('.dr')
+// const addMember = () => {
+//  target = document.getElementsByClassName('dropdown-item');
+// 	  	for (let j = 0; j < target.length; j++) {
+// 	    target[j].addEventListener('click', function (event) {
+// 	       if (users[i].username.toString() === target.innerText.toString()) {
+// 	          currentUser = users[i];
+// 	          id = users[i].id;
+// 	       }
+
+// 	       target = event.currentTarget;
+// 	       console.log(target.innerText, " this is the selected username");
+// 	       $("#bandMembers").append("<li><a href=" + "/user/" + id + ">" + target.innerText + "</a></li>");
+
+// 	      });
+//   }
+// };
