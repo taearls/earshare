@@ -135,6 +135,8 @@ router.put("/:id", async (req, res, next) => {
 router.delete('/:id', async (req, res, next) => {
   try {
     const deletedArtist = await Artist.findByIdAndRemove(req.params.id);
+
+    // remove associated events if no remaining host artists
     const allEvents = await Event.find();
     for (let i = 0; i < allEvents.length; i++) {
     	for (let j = 0; j < deletedArtist.events.length; j++) {
@@ -147,6 +149,21 @@ router.delete('/:id', async (req, res, next) => {
     		}
     	}
     }
+
+    // remove artist from all associated users
+    const usersArtist = await User.find({"artists.id" : req.params.id});
+    let savedUsers;
+    for (let i = 0; i < usersArtist.length; i++) {
+    	console.log(usersArtist, " these are the users associated w artist");
+    	for (let j = 0; j < usersArtist[i].artists.length; j++) {
+    		if (usersArtist[i].artists[j].id.toString() === req.params.id.toString()) {
+    			console.log("hit");
+    			usersArtist[i].artists[j].remove();
+    			savedUsers = await usersArtist[i].save();
+    		}
+    	}
+    }
+
     res.redirect('/artist');
 
   } catch(err) {
