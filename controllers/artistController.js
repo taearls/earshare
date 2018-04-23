@@ -21,8 +21,12 @@ router.get('/', async (req, res, next) => {
 router.get('/new', async (req, res, next) => {
 	try {
 		const allUsers = await User.find();
+		const user = await User.findOne({"username": req.session.username});
+		console.log(req.session.username, " this is req.session.username");
+		console.log(user, " this should be the current user")
 		res.render('artist/new.ejs', {
-			users: allUsers
+			users: allUsers,
+			currentUser: user
 		})
 	
 	} catch(err) {
