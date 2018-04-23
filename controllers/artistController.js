@@ -65,6 +65,9 @@ router.get('/:id', async (req, res, next) => {
 	try {
 		const artistToUpdate = await Artist.findById(req.params.id);
 		// console.log(artistToUpdate, " this is the artist in get show route");
+
+		// use this to keep track of current artist; on our site they have to go to the artist show page to create an event
+		req.session.currentArtist = artistToUpdate;
 		res.render('artist/show.ejs', {
 			artist : artistToUpdate
 		});
