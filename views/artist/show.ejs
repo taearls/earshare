@@ -47,7 +47,13 @@
                 </div>
                 <div class="card-info">
                   <span class="card-title"><h3>About <%=artist.name%></h3></span>
-                  <button type="button" class= "btn-lg" name="artistUserLikes" id= "artistUserLike"><span class= "glyphicon glyphicon-heart"></span> Like <%=artist.name%></button>
+
+                    <% for (let i = 0; i < users.length; i++) { %>
+                      <a href="/artist/addUser/<%=users[i].id%>/<%=artist.id%>">
+                    <% } %> 
+                      <span class= "glyphicon glyphicon-heart"></span> Like <%=artist.name%></a>
+
+
                 </div>
 
             </div>
@@ -127,7 +133,11 @@
                     </div>
 
                     <div class="tab-pane fade in" id="tab4">
-                      <h3></h3>
+                      <h3><%=artist.usersWhoLike.length%> Fans</h3>
+                      <ul> <% for (let i = 0; i < artist.usersWhoLike.length; i++) { -%>
+                        <li> <%=artist.usersWhoLike[i].username%> </li>
+                          <% } -%>
+                      </ul>
                     </div>
 
                   </div>
