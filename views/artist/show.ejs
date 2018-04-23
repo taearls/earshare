@@ -135,29 +135,12 @@
 
               <div class="col-lg-12 col-sm-12">
           			<a class="btn btn-outline-dark btn-sm btn-block" href="/artist/<%= artist.id %>/edit">Edit <%=artist.name%></a>
-          				<form action="/user/<%= artist.id %>?_method=DELETE" method="POST">
+          				<form action="/artist/<%= artist.id %>?_method=DELETE" method="POST">
           					<button class="btn btn-outline-danger btn-sm btn-block" type="submit">Delete <%=artist.name%></button>
           			</form>
           		</div>
 
  	       </main>
-
-         <% 
-          // for (let j = 0; j < users.length; j++) {
-          //   users[j].addEventListener('click', function (event) {
-          //      if (users[i].username.toString() === target.innerText.toString()) {
-          //         currentUser = users[i];
-          //         id = users[i].id;
-          //      }
-
-          //      target = event.currentTarget;
-          //      console.log(target.innerText, " this is the selected username");
-          //      $("#bandMembers").append("<li><a href=" + "/user/" + id + ">" + target.innerText + "</a></li>");
-
-          //     });
-          // }
-          
-          %>
 
 
        <script src="/js/app.js"></script>

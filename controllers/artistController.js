@@ -63,16 +63,25 @@ router.post('/', async (req, res, next) => {
   }
 });
 
+// route to add new member to artist
 router.get('/:artistId/addUser/:userId', async (req, res, next) => {
 	try {
 		const addedUser = await User.findById(req.params.userId);
 		const savedUser = await addedUser.save();
 		const band = await Artist.findById(req.params.artistId);
-		band.usersWithAccess.push(savedUser);
-		const savedBand = await band.save();
+		for (let i = 0; i < band.usersWithAccess.length; i++) {
+			if (savedUser.username === band.usersWithAccess[i].username) {
+				res.redirect('/artist/' + req.params.artistId);
+			} else if (i === (band.usersWithAccess.length - 1)) {
+				band.usersWithAccess.push(savedUser);
+				const savedBand = await band.save();
+				res.redirect('/artist/' + req.params.artistId);				
+			}
+		}
+		
 
 
-		res.redirect('/artist/' + req.params.artistId);
+		// res.redirect('/artist/' + req.params.artistId);
 	} catch (err) {
 		next(err);
 	}
