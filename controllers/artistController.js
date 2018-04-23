@@ -154,7 +154,6 @@ router.delete('/:id', async (req, res, next) => {
     const usersArtist = await User.find({"artists.id" : req.params.id});
     let savedUsers;
     for (let i = 0; i < usersArtist.length; i++) {
-    	console.log(usersArtist, " these are the users associated w artist");
     	for (let j = 0; j < usersArtist[i].artists.length; j++) {
     		if (usersArtist[i].artists[j].id.toString() === req.params.id.toString()) {
     			console.log("hit");
