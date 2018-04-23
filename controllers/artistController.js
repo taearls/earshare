@@ -80,8 +80,6 @@ router.get('/:artistId/addUser/:userId', async (req, res, next) => {
 		}
 	}
 
-
-
 		// res.redirect('/artist/' + req.params.artistId);
 	} catch (err) {
 		next(err);

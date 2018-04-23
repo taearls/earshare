@@ -42,9 +42,9 @@ $('img[src=""]').hide();
 
 // make image pics change to this if no input?
 // src="https://placehold.it/150x80?text=IMAGE"
-$('<img>').error(function(){
-        $(this).attr('src', 'public/images/missing-image.png');
-});
+// $('<img>').error(function(){
+//         $(this).attr('src', 'public/images/missing-image.png');
+// });
 
 //modals
 
@@ -65,18 +65,6 @@ $('.dropdown-item').on('click', function (event) {
 
 })
 
-//Artist Like Button
-$('#tab4').data('count', 0);
-$('#artistUserLike').click(function(){
-    $('#tab4').html(function() {
-      const $this = $(this),
-        count = $this.data('count') +1;
-      $this.data('count', count);
-      return count;
-    });
-});
-
-
 
 //Event Attend Button
 $('#tab3').data('count', 0);
@@ -86,5 +74,17 @@ $('#eventAttendance').click(function() {
             count = $this.data('count') + 1;
         $this.data('count', count);
         return count;
+    });
+});
+
+
+//Artist Like Button
+$('#tab4').data('count', 0);
+$('#artistUserLike').click(function() {
+    $('#tab4').html(function() {
+      const $this = $(this),
+        count = $this.data('count') +1;
+      $this.data('count', count);
+      return count;
     });
 });
