@@ -108,7 +108,7 @@
                             </button>
                             <div class="dropdown-menu">
                               <% for (let i = 0; i < users.length; i++) { %>
-                                  <button class="dropdown-item" type="button"><%=users[i].username%></button>
++                                  <a href="/artist/<%=artist.id%>/addUser/<%=users[i].id%>" class="dropdown-item"><%=users[i].username%></a>
                               <% } %>
                             </div>
                         </div>
