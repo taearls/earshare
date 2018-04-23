@@ -84,11 +84,22 @@ router.delete("/:id", async (req, res, next) => {
 	try {
 		const deletedUser = await User.findByIdAndRemove(req.params.id);
 
-		// WHEN WE CONNECT USER TO ARTIST AND EVENT:
+		const allArtists = await Artist.find();
 
 		// check if all associated artists have no users remaining in usersWithAccess array if deletedUser is removed
 		// if they don't have any usersWithAccess remaining, delete artist
-		// if artist deleted, delete associated events too
+		for (let i = 0; i < allArtists.length; i++) {
+			for (let j = 0; j < allArtists[i].usersWithAccess.length; j++) {
+				if (allArtists[i].usersWithAccess[j].id.toString() === req.params.id.toString()) {
+					// remove user from artist array of users
+					allArtists[i].usersWithAccess[j].remove();
+					// if no users left in artist array, delete artist
+					if (allArtists[i].usersWithAccess.length === 0) {
+						allArtists[i].remove();
+					}
+				}
+			}
+		}
 
 		res.redirect("/user");
 	} catch (err) {
