@@ -17,6 +17,9 @@ const artistSchema = new mongoose.Schema({
         id: String
       }],
       usersWithAccess: [User.schema]
+      usersWhoLike: [{
+        username: String
+      }]
 });
 
 

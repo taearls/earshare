@@ -63,6 +63,7 @@ router.post('/', async (req, res, next) => {
   }
 });
 
+
 // route to add new member to artist
 router.get('/:artistId/addUser/:userId', async (req, res, next) => {
 	try {
@@ -76,8 +77,8 @@ router.get('/:artistId/addUser/:userId', async (req, res, next) => {
 				band.usersWithAccess.push(savedUser);
 				const savedBand = await band.save();
 				res.redirect('/artist/' + req.params.artistId);
-			}
 		}
+	}
 
 
 
