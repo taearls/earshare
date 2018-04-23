@@ -76,7 +76,7 @@ router.get('/addUser/:userId/:artistId', async (req, res, next) => {
 
 		// add like to user page
 		addedUser.artistsLiked.push({
-			name: band.username,
+			name: band.name,
 			id: band.id
 		})
 		const savedUser = await addedUser.save();
