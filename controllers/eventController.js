@@ -22,11 +22,11 @@ router.get('/', async (req, res, next) => {
 router.get('/new', async (req, res, next) => {
 	try {
 		const allArtists = await Artist.find();
-		const currentArtist = await Artist.findOne({"name": req.session.currentArtist});
-		console.log(currentArtist, " this should be the current artist");
+		const artist = await Artist.findOne({"name": req.session.currentArtist});
+		console.log(artist, " this is artist being sent to the event new page");
 		res.render('event/new.ejs', {
 			artists: allArtists,
-			currentArtist: currentArtist
+			currentArtist: artist
 		})
 	} catch (err) {
 		next(err);

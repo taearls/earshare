@@ -35,11 +35,9 @@
 			<div class="container-fluid text-center">
 				<div class="col-lg-12 col-sm-12">
 					<form class= "form-inline-block" action="/event" method="POST">
-
-						<select name="artistId">
-		          <% for (let i = 0; i < artists.length; i++) { -%>
-		            <option value="<%=artists[i].id%>"><%= artists[i].name %></option>
-		          <% } -%>
+				<h4> Create Event for <%=currentArtist.name%></h4>
+				<select class="invisible" name="artistId">
+		            <option value="<%=currentArtist._id%>"><%= currentArtist.name %></option>
 		        </select> <br/>
 
 						<label class= "control-label" for="eventName">Event Name:</label>
