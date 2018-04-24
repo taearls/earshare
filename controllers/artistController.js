@@ -133,17 +133,25 @@ router.get('/:artistId/addUser/:userId', async (req, res, next) => {
 		const addedUser = await User.findById(req.params.userId);
 		const savedUser = await addedUser.save();
 		const band = await Artist.findById(req.params.artistId);
-		for (let i = 0; i < band.usersWithAccess.length; i++) {
-			if (savedUser.username === band.usersWithAccess[i].username) {
-				res.redirect('/artist/' + req.params.artistId);
-			} else {
-				band.usersWithAccess.push(savedUser);
-				const savedBand = await band.save();
-				res.redirect('/artist/' + req.params.artistId);
-		}
-	}
+		
+		// add new member to the band
+		band.usersWithAccess.push(savedUser);
 
-		// res.redirect('/artist/' + req.params.artistId);
+		const uniqueMembers = {};
+
+
+
+		for ( let i=0, len = band.usersWithAccess.length; i < len; i++ )
+		    uniqueMembers[band.usersWithAccess[i]['username']] = band.usersWithAccess[i];
+
+		band.usersWithAccess = new Array();
+		for ( let key in uniqueMembers )
+		    band.usersWithAccess.push(uniqueMembers[key]);
+
+
+		const savedBand = await band.save();
+
+		res.redirect('/artist/' + req.params.artistId);
 	} catch (err) {
 		next(err);
 	}
