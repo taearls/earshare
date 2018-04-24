@@ -63,15 +63,18 @@ router.post('/', async (req, res, next) => {
   }
 });
 
+
 // route to add user to artist likes
 router.get('/addUser/:userId/:artistId', async (req, res, next) => {
 	try {
 		const addedUser = await User.findById(req.params.userId);
 		const band = await Artist.findById(req.params.artistId);
+
 		band.usersWhoLike.push({
 			username: addedUser.username,
 			id: addedUser.id
 		});
+		
 		const savedBand = await band.save();
 
 		// add like to user page

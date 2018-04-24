@@ -19,8 +19,12 @@ const userSchema = new mongoose.Schema({
       	id: String
       }],
       artistsLiked: [{
-            name: String,
-            id: String
+        name: String,
+        id: String
+      }],
+      eventsAttending: [{
+        name: String,
+        id: String
       }]
 });
 
