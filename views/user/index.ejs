@@ -14,7 +14,7 @@
 
 <body>
 	<header>
-		<nav class="navbar navbar-inverse">
+		<nav id="navbar">
 				<div class="container-fluid">
 
 						<ul class="nav navbar-left">
@@ -36,29 +36,30 @@
 
 	<div class="jumbotron">
   <div class="container text-center">
-    <h1>Live Music Finder App</h1>
-    <p>Some dang ol' catchy byline will go here</p>
+    <h2 class = "indexHeader">Users</h2>
+
   </div>
 	</div>
 
-	<div class="container-fluid bg-3 text-center">
-  <h3>Users</h3><br>
-  	<div class="row">
-    	<div class="col-sm-3">
-				<ul>
+
+
+  	<div class="d-flex justify-content-around">
+
 					<%for (let i = 0; i < users.length; i++) {%>
-						<li><p><a href="/user/<%=users[i].id%>"><%=users[i].username%></a></p><br />
-						<img src="<%=users[i].avatar%>" id="userListPic" class="img-responsive" style="width:100%" alt=""></li>
+
+						<div class="picContainer-fluid">
+							<div class="col-med-6">
+
+								<img src="<%=users[i].avatar%>" id="userListPic" class="img-responsive" style="width:100%" alt="">
+								<div class="overlay">
+								<div class="linkText"><p><a class="indexLink" href="/user/<%=users[i].id%>"><%=users[i].username%></a></p><br /></div>
+
+								</div>
+						  </div>
+						</div>
 					<%}%>
-				</ul>
-	    </div>
+				</div>
 
-	  </div>
-	</div>
-
-	<footer class="container-fluid text-center">
-  	<p>Footer Here</p>
-	</footer>
 
 
 

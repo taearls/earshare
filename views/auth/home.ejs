@@ -16,7 +16,7 @@
 
     <header>
 
-      <nav class="navbar navbar-inverse">
+      <nav id="navbar">
           <div class="container-fluid">
 
               <ul class="nav navbar-left">
@@ -27,14 +27,8 @@
               </ul>
 
               <ul class= "nav navbar-right">
-                <li> <div class="">
-                   <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#loginModal">
-                     Log In
-                   </button>
-                   <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#registerModal">
-                     Sign Up
-                   </button>
-                 </div></li>
+                <li><a href= "#" data-toggle="modal" data-target="#loginModal">Log In</a></li>
+                 <li><a href= "#" data-toggle="modal" data-target="#registerModal">Sign Up</a></li>
               </ul>
 
           </div>
@@ -42,19 +36,21 @@
       </header>
 
       <main>
+      <div id="homepage-jumbo">
+        <div class = "jumbotron">
+          <div class="container text-center">
+            <% if (message) { -%>
+              <p style="background-color: pink"><%= message %></p>
+            <% } -%>
 
-      <div class="jumbotron">
-        <div class="container text-center">
-          <% if (message) { -%>
-             <p style="background-color: pink"><%= message %></p>
-          <% } -%>
-          <h1>Live Music Finder App</h1>
-          <p>Some dang ol' catchy byline will go here</p>
+            <h1>Live Music Finder App</h1>
+              <p>Some dang ol' catchy byline will go here</p>
         </div>
       </div>
+    </div>
 
-
-       <div class="container">
+      <div id="carousel">
+        <div class="container">
            <div class="row">
                <div class="col-md-12">
                    <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
@@ -101,9 +97,9 @@
                        <div class="col-md-12 text-center">
                            <h1>
                                This is a live music finding app</h1>
-                           <h3>
+                           <p>
                                If you register, you can do neat things like become an artist and create events!
-                           </h3>
+                           </p>
                            <div class="">
                            </div>
                        </div>
@@ -111,9 +107,10 @@
                </div>
            </div>
        </div>
-       <div id="push">
-       </div>
 
+        <div id="push">
+        </div>
+     </div>
 
 
        <!-- Log In Modal -->

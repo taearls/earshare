@@ -1,9 +1,105 @@
+#navbar {
+  background-color: #102027;
+}
+#navbar a {
+  color: white;
+}
+#navbar a:hover {
+  background-color: rgba(46, 57, 62, 0.83);
+}
 a {
   text-decoration: none;
+  color: white;
 }
 a:hover {
   text-decoration: none;
 }
 ul {
+<<<<<<< HEAD
   list-style-type: none;
+=======
+  list-style: none;
+}
+/* INDEXES */
+.indexHeader {
+  font-family: 'IBM Plex Sans', sans-serif;
+  text-align: center;
+}
+.indexHeader:hover {
+  text-decoration: none;
+}
+.indexLink {
+  font-family: 'Work Sans', sans-serif;
+  font-size: 20px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  text-align: center;
+  color: white;
+}
+.indexLink:hover {
+  font-weight: 500;
+  color: white;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+/* Container holding the image and the text */
+.picContainer-fluid {
+  flex-flow: wrap;
+  position: relative;
+  text-align: center;
+}
+.picContainer-fluid:hover .overlay {
+  opacity: 1;
+}
+.overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  transition: .5s ease;
+  background-color: rgba(98, 114, 123, 0.75);
+}
+.card-hovercard {
+  padding: 10px 5px;
+  align-content: center;
+}
+.card-background {
+  align-content: center;
+}
+.card-info {
+  text-align: center;
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 1.5em;
+}
+.card-info a:hover {
+  text-decoration: none;
+}
+#stars:hover,
+#favorites:hover {
+  color: white;
+}
+.jumbotron {
+  background-color: transparent !important;
+}
+#homepage-jumbo {
+  background-color: #62717b;
+}
+#homepage-jumbo h1 {
+  font-family: 'IBM Plex Sans', sans-serif;
+  color: #eceff1;
+}
+#homepage-jumbo p {
+  font-family: 'IBM Plex Sans', sans-serif;
+  color: #e2f1f8;
+}
+#carousel {
+  font-family: 'IBM Plex Sans', sans-serif;
+>>>>>>> zoe
 }

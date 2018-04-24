@@ -12,7 +12,7 @@
 </head>
 <body>
 	<header>
-		<nav class="navbar navbar-inverse">
+		<nav id="navbar">
 				<div class="container-fluid">
 
 						<ul class="nav navbar-left">
@@ -32,24 +32,26 @@
 	</header>
 
 
+	<div class="container-fluid">
+		<div class="col-lg-12 col-sm-12">
+				<div class="row justify-content-around">
 
-	<div class="col-lg-12 col-sm-12">
-	    <div class="card hovercard">
-	        <div class="card-background">
+	    		<div class="card hovercard">
+
+	        	<div class="card-background">
 	            <img class="card-bkimg" alt="<%=user.username%>'s Avatar" src="<%=user.avatar%>">
 	            <!-- Img here-->
-	        </div>
-<!-- 	    should image be here or above ^^??
-			<div class="useravatar">
-	            <img alt="" src="<%=user.avatar%>">
-	        </div> -->
-	        <div class="card-info"> <span class="card-title"><h3> <%=user.username%>'s Info </h3></span>
+	        	</div>
+
+	        <div class="card-info"> <span class="card-title"><h3> <%=user.username%></h3></span>
 
 	        </div>
-	    </div>
+	    	</div>
+			</div>
+
 	    <div class="btn-pref btn-group btn-group-justified btn-group-lg" role="group" aria-label="...">
 	        <div class="btn-group" role="group">
-	            <button type="button" id="stars" class="btn btn-primary" href="#tab1" data-toggle="tab"><span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+	            <button type="button" id="stars" class="btn btn-dark" href="#tab1" data-toggle="tab"><span class="glyphicon glyphicon-star" aria-hidden="true"></span>
 	                <div class="hidden-xs">About</div>
 	            </button>
 	        </div>
