@@ -42,14 +42,11 @@ $('img[src=""]').attr('src', "../images/missing-image.png")
 
 
 
-<<<<<<< HEAD
 // make image pics change to this if no input?
 // src="https://placehold.it/150x80?text=IMAGE"
 // $('<img>').error(function(){
 //         $(this).attr('src', 'public/images/missing-image.png');
 // });
-=======
->>>>>>> 646e832f6c0df3ee5238cfe3cdde90693c3e85d8
 
 //modals
 

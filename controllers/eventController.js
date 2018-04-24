@@ -33,6 +33,20 @@ router.get('/new', async (req, res, next) => {
 	}
 });
 
+// route to add user attendance to event page
+router.get('/:eventId/addUser/:userId', async (req, res, next) => {
+		console.log(user.id);
+	try {
+		const addedUser = await User.findById(req.params.userId);
+		const savedUser = await addedUser.save();
+		const event = await Event.findById(req.params.eventId);
+
+	} catch (err) {
+		next(err);
+	}
+})
+
+
 //new event post route
 
 router.post('/', async (req, res, next) => {
@@ -64,6 +78,7 @@ router.get('/:id', async (req, res, next) => {
 	try {
 		const eventToUpdate = await Event.findById(req.params.id);
 		res.render('event/show.ejs', {
+			users: User,
 			event: eventToUpdate
 		});
 	} catch (err) {
@@ -92,10 +107,10 @@ router.put("/:id", async (req, res, next) => {
 		const eventEdit = {};
   		eventEdit.name = req.body.name;
    		eventEdit.genre = req.body.genre;
-		eventEdit.location = req.body.location;
-		eventEdit.website = req.body.website;
-		eventEdit.img = req.body.img;
-		eventEdit.description = req.body.description;
+			eventEdit.location = req.body.location;
+			eventEdit.website = req.body.website;
+			eventEdit.img = req.body.img;
+			eventEdit.description = req.body.description;
 
 		const updatedEvent = await Event.findByIdAndUpdate(req.params.id, req.body);
 
