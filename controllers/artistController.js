@@ -194,17 +194,10 @@ router.get('/removeUser/:artistId/:userId', async (req, res, next) => {
 
 
 			// remove band from deletedUser's affiliated artist list
-
 			deletedUser.artists.remove(band);
-			const savedUser = await deletedUser.save();
-			if (band.usersWithAccess.length === 0) {
-				const deletedBand = await band.remove();
-				// redirect to the artist index page instead so the browser doesn't throw an error
-				res.redirect('/artist')
-			} else {
-				// redirect to artist show page using the artistId from the get route
-				res.redirect('/artist/' + req.params.artistId)
-			}
+			
+			// redirect to artist show page using the artistId from the get route
+			res.redirect('/artist/' + req.params.artistId)
 			
 			
 		}

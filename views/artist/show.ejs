@@ -130,9 +130,20 @@
                               <span class="sr-only">Toggle Dropright</span>
                             </button>
                             <div class="dropdown-menu">
+
                               <% for (let i = 0; i < artist.usersWithAccess.length; i++) { %>
-                                 <a href="/artist/removeUser/<%=artist.id%>/<%=artist.usersWithAccess[i].id%>" class="dropdown-item"><%=artist.usersWithAccess[i].username%></a>
-                              <% } %>
+                                <%if (artist.usersWithAccess.length === 1) {%>
+<!--                                 if there's only one band member left, we want to delete the artist entirely
+ -->                              <form action="/artist/<%= artist.id %>?_method=DELETE" method="POST">
+                                    <button class="dropdown-item" type="submit">Delete <%=artist.usersWithAccess[i].username%></button>
+                                  </form>
+                                <% } else {%>
+<!--                                      otherwise, only delete the member
+ -->                               <a href="/artist/removeUser/<%=artist.id%>/<%=artist.usersWithAccess[i].id%>" class="dropdown-item"><%=artist.usersWithAccess[i].username%></a>
+                                <% } %>
+
+                              <%}%>
+
                             </div>
                         </div>
 
