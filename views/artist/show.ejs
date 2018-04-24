@@ -166,7 +166,7 @@
 
               <div class="col-lg-12 col-sm-12">
           			<a class="btn btn-outline-dark btn-sm btn-block" href="/artist/<%= artist.id %>/edit">Edit <%=artist.name%></a>
-          				<form action="/user/<%= artist.id %>?_method=DELETE" method="POST">
+          				<form action="/artist/<%= artist.id %>?_method=DELETE" method="POST">
           					<button class="btn btn-outline-danger btn-sm btn-block" type="submit">Delete <%=artist.name%></button>
           			</form>
           		</div>
