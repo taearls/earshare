@@ -311,6 +311,7 @@ router.delete('/:id', async (req, res, next) => {
     	for (let j = 0; j < usersArtist[i].artists.length; j++) {
     		if (usersArtist[i].artists[j].id.toString() === req.params.id.toString()) {
     			usersArtist[i].artists[j].remove();
+    			usersArtist[i].artistsLiked[j].remove();
     			savedUsers = await usersArtist[i].save();
     		}
     	}
