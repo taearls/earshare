@@ -4,6 +4,10 @@ const User = require('../models/user');
 const Artist = require('../models/artist')
 const bcrypt = require('bcrypt');
 
+const jQuery = require('jquery');
+
+
+
 router.get('/', (req, res) => {
 	const message = req.session.message;
 	req.session.message = null;

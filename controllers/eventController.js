@@ -4,6 +4,8 @@ const Event = require('../models/event');
 const Artist = require('../models/artist');
 const User = require('../models/user');
 
+const jQuery = require('jquery');
+
 // get index route
 
 router.get('/', async (req, res, next) => {
@@ -35,10 +37,7 @@ router.get('/new', async (req, res, next) => {
 
 
 // route to add user attendance to event page
-router.get('/addUser/:eventId/:userId', async (req, res, next) => {
-	try {
-		const addedUser = await User.findById(req.params.userId);
-		const event = await Event.findById(req.params.eventId);
+
 
 router.get('/:eventId/addUser/:userId', async (req, res, next) => {
 	try {
@@ -52,8 +51,17 @@ router.get('/:eventId/addUser/:userId', async (req, res, next) => {
 			id: addedUser.id
 		});
 
+		// filter through event.usersAttending array of objects so each obj is unique
 
-		const savedEvent = await event.save();
+		const uniqueUsers = {};
+
+		for ( let i=0, len = event.usersAttending.length; i < len; i++ )
+		    uniqueUsers[event.usersAttending[i]['username']] = event.usersAttending[i];
+
+		event.usersAttending = new Array();
+		for ( let key in uniqueUsers )
+		    event.usersAttending.push(uniqueUsers[key]);
+
 
 		//add attendance to event Page
 		const savedEvent = await event.save();
@@ -64,14 +72,23 @@ router.get('/:eventId/addUser/:userId', async (req, res, next) => {
 			id: event.id
 		});
 
+		// filter through addedUser.eventsAttending array of objects so each obj is unique
+
+		const uniqueEvents = {};
+
+		for ( let i=0, len = addedUser.eventsAttending.length; i < len; i++ )
+		    uniqueEvents[addedUser.eventsAttending[i]['name']] = addedUser.eventsAttending[i];
+
+		addedUser.eventsAttending = new Array();
+		for ( let key in uniqueEvents )
+		    addedUser.eventsAttending.push(uniqueEvents[key]);
+
+
+		
 		const savedUser = await addedUser.save();
 
 		res.redirect('/event/' + req.params.eventId);
-		// console.log(addedUser.eventsAttending, " this is the list of events the user is attending");
-		const savedUser = await addedUser.save();
 
-
-		res.redirect('/event/' + req.params.eventId);
 	} catch (err) {
 		next(err);
 	}
