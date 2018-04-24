@@ -113,18 +113,48 @@
 
 
                         <div class="btn-group dropright">
-                            <button type="button" class="btn btn-secondary">
+                            <button type="button" class="btn btn-success">
                                Add Member
                             </button>
-                            <button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <button type="button" class="btn btn-outline-success dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                               <span class="sr-only">Toggle Dropright</span>
                             </button>
                             <div class="dropdown-menu">
-                              <% for (let i = 0; i < users.length; i++) { %>
+<!--                               loop only over array of users NOT in the band
+ -->                              <% for (let i = 0; i < users.length; i++) { %>
                                  <a href="/artist/<%=artist.id%>/addUser/<%=users[i].id%>" class="dropdown-item"><%=users[i].username%></a>
                               <% } %>
                             </div>
                         </div>
+
+<!--                         make the two buttons on top of each other
+ -->                    <br/>
+
+                        <div class="btn-group dropright">
+                            <button type="button" class="btn btn-danger">
+                               Remove Member
+                            </button>
+                            <button type="button" class="btn btn-outline-danger dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                              <span class="sr-only">Toggle Dropright</span>
+                            </button>
+                            <div class="dropdown-menu">
+
+                              <% for (let i = 0; i < artist.usersWithAccess.length; i++) { %>
+                                <%if (artist.usersWithAccess.length === 1) {%>
+<!--                                 if there's only one band member left, we want to delete the artist entirely
+ -->                              <form action="/artist/<%= artist.id %>?_method=DELETE" method="POST">
+                                    <button class="dropdown-item" type="submit">Delete <%=artist.usersWithAccess[i].username%></button>
+                                  </form>
+                                <% } else {%>
+<!--                                      otherwise, only delete the member
+ -->                               <a href="/artist/removeUser/<%=artist.id%>/<%=artist.usersWithAccess[i].id%>" class="dropdown-item"><%=artist.usersWithAccess[i].username%></a>
+                                <% } %>
+
+                              <%}%>
+
+                            </div>
+                        </div>
+
 
 
                     </div>
@@ -136,14 +166,13 @@
                         <li><a href="/event/<%=artist.events[i]._id%>"> <%= artist.events[i].name%></a></li>
                       <% } -%>
                       </ul>
-                      <a class="btn btn-info btn-sm" id= "createNewEvent" href="/event/new">Create New Event</a>
+                      <a class="btn btn-success" id= "createNewEvent" href="/event/new">Create New Event</a>
                     </div>
 
                     <div class="tab-pane fade in" id="tab4">
-                      <h3><h6><span class= 'glyphicon glyphicon-heart'>No. of User Likes</span></h6></h3>
 
+                      <h3> <%=artist.usersWhoLike.length%> Fans</h3>
 
-                      <h3><%=artist.usersWhoLike.length%> Fans</h3>
                       <ul> <% for (let i = 0; i < artist.usersWhoLike.length; i++) { -%>
                         <li> <a href="/user/<%=artist.usersWhoLike[i].id%>"> <%=artist.usersWhoLike[i].username%> </a></li>
                           <% } -%>
@@ -155,12 +184,25 @@
               </div>
             </div>
 
+<<<<<<< HEAD
           <div class="col-lg-12 col-sm-12">
           	<a class="btn btn-outline-dark btn-sm btn-block" href="/artist/<%= artist.id %>/edit">Edit <%=artist.name%></a>
           		<form action="/user/<%= artist.id %>?_method=DELETE" method="POST">
           				<button class="btn btn-outline-danger btn-sm btn-block" type="submit">Delete <%=artist.name%></button>
           		</form>
           </div>
+=======
+              <div class="col-lg-12 col-sm-12">
+          			<a class="btn btn-outline-dark btn-sm btn-block" href="/artist/<%= artist.id %>/edit">Edit <%=artist.name%></a>
+          				<form action="/artist/<%= artist.id %>?_method=DELETE" method="POST">
+          					<button class="btn btn-outline-danger btn-sm btn-block" type="submit">Delete <%=artist.name%></button>
+          			</form>
+          		</div>
+
+ 	       </main>
+
+
+>>>>>>> 2768ee8e3970c503089b3bea374d88453ada8282
 
 
   <script src="/js/app.js"></script>

@@ -49,6 +49,7 @@
 
 			        	<div class="card-info"> <span class="card-title"><h3> <%=event.name%></h3></span>
 
+<<<<<<< HEAD
 			        			<%for (let i = 0; i < users.length; i++) {%>
 			        				<a href="/event/<%=event.id%>/addUser/<%=users[i].id%>">
 			        			<%}%>
@@ -56,6 +57,16 @@
 			      	</div>
 			    	</div>
 					</div>
+=======
+								<% for (let i = 0; i < users.length; i++) { %>
+									<a href="/event/addUser/<%=users[i].id%>/<%=event.id%>"></a>
+
+								<% } %>
+			        		<%for (let i = 0; i < users.length; i++) {%>
+			        			<a href="/event/<%=event.id%>/addUser/<%=users[i].id%>">
+			        		<%}%>
+			        			<span class="glyphicon glyphicon-calendar" aria-hidden="true"></span> Attend <%=event.name%></a>
+>>>>>>> 2768ee8e3970c503089b3bea374d88453ada8282
 
 			    <div class="btn-pref btn-group btn-group-justified btn-group-lg" role="group" aria-label="...">
 			        <div class="btn-group" role="group">
