@@ -4,6 +4,8 @@ const Event = require('../models/event');
 const Artist = require('../models/artist');
 const User = require('../models/user');
 
+const jQuery = require('jquery');
+
 // get index route
 
 router.get('/', async (req, res, next) => {

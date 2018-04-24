@@ -5,6 +5,8 @@ const Artist = require('../models/artist');
 const Event = require('../models/event');
 const bcrypt = require('bcrypt');
 
+const jQuery = require('jquery');
+
 
 // get index route
 
