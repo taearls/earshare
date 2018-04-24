@@ -70,7 +70,7 @@ router.post('/', async (req, res, next) => {
 // route to add user to artist likes
 router.get('/addUser/:userId/:artistId', async (req, res, next) => {
 	try {
-		const addedUser = await User.findById(req.params.userId);
+		const addedUser = await User.findOne({"username": req.session.username});
 		const band = await Artist.findById(req.params.artistId);
 
 		band.usersWhoLike.push({
