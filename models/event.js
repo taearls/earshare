@@ -17,7 +17,8 @@ const eventSchema = new mongoose.Schema({
           attending: Number
      },
      usersAttending: [{
-       username: String
+       username: String,
+       id: String
      }]
 });
 

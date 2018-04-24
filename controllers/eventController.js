@@ -35,12 +35,18 @@ router.get('/new', async (req, res, next) => {
 
 // route to add user attendance to event page
 router.get('/:eventId/addUser/:userId', async (req, res, next) => {
-		console.log(user.id);
 	try {
 		const addedUser = await User.findById(req.params.userId);
-		const savedUser = await addedUser.save();
-		const event = await Event.findById(req.params.eventId);
+		// const savedUser = await addedUser.save();
 
+		const event = await Event.findById(req.params.eventId);
+		event.usersAttending.push({
+			username: addedUser.username,
+			id: addedUser.id
+		});
+		const savedEvent = await event.save();
+
+		res.redirect('/event/' + req.params.eventId);
 	} catch (err) {
 		next(err);
 	}
@@ -76,9 +82,10 @@ router.post('/', async (req, res, next) => {
 // get show route
 router.get('/:id', async (req, res, next) => {
 	try {
+		const allUsers = await User.find();
 		const eventToUpdate = await Event.findById(req.params.id);
 		res.render('event/show.ejs', {
-			users: User,
+			users: allUsers,
 			event: eventToUpdate
 		});
 	} catch (err) {

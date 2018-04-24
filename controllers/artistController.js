@@ -97,7 +97,7 @@ router.get('/:artistId/addUser/:userId', async (req, res, next) => {
 		for (let i = 0; i < band.usersWithAccess.length; i++) {
 			if (savedUser.username === band.usersWithAccess[i].username) {
 				res.redirect('/artist/' + req.params.artistId);
-			} else if (i === (band.usersWithAccess.length - 1)) {
+			} else {
 				band.usersWithAccess.push(savedUser);
 				const savedBand = await band.save();
 				res.redirect('/artist/' + req.params.artistId);
@@ -213,7 +213,6 @@ router.delete('/:id', async (req, res, next) => {
     for (let i = 0; i < usersArtist.length; i++) {
     	for (let j = 0; j < usersArtist[i].artists.length; j++) {
     		if (usersArtist[i].artists[j].id.toString() === req.params.id.toString()) {
-    			console.log("hit");
     			usersArtist[i].artists[j].remove();
     			savedUsers = await usersArtist[i].save();
     		}
