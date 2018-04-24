@@ -4,7 +4,8 @@ const Event = require('../models/event');
 const Artist = require('../models/artist');
 const User = require('../models/user');
 
-const jQuery = require('jquery');
+
+
 
 
 // get index route
@@ -77,7 +78,20 @@ router.get('/addUser/:userId/:artistId', async (req, res, next) => {
 			username: addedUser.username,
 			id: addedUser.id
 		});
+		// filter through the band.usersWhoLike array to eliminate duplicate users
+		const uniqueFans = {};
+
+		for ( let i=0, len = band.usersWhoLike.length; i < len; i++ )
+		    uniqueFans[band.usersWhoLike[i]['username']] = band.usersWhoLike[i];
+
+		band.usersWhoLike = new Array();
+		for ( let key in uniqueFans )
+		    band.usersWhoLike.push(uniqueFans[key]);
 		
+		console.log(uniqueFans, " this should be a list of users without duplicates");
+
+
+
 		const savedBand = await band.save();
 
 		// add like to user page
@@ -85,6 +99,9 @@ router.get('/addUser/:userId/:artistId', async (req, res, next) => {
 			name: band.name,
 			id: band.id
 		})
+
+		// filter through the addedUser.artistsLiked array to eliminate duplicate artists
+
 		const savedUser = await addedUser.save();
 
 		res.redirect('/artist/' + req.params.artistId);
