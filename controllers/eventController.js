@@ -23,7 +23,7 @@ router.get('/new', async (req, res, next) => {
 	try {
 		const allArtists = await Artist.find();
 		const artist = await Artist.findOne({"name": req.session.currentArtist});
-		console.log(artist, " this is artist being sent to the event new page");
+		// console.log(artist, " this is artist being sent to the event new page");
 		res.render('event/new.ejs', {
 			artists: allArtists,
 			currentArtist: artist
@@ -36,15 +36,25 @@ router.get('/new', async (req, res, next) => {
 // route to add user attendance to event page
 router.get('/:eventId/addUser/:userId', async (req, res, next) => {
 	try {
-		const addedUser = await User.findById(req.params.userId);
-		// const savedUser = await addedUser.save();
+		const addedUser = await User.findOne({"username": req.session.username});
 
 		const event = await Event.findById(req.params.eventId);
+
+		// add the user to the event model so we can show it on event page
 		event.usersAttending.push({
 			username: addedUser.username,
 			id: addedUser.id
 		});
 		const savedEvent = await event.save();
+
+		// add the event to the user model so we can show it on user page
+		addedUser.eventsAttending.push({
+			name: event.name,
+			id: event.id
+		});
+		// console.log(addedUser.eventsAttending, " this is the list of events the user is attending");
+		const savedUser = await addedUser.save();
+
 
 		res.redirect('/event/' + req.params.eventId);
 	} catch (err) {

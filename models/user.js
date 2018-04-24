@@ -21,6 +21,10 @@ const userSchema = new mongoose.Schema({
       artistsLiked: [{
             name: String,
             id: String
+      }],
+      eventsAttending: [{
+            name: String,
+            id: String
       }]
 });
 
