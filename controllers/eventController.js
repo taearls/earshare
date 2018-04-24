@@ -23,7 +23,7 @@ router.get('/new', async (req, res, next) => {
 	try {
 		const allArtists = await Artist.find();
 		const artist = await Artist.findOne({"name": req.session.currentArtist});
-		console.log(artist, " this is artist being sent to the event new page");
+		// console.log(artist, " this is artist being sent to the event new page");
 		res.render('event/new.ejs', {
 			artists: allArtists,
 			currentArtist: artist
@@ -35,28 +35,52 @@ router.get('/new', async (req, res, next) => {
 
 
 // route to add user attendance to event page
+<<<<<<< HEAD
 router.get('/addUser/:eventId/:userId', async (req, res, next) => {
 	try {
 		const addedUser = await User.findById(req.params.userId);
 		const event = await Event.findById(req.params.eventId);
 
+=======
+router.get('/:eventId/addUser/:userId', async (req, res, next) => {
+	try {
+		const addedUser = await User.findOne({"username": req.session.username});
+
+		const event = await Event.findById(req.params.eventId);
+
+		// add the user to the event model so we can show it on event page
+>>>>>>> 73fea67a5c61f19705a0894d00101ab06301527d
 		event.usersAttending.push({
 			username: addedUser.username,
 			id: addedUser.id
 		});
+<<<<<<< HEAD
 
 		
 		const savedEvent = await event.save();
 
 		//add attendance to event Page
+=======
+		const savedEvent = await event.save();
+
+		// add the event to the user model so we can show it on user page
+>>>>>>> 73fea67a5c61f19705a0894d00101ab06301527d
 		addedUser.eventsAttending.push({
 			name: event.name,
 			id: event.id
 		});
+<<<<<<< HEAD
 		const savedUser = await addedUser.save();
 
 		res.redirect('/event/' + req.params.eventId);
 
+=======
+		// console.log(addedUser.eventsAttending, " this is the list of events the user is attending");
+		const savedUser = await addedUser.save();
+
+
+		res.redirect('/event/' + req.params.eventId);
+>>>>>>> 73fea67a5c61f19705a0894d00101ab06301527d
 	} catch (err) {
 		next(err);
 	}
@@ -96,9 +120,10 @@ router.post('/', async (req, res, next) => {
 // get show route
 router.get('/:id', async (req, res, next) => {
 	try {
+		const allUsers = await User.find();
 		const eventToUpdate = await Event.findById(req.params.id);
 		res.render('event/show.ejs', {
-			users: User,
+			users: allUsers,
 			event: eventToUpdate
 		});
 	} catch (err) {

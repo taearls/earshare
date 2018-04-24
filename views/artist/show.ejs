@@ -133,6 +133,15 @@
 
                     <div class="tab-pane fade in" id="tab4">
                       <h3><h6><span class= 'glyphicon glyphicon-heart'>No. of User Likes</span></h6></h3>
+<<<<<<< HEAD
+=======
+
+                      <h3><%=artist.usersWhoLike.length%> Fans</h3>
+                      <ul> <% for (let i = 0; i < artist.usersWhoLike.length; i++) { -%>
+                        <li> <a href="/user/<%=artist.usersWhoLike[i].id%>"> <%=artist.usersWhoLike[i].username%> </a></li>
+                          <% } -%>
+                      </ul>
+>>>>>>> 73fea67a5c61f19705a0894d00101ab06301527d
                     </div>
 
                   </div>

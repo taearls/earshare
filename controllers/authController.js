@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const User = require('../models/user');
+const Artist = require('../models/artist')
 const bcrypt = require('bcrypt');
 
 router.get('/', (req, res) => {
@@ -8,7 +9,7 @@ router.get('/', (req, res) => {
 	req.session.message = null;
 	res.render('auth/home.ejs', {
 		message: message
-	})
+	});
 })
 
 // ********USER LOGIN******
@@ -21,7 +22,7 @@ router.post('/login', async (req, res, next) => {
 		// if the user is not in the database, it will return null
 		if (user) {
 			// if user is found
-			// now we need to compare the passwords 
+			// now we need to compare the passwords
 			// bcrypt.compareSync returns true or false
 			if (bcrypt.compareSync(req.body.password, user.password)) {
 				req.session.loggedIn = true;

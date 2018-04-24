@@ -41,6 +41,7 @@
 			        </div>
 
 			        <div class="card-info"> <span class="card-title"><h3> <%=event.name%> Info </h3></span>
+<<<<<<< HEAD
 
 
 								<% for (let i = 0; i < users.length; i++) { %>
@@ -48,6 +49,14 @@
 
 								<% } %>
 								<span class= "glyphicon glyphicon-plus">Attend <%=event.name%></span>
+=======
+			        		<%for (let i = 0; i < users.length; i++) {%>
+			        			<a href="/event/<%=event.id%>/addUser/<%=users[i].id%>">
+			        		<%}%>
+			        			<span class="glyphicon glyphicon-calendar" aria-hidden="true"></span> Attend <%=event.name%></a>
+
+							
+>>>>>>> 73fea67a5c61f19705a0894d00101ab06301527d
 
 			        </div>
 			    </div>
@@ -97,7 +106,11 @@
 					        </div>
 
 					        <div class="tab-pane fade in" id="tab3">
-					          <h3>Users Attending: <%= event.meta.going %></h3>
+					          <h3>Users Attending: <%= event.usersAttending.length %></h3>
+					          <ul> <% for (let i = 0; i < event.usersAttending.length; i++) { -%>
+		                        <li> <a href="/user/<%=event.usersAttending[i].id%>"> <%=event.usersAttending[i].username%> </a></li>
+		                          <% } -%>
+		                      </ul>
 					        </div>
 
 
