@@ -51,6 +51,18 @@ router.get('/:eventId/addUser/:userId', async (req, res, next) => {
 			id: addedUser.id
 		});
 
+		// filter through event.usersAttending array of objects so each obj is unique
+
+		const uniqueUsers = {};
+
+		for ( let i=0, len = event.usersAttending.length; i < len; i++ )
+		    uniqueUsers[event.usersAttending[i]['username']] = event.usersAttending[i];
+
+		event.usersAttending = new Array();
+		for ( let key in uniqueUsers )
+		    event.usersAttending.push(uniqueUsers[key]);
+
+
 		//add attendance to event Page
 		const savedEvent = await event.save();
 
@@ -59,6 +71,20 @@ router.get('/:eventId/addUser/:userId', async (req, res, next) => {
 			name: event.name,
 			id: event.id
 		});
+
+		// filter through addedUser.eventsAttending array of objects so each obj is unique
+
+		const uniqueEvents = {};
+
+		for ( let i=0, len = addedUser.eventsAttending.length; i < len; i++ )
+		    uniqueEvents[addedUser.eventsAttending[i]['name']] = addedUser.eventsAttending[i];
+
+		addedUser.eventsAttending = new Array();
+		for ( let key in uniqueEvents )
+		    addedUser.eventsAttending.push(uniqueEvents[key]);
+
+
+		
 		const savedUser = await addedUser.save();
 
 		res.redirect('/event/' + req.params.eventId);
