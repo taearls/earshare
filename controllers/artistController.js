@@ -131,15 +131,15 @@ router.get('/addUser/:userId/:artistId', async (req, res, next) => {
 router.get('/:artistId/addUser/:userId', async (req, res, next) => {
 	try {
 		const addedUser = await User.findById(req.params.userId);
-		const savedUser = await addedUser.save();
 		const band = await Artist.findById(req.params.artistId);
 		
 		// add new member to the band
-		band.usersWithAccess.push(savedUser);
+		band.usersWithAccess.push(addedUser);
 
 		const uniqueMembers = {};
 
-
+		// iterate through all the members in the band and remove duplicates by
+		// creating new object with only unique names passed into it
 
 		for ( let i=0, len = band.usersWithAccess.length; i < len; i++ )
 		    uniqueMembers[band.usersWithAccess[i]['username']] = band.usersWithAccess[i];
@@ -148,9 +148,28 @@ router.get('/:artistId/addUser/:userId', async (req, res, next) => {
 		for ( let key in uniqueMembers )
 		    band.usersWithAccess.push(uniqueMembers[key]);
 
-
 		const savedBand = await band.save();
 
+		// add band to user's affiliated artists
+
+		addedUser.artists.push(band);
+
+		const uniqueBands = {};
+
+		// iterate through all the members in the band and remove duplicates by
+		// creating new object with only unique names passed into it
+
+		for ( let i=0, len = addedUser.artists.length; i < len; i++ )
+		    uniqueBands[addedUser.artists[i]['name']] = addedUser.artists[i];
+
+		addedUser.artists = new Array();
+		for ( let key in uniqueBands )
+		    addedUser.artists.push(uniqueBands[key]);
+
+
+		const savedUser = await addedUser.save();
+
+		// redirect to artist show page using the artistId from the get route
 		res.redirect('/artist/' + req.params.artistId);
 	} catch (err) {
 		next(err);
