@@ -19,21 +19,12 @@ const userSchema = new mongoose.Schema({
       	id: String
       }],
       artistsLiked: [{
-<<<<<<< HEAD
         name: String,
         id: String
       }],
       eventsAttending: [{
         name: String,
         id: String
-=======
-            name: String,
-            id: String
-      }],
-      eventsAttending: [{
-            name: String,
-            id: String
->>>>>>> 73fea67a5c61f19705a0894d00101ab06301527d
       }]
 });
 
