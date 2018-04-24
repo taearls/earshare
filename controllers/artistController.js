@@ -26,8 +26,8 @@ router.get('/new', async (req, res, next) => {
 	try {
 		const allUsers = await User.find();
 		const user = await User.findOne({"username": req.session.username});
-		console.log(req.session.username, " this is req.session.username");
-		console.log(user, " this should be the current user")
+		// console.log(req.session.username, " this is req.session.username");
+		// console.log(user, " this should be the current user")
 		res.render('artist/new.ejs', {
 			users: allUsers,
 			currentUser: user
@@ -256,20 +256,19 @@ router.put("/:id", async (req, res, next) => {
 		artistEdit.description = req.body.description;
 
 		// find all users who have an artist with the same id as the artist
-		const usersArtist = await User.find({"artists.id" : req.params.id});
+		const membersArtist = await User.find({"artists.id" : req.params.id});
 		let savedUsers;
-		console.log(usersArtist, " this is usersArtist");
 
 
 		// since there are multiple users being returned in an array, we have to iterate through them
 		// we also have to iterate through each user's array of artists
 		// so we need two for loops:
 
-		for (let i = 0; i < usersArtist.length; i++) {
-			for (let j = 0; j < usersArtist[i].artists.length; j++) {
-				if (usersArtist[i].artists[j].id === req.params.id) {
-					usersArtist[i].artists[j].name = req.body.name;
-					savedUsers = await usersArtist[i].save();
+		for (let i = 0; i < membersArtist.length; i++) {
+			for (let j = 0; j < membersArtist[i].artists.length; j++) {
+				if (membersArtist[i].artists[j].id === req.params.id) {
+					membersArtist[i].artists[j].name = req.body.name;
+					savedUsers = await membersArtist[i].save();
 				}
 			}
 		}
@@ -305,23 +304,33 @@ router.delete('/:id', async (req, res, next) => {
     }
 
     // remove artist from all associated users
-    const usersArtist = await User.find({"artists.id" : req.params.id});
+    const membersArtist = await User.find({"artists.id" : req.params.id});
     let savedUsers;
-    for (let i = 0; i < usersArtist.length; i++) {
-    	for (let j = 0; j < usersArtist[i].artists.length; j++) {
-    		if (usersArtist[i].artists[j].id.toString() === req.params.id.toString()) {
-    			if (usersArtist[i].artistsLiked.length > 0) {
-    				for (let k = 0; k < usersArtist[i].artistsLiked.length; k++)
-    				usersArtist[i].artistsLiked.remove(usersArtist[i].artistsLiked[k]);
-    				usersArtist[i].artists[j].remove();
-    			} else {
-    				usersArtist[i].artists[j].remove();
-    			}
 
-    			savedUsers = await usersArtist[i].save();
+    for (let i = 0; i < membersArtist.length; i++) {
+    	for (let j = 0; j < membersArtist[i].artists.length; j++) {
+    		if (membersArtist[i].artists[j].id.toString() === req.params.id.toString()) {
+    			membersArtist[i].artists[j].remove();
+    			savedUsers = await membersArtist[i].save();
     		}
     	}
     }
+
+    // remove artist info from all users who like them
+    // find all the users who are fans of the artist we're deleting
+    const fansArtist = await User.find({"artistsLiked.id" : req.params.id})
+    let savedFans;
+
+    for (let i = 0; i < fansArtist.length; i++) {
+    	for (let k = 0; k < fansArtist[i].artistsLiked.length; k++) {
+	    	if (fansArtist[i].artistsLiked[k].id.toString() === req.params.id.toString()) {
+	    		fansArtist[i].artistsLiked.remove(fansArtist[i].artistsLiked[k]);
+		    	savedFans = await fansArtist[i].save();
+	    	}
+    	}
+    }
+
+    
 
     res.redirect('/artist');
 
