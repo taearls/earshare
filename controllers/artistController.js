@@ -63,6 +63,30 @@ router.post('/', async (req, res, next) => {
   }
 });
 
+// route to add user to artist likes
+router.get('/addUser/:userId/:artistId', async (req, res, next) => {
+	try {
+		const addedUser = await User.findById(req.params.userId);
+		const band = await Artist.findById(req.params.artistId);
+		band.usersWhoLike.push({
+			username: addedUser.username,
+			id: addedUser.id
+		});
+		const savedBand = await band.save();
+
+		// add like to user page
+		addedUser.artistsLiked.push({
+			name: band.name,
+			id: band.id
+		})
+		const savedUser = await addedUser.save();
+
+		res.redirect('/artist/' + req.params.artistId);
+	} catch (err) {
+		next(err);
+	}
+})
+
 
 // route to add new member to artist
 router.get('/:artistId/addUser/:userId', async (req, res, next) => {
