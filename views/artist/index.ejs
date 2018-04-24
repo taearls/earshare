@@ -41,20 +41,24 @@
 
 
 			<main>
-				<div class="container-fluid bg-3 text-center">
-				<h3>Artists</h3><br>
-					<div class="row">
-						<div class="col-sm-3">
-							<ul>
-								<%for (let i = 0; i < artists.length; i++) {%>
-									<li><p><a href="/artist/<%=artists[i].id%>"><%=artists[i].name%></a></p><br />
-									<img src="<%=artists[i].img%>" id="artistListPic" class="img-responsive" style="width:100%" alt="<%=artists[i].name%>'s Photo"></li><br />
-								<%}%>
-							</ul><br />
-						</div>
+				<div class="container-fluid">
 
+						<h3 class= text-center>Artists</h3><br />
+						<div class="row justify-content-around">
+							<div class="col-6">
+
+								<ul>
+									<%for (let i = 0; i < artists.length; i++) {%>
+
+										<li><p><a href="/artist/<%=artists[i].id%>"><%=artists[i].name%></a></p>
+											<img src="<%=artists[i].img%>" id="artistListPic" class="img-responsive" style="width:100%" alt="<%=artists[i].name%>'s Photo"></li><br />
+									<%}%>
+								</ul>
+
+							</div>
 					</div>
 				</div>
+
 
 			</main>
 

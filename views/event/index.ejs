@@ -35,10 +35,10 @@
   </div>
 	</div>
 
-	<div class="container-fluid bg-3 text-center">
-	<h3>Events</h3><br>
-		<div class="row">
-			<div class="col-sm-3">
+	<div class="container-fluid">
+	<h3 class= "text-center">Events</h3><br>
+		<div class="row justify-content-around">
+			<div class="col-6">
 				<ul>
 					<%for (let i = 0; i < events.length; i++) {%>
 						<li><p><a href="/event/<%=events[i].id%>"><%=events[i].name%></a></p><br />

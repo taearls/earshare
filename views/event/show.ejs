@@ -42,18 +42,12 @@
 
 			        <div class="card-info"> <span class="card-title"><h3> <%=event.name%> Info </h3></span>
 
-
-								<% for (let i = 0; i < users.length; i++) { %>
-									<a href="/event/addUser/<%=users[i].id%>/<%=event.id%>"></a>
-
-								<% } %>
-								<span class= "glyphicon glyphicon-plus">Attend <%=event.name%></span>
 			        		<%for (let i = 0; i < users.length; i++) {%>
 			        			<a href="/event/<%=event.id%>/addUser/<%=users[i].id%>">
 			        		<%}%>
 			        			<span class="glyphicon glyphicon-calendar" aria-hidden="true"></span> Attend <%=event.name%></a>
 
-							
+
 			        </div>
 			    </div>
 			    <div class="btn-pref btn-group btn-group-justified btn-group-lg" role="group" aria-label="...">
