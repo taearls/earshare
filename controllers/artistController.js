@@ -79,7 +79,11 @@ router.get('/addUser/:userId/:artistId', async (req, res, next) => {
 			id: addedUser.id
 		});
 		// filter through the band.usersWhoLike array to eliminate duplicate users
+
+		// create new object to store unique fans (since we're working with an array of objects)
 		const uniqueFans = {};
+
+
 
 		for ( let i=0, len = band.usersWhoLike.length; i < len; i++ )
 		    uniqueFans[band.usersWhoLike[i]['username']] = band.usersWhoLike[i];
@@ -88,7 +92,7 @@ router.get('/addUser/:userId/:artistId', async (req, res, next) => {
 		for ( let key in uniqueFans )
 		    band.usersWhoLike.push(uniqueFans[key]);
 		
-		console.log(uniqueFans, " this should be a list of users without duplicates");
+		// console.log(uniqueFans, " this should be a list of users without duplicates");
 
 
 
@@ -101,6 +105,18 @@ router.get('/addUser/:userId/:artistId', async (req, res, next) => {
 		})
 
 		// filter through the addedUser.artistsLiked array to eliminate duplicate artists
+
+		const uniqueArtists = {};
+
+
+		 
+		for ( let i=0, len = addedUser.artistsLiked.length; i < len; i++ )
+		    uniqueArtists[addedUser.artistsLiked[i]['name']] = addedUser.artistsLiked[i];
+
+		addedUser.artistsLiked = new Array();
+		for ( let key in uniqueArtists )
+		    addedUser.artistsLiked.push(uniqueArtists[key]);
+
 
 		const savedUser = await addedUser.save();
 
