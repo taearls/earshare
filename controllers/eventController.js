@@ -36,6 +36,7 @@ router.get('/new', async (req, res, next) => {
 
 // route to add user attendance to event page
 
+
 router.get('/:eventId/addUser/:userId', async (req, res, next) => {
 	try {
 		const addedUser = await User.findOne({"username": req.session.username});
@@ -48,7 +49,6 @@ router.get('/:eventId/addUser/:userId', async (req, res, next) => {
 			id: addedUser.id
 		});
 
-		
 		//add attendance to event Page
 		const savedEvent = await event.save();
 
@@ -65,9 +65,6 @@ router.get('/:eventId/addUser/:userId', async (req, res, next) => {
 		next(err);
 	}
 })
-
-
-
 
 
 
