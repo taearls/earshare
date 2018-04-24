@@ -176,7 +176,28 @@ router.get('/:artistId/addUser/:userId', async (req, res, next) => {
 	}
 })
 
+// route to delete members from artist 
+router.get('/removeUser/:artistId/:userId', async (req, res, next) => {
+	try {
+		const deletedUser = await User.findById(req.params.userId);
+		const band = await Artist.findById(req.params.artistId);
 
+		// remove deletedUser from band members
+
+		band.usersWithAccess.remove(deletedUser);
+		const savedBand = await band.save();
+
+		// remove band from deletedUser's affiliated artist list
+
+		deletedUser.artists.remove(band);
+		const savedUser = await deletedUser.save();
+
+		// redirect to artist show page using the artistId from the get route
+		res.redirect('/artist/' + req.params.artistId)
+	} catch (err) {
+		next(err);
+	}
+})
 
 // get show route
 router.get('/:id', async (req, res, next) => {
