@@ -30,7 +30,7 @@ app.use((req, res, next) => {
 		if (req.session.loggedIn) {
 			next();
 		} else {
-			req.session.message = "You need to be logged in to do that";
+			req.session.message = "You need to be logged in to do that.";
 			res.redirect("/");
 		}
 	} else {
