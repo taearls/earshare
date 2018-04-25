@@ -1,18 +1,29 @@
 const express = require('express');
 const router = express.Router();
 const User = require('../models/user');
-const Artist = require('../models/artist')
+const Artist = require('../models/artist');
+const Event = require('../models/event');
 const bcrypt = require('bcrypt');
 
 const jQuery = require('jquery');
 
 
+// Math.floor(Math.random() * number)
+
 
 router.get('/', (req, res) => {
+
+
+	const allArtists = Artist.find();
+	const allUsers = User.find();
+	const allEvents = Event.find();
 	const message = req.session.message;
 	req.session.message = null;
 	res.render('auth/home.ejs', {
-		message: message
+		message: message,
+		users: allUsers,
+		artists: allArtists,
+		events: allEvents
 	});
 })
 

@@ -52,9 +52,7 @@
 
                   <div class="card-info"> <span class="card-title"><h3><%=artist.name%></h3></span>
 
-                      <% for (let i = 0; i < users.length; i++) { %>
-                        <a href="/artist/addUser/<%=users[i].id%>/<%=artist.id%>">
-                    <% } %>
+                        <a href="/artist/addUser/<%=user.id%>/<%=artist.id%>">
                       <span class= "glyphicon glyphicon-heart"></span> Like <%=artist.name%></a>
                 </div>
             </div>
@@ -121,8 +119,8 @@
                             </button>
                             <div class="dropdown-menu">
 <!--                               loop only over array of users NOT in the band
- -->                              <% for (let i = 0; i < users.length; i++) { %>
-                                 <a href="/artist/<%=artist.id%>/addUser/<%=users[i].id%>" class="dropdown-item"><%=users[i].username%></a>
+ -->                              <% for (let i = 0; i < usersToAdd.length; i++) { %>
+                                 <a href="/artist/<%=artist.id%>/addUser/<%=usersToAdd[i].id%>" class="dropdown-item"><%=usersToAdd[i].username%></a>
                               <% } %>
                             </div>
                         </div>
@@ -143,7 +141,7 @@
                                 <%if (artist.usersWithAccess.length === 1) {%>
 <!--                                 if there's only one band member left, we want to delete the artist entirely
  -->                              <form action="/artist/<%= artist.id %>?_method=DELETE" method="POST">
-                                    <button class="dropdown-item" type="submit">Delete <%=artist.usersWithAccess[i].username%></button>
+                                    <button class="dropdown-item" type="submit"><%=artist.usersWithAccess[i].username%></button>
                                   </form>
                                 <% } else {%>
 <!--                                      otherwise, only delete the member

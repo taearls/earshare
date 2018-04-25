@@ -54,7 +54,7 @@ router.post('/', async (req, res, next) => {
     // add artist to the user's list of affiliated artists
     userArtist.artists.push({
     	name: createdArtist.name.toString(),
-    	id: createdArtist.id.toString()
+    	artist_id: createdArtist.id.toString()
     });
 
     const savedArtist = await createdArtist.save();
@@ -212,15 +212,41 @@ router.get('/removeUser/:artistId/:userId', async (req, res, next) => {
 // get show route
 router.get('/:id', async (req, res, next) => {
 	try {
-		const artistToUpdate = await Artist.findById(req.params.id);
+		// This is the artist that is on the page
+		const artist = await Artist.findById(req.params.id);
+
+		const currentUser = await User.find({"username": req.session.username});
+		// This should be the user Id of the users that are already in the band
+		const userIds = [];
+
+		
+			artist.usersWithAccess.forEach((user) => {
+				userIds.push( user._id );
+			})
+	
+
+		// console.log('--------------------------------------------')
+		// console.log(userIds[0], userIds[1] );
+		// console.log('--------------------------------------------')
+		
+
+		const nonMembers = await User.find({ "_id": { "$nin": userIds } })
+		// console.log('--------------------------')
+		// console.log(nonMembers)
+		// console.log('=================================')
 		const allUsers = await User.find();
 
+
+
+
+		// console.log(nonMembers, " this should be a list of all users who aren't members of the band");
 		// use this to keep track of current artist; on our site they have to go to the artist show page to create an event
-		req.session.currentArtist = artistToUpdate.name.toString();
+		req.session.currentArtist = artist.name.toString();
 
 		res.render('artist/show.ejs', {
-			artist: artistToUpdate,
-			users: allUsers
+			artist: artist,
+			user: currentUser,
+			usersToAdd: nonMembers
 		});
 	} catch (err) {
 		next(err);
