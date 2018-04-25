@@ -104,8 +104,14 @@ router.delete("/:id", async (req, res, next) => {
 				}
 			}
 		}
+		if (deletedUser.username.toString() === req.session.username.toString()) {
+			req.session.message = "User has been deleted. Please log in or register to continue.";
+			req.session.loggedIn = false;
+			res.redirect('/');
+		} else {
+			res.redirect("/user");
+		}
 
-		res.redirect("/user");
 	} catch (err) {
 		next(err);
 	}
