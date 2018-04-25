@@ -16,7 +16,7 @@ const userSchema = new mongoose.Schema({
       // instead of calling the whole schema
       artists: [{
       	name: String,
-      	id: String
+      	artist_id: String
       }],
       artistsLiked: [{
         name: String,

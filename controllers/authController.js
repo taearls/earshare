@@ -1,19 +1,47 @@
 const express = require('express');
 const router = express.Router();
 const User = require('../models/user');
-const Artist = require('../models/artist')
+const Artist = require('../models/artist');
+const Event = require('../models/event');
 const bcrypt = require('bcrypt');
 
 const jQuery = require('jquery');
 
 
+// Math.floor(Math.random() * number)
 
-router.get('/', (req, res) => {
-	const message = req.session.message;
-	req.session.message = null;
-	res.render('auth/home.ejs', {
-		message: message
-	});
+
+router.get('/', async (req, res, next) => {
+	try {
+		// grab all of each model
+		// console.log(Artist, " this is Artist");
+		const allUsers = await User.find();
+		const allArtists = await Artist.find();
+		const allEvents = await Event.find();
+		
+		console.log(allArtists, " this is allArtists");
+		// generate a random index for each number, store to a variable
+		const userIndex = await Math.floor(Math.random() * allUsers.length);
+		const artistIndex = await Math.floor(Math.random() * allArtists.length);
+		const eventIndex = await Math.floor(Math.random() * allEvents.length);
+		console.log(artistIndex, " this is artistIndex");
+		console.log(eventIndex, " this is eventIndex");
+
+
+		const message = await req.session.message;
+		req.session.message = null;
+		res.render('auth/home.ejs', {
+			message: message,
+			users: allUsers,
+			userNum: userIndex,
+			artists: allArtists,
+			artistNum: artistIndex,
+			events: allEvents,
+			eventNum: eventIndex
+		});
+	} catch (err) {
+		next(err);
+	} 
 })
 
 // ********USER LOGIN******
