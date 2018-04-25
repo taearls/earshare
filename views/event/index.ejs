@@ -28,10 +28,12 @@
 	</header>
 
 
-	<div class="jumbotron">
-  <div class="container text-center">
-    <h1 class = "indexHeader">Events</h1><br>
-  </div>
+	<div id="index-jumbo">
+		<div class="jumbotron">
+  		<div class="container text-center">
+    		<h1 class = "indexHeader">Events</h1><br>
+  		</div>
+		</div>
 	</div>
 
 
@@ -44,7 +46,7 @@
 										<div class="col-med-6">
 
 
-												<img src="<%=events[i].img%>" class="img-responsive" style="width:100%" alt="<%=events[i].name%> Image">
+												<img src="<%=events[i].img%>" id="eventListPic" class="img-responsive" style="width:100%" alt="<%=events[i].name%> Image">
 
 													<div class="overlay">
 												<div class="linkText"> <p><a class="indexLink" href="/event/<%=events[i].id%>"><%=events[i].name%></a></p> </div>
