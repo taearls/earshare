@@ -117,7 +117,7 @@
 
 
 		<div class="col-lg-12 col-sm-12">
-			<a class="btn btn-outline-dark btn-sm btn-block" href="/user/<%= user.id %>/edit">Edit User</a>
+			<a class="btn btn-outline-dark btn-sm btn-block" id="edit-user" href="/user/<%= user.id %>/edit">Edit User</a>
 				<form action="/user/<%= user.id %>?_method=DELETE" method="POST">
 					<button class="btn btn-outline-danger btn-sm btn-block" type="submit">Delete User</button>
 			</form>
@@ -128,7 +128,9 @@
 
 
 		<footer class="container-fluid text-center">
-	  		<p>Footer Here</p>
+			<form action="/logout" method="GET">
+	   			<input type="submit" class="btn-block" id="logout" value="Logout" />
+			</form>
 		</footer>
 
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>

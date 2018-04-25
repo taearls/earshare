@@ -119,4 +119,18 @@ router.post('/register', async (req, res, next) => {
 
 })
 
+// *** LOGOUT ROUTE ***
+router.get('/logout', async (req, res, next) => {
+	try {
+		// find the user
+		// if the user is not in the database, it will return null
+		req.session.loggedIn = false;
+		req.session.message = "User has successfully logged out.";
+
+		res.redirect('/');
+	} catch (err) {
+		next(err);
+	}
+})
+
 module.exports = router;

@@ -26,11 +26,11 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use((req, res, next) => {
 	// check where user is going using req.path
 	// if we do artist/ and event/, someone could view artist and event index page without being logged in
-	if (req.path.includes('artist/') || req.path.includes('event/')){
+	if (req.path.includes('artist/') || req.path.includes('event/') || req.path.includes('user/')){
 		if (req.session.loggedIn) {
 			next();
 		} else {
-			req.session.message = "You need to be logged in to do that";
+			req.session.message = "You need to be logged in to do that.";
 			res.redirect("/");
 		}
 	} else {

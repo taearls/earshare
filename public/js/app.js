@@ -90,3 +90,4 @@ $('#artistUserLike').click(function() {
       return count;
     });
 });
+
