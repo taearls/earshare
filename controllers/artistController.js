@@ -332,12 +332,11 @@ router.delete('/:id', async (req, res, next) => {
     }
 
     // remove artist from all associated users
-    const membersArtist = await User.find({"artists.id" : req.params.id});
+    const membersArtist = await User.find({"artists.artist_id" : req.params.id});
     let savedUsers;
-
     for (let i = 0; i < membersArtist.length; i++) {
     	for (let j = 0; j < membersArtist[i].artists.length; j++) {
-    		if (membersArtist[i].artists[j].id.toString() === req.params.id.toString()) {
+    		if (membersArtist[i].artists[j].artist_id.toString() === req.params.id.toString()) {
     			membersArtist[i].artists[j].remove();
     			savedUsers = await membersArtist[i].save();
     		}
