@@ -25,8 +25,8 @@ app.use(bodyParser.urlencoded({extended: false}));
 
 app.use((req, res, next) => {
 	// check where user is going using req.path
-	// console.log(req, req.path);
-	if (req.path.includes('artist') || req.path.includes('event')){
+	// if we do artist/ and event/, someone could view artist and event index page without being logged in
+	if (req.path.includes('artist/') || req.path.includes('event/')){
 		if (req.session.loggedIn) {
 			next();
 		} else {

@@ -61,30 +61,56 @@
                        </ol>
                        <div class="carousel-inner">
                            <div class="item active">
-                               <img src="http://placehold.it/1200x500/3498db/2980b9" alt="First slide">
+                              <img src="http://placehold.it/1200x500/3498db/2980b9" alt="First slide">
                                <div class="carousel-caption">
-                                   <h3>
-                                      User</h3>
-                                   <p>
-                                       dummy text</p>
+                                 <%if (users[0] === undefined) {%>
+                                 <img alt="Static User Image" src="../images/missing-image.png">
+                                 <h3> User</h3>
+                                 <p> User Description</p>
+                                 <%} else {%>
+                                   <img alt="<%=users[userNum].username%> Image" src="<%=users[userNum].img%>">
+
+                                       <h3>
+                                          <%=users[userNum].username%></h3>
+                                       <p><%=users[userNum].description%></p>
+
+                                 <%}%>
                                </div>
                            </div>
                            <div class="item">
                                <img src="http://placehold.it/1200x500/9b59b6/8e44ad" alt="Second slide">
                                <div class="carousel-caption">
-                                   <h3>
-                                       Artist</h3>
-                                   <p>
-                                       Different dummy text</p>
+                                 <%if (artists[0] === undefined) {%>
+                                   <img alt="Static Artist Image" src="../images/missing-image.png">
+                                   <h3> Artist</h3>
+                                   <p> Artist Description</p>
+                                 <%} else {%>
+                                   <img alt="<%=artists[artistNum].name%> Image" src="<%=artists[artistNum].img%>">
+                                     <h3>
+                                        <%=artists[artistNum].name%></h3>
+
+                                     <p><%=artists[artistNum].description%></p>
+
+
+                                 <%}%>
                                </div>
-                           </div>
+                          </div>
+
+                        
                            <div class="item">
                                <img src="http://placehold.it/1200x500/34495e/2c3e50" alt="Third slide">
                                <div class="carousel-caption">
+                               <%if (events[0] === undefined) {%>
+                                 <img alt="Static Event Image" src="../images/missing-image.png">
+                                 <h3> Event</h3>
+                                 <p> Event Description</p>
+                               <%} else {%>
+                                 <img alt="<%=events[eventNum].name%> Image" src="<%=events[eventNum].img%>">
                                    <h3>
-                                       A third band name</h3>
-                                   <p>
-                                       More dummy text </p>
+                                       <a href="/event/<%=events[eventNum].id%>"><%=events[eventtNum].name%></a></h3>
+                                   <p><%=events[eventNum].description%></p>
+
+                               <%}%>
                                </div>
                            </div>
                        </div>
