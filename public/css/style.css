@@ -10,6 +10,20 @@ html {
 #navbar a:hover {
   background-color: rgba(46, 57, 62, 0.83);
 }
+#logout {
+  background-color: #ff7043;
+  color: white;
+}
+#logout:hover {
+  background-color: #ffa270;
+  transition: .5s ease;
+}
+#edit-user:hover,
+#edit-artist:hover,
+#edit-event:hover {
+  color: white;
+  transition: .5s ease;
+}
 a,
 #user-carousel,
 #artist-carousel,

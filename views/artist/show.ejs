@@ -182,32 +182,21 @@
               </div>
             </div>
 
-<<<<<<< HEAD
-          <div class="col-lg-12 col-sm-12">
-          	<a class="btn btn-outline-dark btn-sm btn-block" href="/artist/<%= artist.id %>/edit">Edit <%=artist.name%></a>
-          		<form action="/user/<%= artist.id %>?_method=DELETE" method="POST">
-          				<button class="btn btn-outline-danger btn-sm btn-block" type="submit">Delete <%=artist.name%></button>
-          		</form>
-          </div>
 
-=======
 
               <div class="col-lg-12 col-sm-12">
-          			<a class="btn btn-outline-dark btn-sm btn-block" href="/artist/<%= artist.id %>/edit">Edit <%=artist.name%></a>
+          			<a class="btn btn-outline-dark btn-sm btn-block" id="edit-artist" href="/artist/<%= artist.id %>/edit">Edit <%=artist.name%></a>
           				<form action="/artist/<%= artist.id %>?_method=DELETE" method="POST">
           					<button class="btn btn-outline-danger btn-sm btn-block" type="submit">Delete <%=artist.name%></button>
           			</form>
           		</div>
->>>>>>> 546738995fd2c1370657e7e6964ab50bcc1a443f
 
  	       </main>
 
+  <footer class="container-fluid text-center">
+    <button class="btn-block" id="logout">Log Out</button>
+  </footer>
 
-<<<<<<< HEAD
-
-
-=======
->>>>>>> 546738995fd2c1370657e7e6964ab50bcc1a443f
   <script src="/js/app.js"></script>
   </body>
 </html>
