@@ -12,8 +12,10 @@ const User = require('../models/user');
 router.get('/', async (req, res, next) => {
 	try {
 		const allArtists = await Artist.find();
+		const loggedIn = await req.session.loggedIn;
 		res.render('artist/index.ejs', {
-			artists : allArtists
+			artists : allArtists,
+			loggedIn : loggedIn
 		});
 
 	} catch(err) {

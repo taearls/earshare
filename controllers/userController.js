@@ -14,8 +14,10 @@ router.get('/', async (req, res, next) => {
 	try {
 		// grab all users from database
 		const allUsers = await User.find();
+		const loggedIn = req.session.loggedIn;
 		res.render('user/index.ejs', {
-			users: allUsers
+			users: allUsers,
+			loggedIn: loggedIn
 		});
 	} catch (err) {
 		next(err);

@@ -10,9 +10,11 @@ const jQuery = require('jquery');
 
 router.get('/', async (req, res, next) => {
 	try {
+		const loggedIn = req.session.loggedIn;
 		const allEvents = await Event.find();
 		res.render('event/index.ejs', {
-			events : allEvents
+			events : allEvents,
+			loggedIn : loggedIn
 		});
 
 	} catch(err) {
