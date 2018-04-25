@@ -71,7 +71,7 @@
                                    <img alt="<%=users[userNum].username%> Image" src="<%=users[userNum].img%>">
 
                                        <h3>
-                                          <%=users[userNum].username%></h3>
+                                          <a id="user-carousel" href="/user"><%=users[userNum].username%></a></h3>
                                        <p><%=users[userNum].description%></p>
 
                                  <%}%>
@@ -87,7 +87,7 @@
                                  <%} else {%>
                                    <img alt="<%=artists[artistNum].name%> Image" src="<%=artists[artistNum].img%>">
                                      <h3>
-                                        <%=artists[artistNum].name%></h3>
+                                        <a id="artist-carousel" href="/artist"><%=artists[artistNum].name%></a></h3>
 
                                      <p><%=artists[artistNum].description%></p>
 
@@ -107,7 +107,7 @@
                                <%} else {%>
                                  <img alt="<%=events[eventNum].name%> Image" src="<%=events[eventNum].img%>">
                                    <h3>
-                                       <a href="/event/<%=events[eventNum].id%>"><%=events[eventtNum].name%></a></h3>
+                                       <a id="event-carousel" href="/event"><%=events[eventtNum].name%></a></h3>
                                    <p><%=events[eventNum].description%></p>
 
                                <%}%>
