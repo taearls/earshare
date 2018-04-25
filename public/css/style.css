@@ -1,3 +1,6 @@
+html {
+  background-color: #eceff1;
+}
 #navbar {
   background-color: #102027;
 }
@@ -49,6 +52,11 @@ ul {
   text-transform: uppercase;
 }
 /* Container holding the image and the text */
+#artistListPic,
+#eventListPic,
+#userListPic {
+  border-radius: 200px;
+}
 .picContainer-fluid {
   flex-flow: wrap;
   position: relative;
@@ -59,6 +67,7 @@ ul {
 }
 .overlay {
   position: absolute;
+  border-radius: 50px;
   top: 0;
   bottom: 0;
   left: 0;
@@ -84,24 +93,71 @@ ul {
 .card-info a:hover {
   text-decoration: none;
 }
-#stars:hover,
-#favorites:hover {
+#stars:hover {
+  color: white;
+}
+#favorites,
+#artists,
+#members {
+  background-color: #73767F;
+  color: white;
+}
+#createdEvents,
+#following,
+#eventArtists {
+  background-color: #ADB2BF;
+  color: white;
+}
+#going,
+#affiliatedArtists,
+#fans {
+  background-color: #CFD5E5;
   color: white;
 }
 .jumbotron {
   background-color: transparent !important;
 }
-#homepage-jumbo {
+#homepage-jumbo,
+#index-jumbo {
   background-color: #62717b;
 }
-#homepage-jumbo h1 {
+#homepage-jumbo h1,
+#index-jumbo h1 {
   font-family: 'IBM Plex Sans', sans-serif;
   color: #eceff1;
 }
-#homepage-jumbo p {
+#homepage-jumbo p,
+#index-jumbo p {
   font-family: 'IBM Plex Sans', sans-serif;
   color: #e2f1f8;
 }
 #carousel {
   font-family: 'IBM Plex Sans', sans-serif;
+}
+#loginModal,
+#registerModal {
+  background-color: rgba(255, 162, 112, 0.4);
+}
+#loginModal .modal-header,
+#registerModal .modal-header {
+  background-color: #c75b39;
+  color: #e0e0e0;
+  font-family: 'IBM Plex Sans', sans-serif;
+  text-transform: uppercase;
+}
+#loginModal .modal-body,
+#registerModal .modal-body {
+  background-color: rgba(207, 216, 220, 0.7);
+  font-family: 'Work Sans', sans-serif;
+  text-transform: uppercase;
+}
+#loginModal .btn,
+#registerModal .btn {
+  background-color: #102027;
+  color: #e0e0e0;
+}
+#loginModal .btn:hover,
+#registerModal .btn:hover {
+  background-color: #FFBB93;
+  color: #101f27;
 }

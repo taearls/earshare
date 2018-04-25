@@ -3,6 +3,10 @@
 @linkFont: 'Work Sans', sans-serif;
 @textFont: 'IBM Plex Sans', sans-serif;
 
+html {
+	background-color: #eceff1;
+}
+
 #navbar {
 	background-color: #102027;
 	a {
@@ -58,7 +62,12 @@ ul {
 }
 
 
+
 /* Container holding the image and the text */
+#artistListPic, #eventListPic, #userListPic {
+	border-radius: 200px;
+}
+
 .picContainer-fluid {
 		flex-flow: wrap;
     position: relative;
@@ -72,6 +81,7 @@ ul {
 
 .overlay {
   position: absolute;
+	border-radius: 50px;
   top: 0;
   bottom: 0;
   left: 0;
@@ -105,19 +115,33 @@ ul {
 		}
 	}
 
-#stars, #favorites {
+#stars {
 	&:hover {
 		color: white;
 	}
 }
 
+#favorites, #artists, #members {
+	background-color: #73767F;
+	color: white;
+}
+
+#createdEvents, #following, #eventArtists {
+	background-color: #ADB2BF;
+	color: white;
+}
+
+#going, #affiliatedArtists, #fans {
+	background-color: #CFD5E5;
+	color: white;
+}
 
 //homepage
 .jumbotron {
     background-color:transparent !important;
 }
 
-#homepage-jumbo {
+#homepage-jumbo, #index-jumbo {
 	background-color: #62717b;
 		h1 {
 			font-family: @headerFont;
@@ -129,7 +153,32 @@ ul {
 		}
 	}
 
-
 #carousel {
 	font-family: @headerFont;
+}
+
+
+//MODALS
+#loginModal, #registerModal {
+	background-color: rgba(255, 162, 112, 0.4);
+		.modal-header {
+		background-color: rgb(199, 91, 57);
+		color: #e0e0e0;
+		font-family: @headerFont;
+		text-transform: uppercase;
+	}
+		.modal-body {
+			background-color: rgba(207, 216, 220, 0.7);
+			font-family: @linkFont;
+			text-transform: uppercase;
+
+		}
+		.btn {
+			background-color: #102027;
+			color: #e0e0e0;
+				&:hover {
+					background-color: #FFBB93;
+					color: #101f27;
+				}
+		}
 }
