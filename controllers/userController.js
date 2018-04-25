@@ -30,9 +30,12 @@ router.get("/:id", async (req, res, next) => {
 	try {
 		const foundUser = await User.findById(req.params.id);
 		const allArtists = await Artist.find();
+		const loggedUser = await User.findOne({"username": req.session.username});
+		console.log(loggedUser, "this should be the logged in user");
 		res.render('user/show.ejs', {
 			user: foundUser,
-			allArtists: allArtists
+			allArtists: allArtists,
+			currentUser: loggedUser
 		})
 	} catch (err) {
 		next(err);
