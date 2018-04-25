@@ -49,6 +49,9 @@
       </div>
     </div>
 
+
+
+
       <div id="carousel">
         <div class="container">
            <div class="row">
@@ -61,14 +64,14 @@
                        </ol>
                        <div class="carousel-inner">
                            <div class="item active">
-                              <img src="http://placehold.it/1200x500/3498db/2980b9" alt="First slide">
+                              <img src="../images/Webp.net-resizeimage.jpg" alt="First slide">
                                <div class="carousel-caption">
                                  <%if (users[0] === undefined) {%>
                                  <img alt="Static User Image" src="../images/missing-image.png">
                                  <h3> User</h3>
                                  <p> User Description</p>
                                  <%} else {%>
-                                   <img alt="<%=users[userNum].username%> Image" src="<%=users[userNum].img%>">
+                                   <img id= "userListPic" alt="<%=users[userNum].username%> Image" src="<%=users[userNum].img%>">
 
                                        <h3>
                                           <%=users[userNum].username%></h3>
@@ -78,14 +81,14 @@
                                </div>
                            </div>
                            <div class="item">
-                               <img src="http://placehold.it/1200x500/9b59b6/8e44ad" alt="Second slide">
+                               <img src="../images/Webp.net-resizeimage.jpg" alt="Second slide">
                                <div class="carousel-caption">
                                  <%if (artists[0] === undefined) {%>
                                    <img alt="Static Artist Image" src="../images/missing-image.png">
                                    <h3> Artist</h3>
                                    <p> Artist Description</p>
                                  <%} else {%>
-                                   <img alt="<%=artists[artistNum].name%> Image" src="<%=artists[artistNum].img%>">
+                                   <img id="artistListPic" alt="<%=artists[artistNum].name%> Image" src="<%=artists[artistNum].img%>">
                                      <h3>
                                         <%=artists[artistNum].name%></h3>
 
@@ -96,18 +99,18 @@
                                </div>
                           </div>
 
-                        
+
                            <div class="item">
-                               <img src="http://placehold.it/1200x500/34495e/2c3e50" alt="Third slide">
+                               <img src="../images/Webp.net-resizeimage.jpg" alt="Third slide">
                                <div class="carousel-caption">
                                <%if (events[0] === undefined) {%>
                                  <img alt="Static Event Image" src="../images/missing-image.png">
                                  <h3> Event</h3>
                                  <p> Event Description</p>
                                <%} else {%>
-                                 <img alt="<%=events[eventNum].name%> Image" src="<%=events[eventNum].img%>">
+                                 <img id= "eventListPic" alt="<%=events[eventNum].name%> Image" src="<%=events[eventNum].img%>">
                                    <h3>
-                                       <a href="/event/<%=events[eventNum].id%>"><%=events[eventtNum].name%></a></h3>
+                                       <a id="eventLink" href="/event/<%=events[eventNum].id%>"><%=events[eventNum].name%></a></h3>
                                    <p><%=events[eventNum].description%></p>
 
                                <%}%>
@@ -121,11 +124,7 @@
                    </div>
                    <div class="main-text hidden-xs">
                        <div class="col-md-12 text-center">
-                           <h1>
-                               This is a live music finding app</h1>
-                           <p>
-                               If you register, you can do neat things like become an artist and create events!
-                           </p>
+
                            <div class="">
                            </div>
                        </div>
