@@ -1,9 +1,10 @@
-##USER STORIES
-##Technologies Used
+## USER STORIES
+## Technologies Used
 Full stack application using Express, Node.js, Bootstrap and LESS. <br>
+Google Fonts and Material.io for styling.<br>
 Balsalmiq wire framing and Trello for organizing workflow. <br>
 
-##Approach Taken
+## Approach Taken
 We sought to create a music event sharing app for musicians to share information about upcoming gigs. <br>
 
 Initial capabilities are a user profile. From here, users can register as an "artist". Once an artist profile has been created, events can be created and members can be added to artist profile.<br>
@@ -16,11 +17,11 @@ Views include index, show, edit and new for each model. <br>
 
 Our app also includes an auth view as a landing page where a user can log in or register and a carousel displays current users, artists and events at random. <br>
 
-##Unsolved problems and future possibilities
+## Unsolved problems and future possibilities
 An ability to add or remove artists from an event. <br>
 Search and sort functionality with a search bar and filters. <br>
 
-##SCREENSHOTS
+## SCREENSHOTS
 Landing Page:
 ![Image of Landing Page](screenshots/landing_page.png)
 
