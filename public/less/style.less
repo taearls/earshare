@@ -1,7 +1,7 @@
-@navFont: 'Work Sans', sans-serif;
-@headerFont: 'IBM Plex Sans', sans-serif;
-@linkFont: 'Work Sans', sans-serif;
-@textFont: 'IBM Plex Sans', sans-serif;
+@navFont: 'Maven Pro', sans-serif;
+@headerFont:'Permanent Marker', cursive;
+@linkFont: 'Maven Pro', sans-serif;
+@textFont: 'Maven Pro', sans-serif;
 
 
 html {
@@ -10,8 +10,10 @@ html {
 
 #navbar {
 	background-color: #102027;
+	font-family: @navFont;
+	font-size: 1.5em;
 	a {
-		color: white;
+		color: #e2f1f8;
 		&:hover {
 			background-color: rgba(46, 57, 62, 0.83);
 		}
@@ -61,7 +63,7 @@ ul {
 .indexLink{
 	font-family: @linkFont;
 	color: white;
-	font-size: 20px;
+	font-size: 30px;
 	position: absolute;
 	top: 50%;
 	left: 50%;
@@ -76,6 +78,7 @@ ul {
 		text-transform: uppercase;
 	}
 }
+
 
 
 
@@ -166,7 +169,8 @@ ul {
 	background-color: #62717b;
 		h1 {
 			font-family: @headerFont;
-			color: #eceff1;
+			font-size: 5em;
+			color: #e2f1f8;
 		}
 		p {
 			font-family: @textFont;
@@ -174,6 +178,9 @@ ul {
 		}
 	}
 
+//carousel
+
+.caro
 
 //MODALS
 #loginModal, #registerModal {

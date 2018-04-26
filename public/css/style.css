@@ -3,9 +3,11 @@ html {
 }
 #navbar {
   background-color: #102027;
+  font-family: 'Maven Pro', sans-serif;
+  font-size: 1.5em;
 }
 #navbar a {
-  color: white;
+  color: #e2f1f8;
 }
 #navbar a:hover {
   background-color: rgba(46, 57, 62, 0.83);
@@ -42,15 +44,15 @@ ul {
 }
 /* INDEXES */
 .indexHeader {
-  font-family: 'IBM Plex Sans', sans-serif;
+  font-family: 'Permanent Marker', cursive;
   text-align: center;
 }
 .indexHeader:hover {
   text-decoration: none;
 }
 .indexLink {
-  font-family: 'Work Sans', sans-serif;
-  font-size: 20px;
+  font-family: 'Maven Pro', sans-serif;
+  font-size: 30px;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -106,7 +108,7 @@ ul {
 }
 .card-info {
   text-align: center;
-  font-family: 'IBM Plex Sans', sans-serif;
+  font-family: 'Maven Pro', sans-serif;
   font-size: 1.5em;
 }
 .card-info a:hover {
@@ -142,37 +144,38 @@ ul {
 }
 #homepage-jumbo h1,
 #index-jumbo h1 {
-  font-family: 'IBM Plex Sans', sans-serif;
-  color: #eceff1;
+  font-family: 'Permanent Marker', cursive;
+  font-size: 5em;
+  color: #e2f1f8;
 }
 #homepage-jumbo p,
 #index-jumbo p {
-  font-family: 'IBM Plex Sans', sans-serif;
+  font-family: 'Maven Pro', sans-serif;
   color: #e2f1f8;
 }
-#loginModal,
+.caro #loginModal,
 #registerModal {
   background-color: rgba(255, 162, 112, 0.4);
 }
-#loginModal .modal-header,
+.caro #loginModal .modal-header,
 #registerModal .modal-header {
   background-color: #c75b39;
   color: #e0e0e0;
-  font-family: 'IBM Plex Sans', sans-serif;
+  font-family: 'Permanent Marker', cursive;
   text-transform: uppercase;
 }
-#loginModal .modal-body,
+.caro #loginModal .modal-body,
 #registerModal .modal-body {
   background-color: rgba(207, 216, 220, 0.7);
-  font-family: 'Work Sans', sans-serif;
+  font-family: 'Maven Pro', sans-serif;
   text-transform: uppercase;
 }
-#loginModal .btn,
+.caro #loginModal .btn,
 #registerModal .btn {
   background-color: #102027;
   color: #e0e0e0;
 }
-#loginModal .btn:hover,
+.caro #loginModal .btn:hover,
 #registerModal .btn:hover {
   background-color: #FFBB93;
   color: #101f27;
