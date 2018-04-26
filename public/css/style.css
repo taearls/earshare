@@ -195,7 +195,9 @@ ul {
 #index-jumbo h1 {
   font-family: 'Shrikhand', cursive;
   color: rgba(230, 96, 67, 0.75);
-  font-size: 7em;
+  text-shadow: 3px 3px 0px #62717b, 5px 5px 0px #889DAB;
+  letter-spacing: 5px;
+  font-size: 9em;
 }
 #homepage-jumbo h3,
 #index-jumbo h3 {
