@@ -12,9 +12,11 @@ router.get('/', async (req, res, next) => {
 	try {
 		const loggedIn = req.session.loggedIn;
 		const allEvents = await Event.find();
+		const currentUser = await User.findOne({"username": req.session.username});
 		res.render('event/index.ejs', {
 			events : allEvents,
-			loggedIn : loggedIn
+			loggedIn : loggedIn,
+			user : currentUser
 		});
 
 	} catch(err) {
@@ -28,9 +30,11 @@ router.get('/new', async (req, res, next) => {
 		const allArtists = await Artist.find();
 		const artist = await Artist.findOne({"name": req.session.currentArtist});
 		// console.log(artist, " this is artist being sent to the event new page");
+		const currentUser = await User.findOne({"username": req.session.username});
 		res.render('event/new.ejs', {
 			artists: allArtists,
-			currentArtist: artist
+			currentArtist: artist,
+			user: currentUser
 		})
 	} catch (err) {
 		next(err);
@@ -168,8 +172,10 @@ router.get('/:id', async (req, res, next) => {
 router.get('/:id/edit', async (req, res, next) => {
 	try {
 		const eventToUpdate = await Event.findById(req.params.id);
+		const currentUser = await User.findOne({"username": req.session.username});
 		res.render('event/edit.ejs', {
-				event : eventToUpdate
+			event : eventToUpdate,
+			user: currentUser
 		});
 	} catch (err) {
 		next(err);
@@ -209,6 +215,7 @@ router.put("/:id", async (req, res, next) => {
 					hostArtists[i].events[j].website = req.body.website;
 					hostArtists[i].events[j].img = req.body.img;
 					hostArtists[i].events[j].description = req.body.description;
+					
 
 					savedArtists = await hostArtists[i].save();
 				}

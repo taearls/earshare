@@ -37,12 +37,12 @@
           <div class="container-fluid text-center">
     				<div class="col-lg-12 col-sm-12">
 
-              <h4>Create New Artist for <%=currentUser.username%></h4>
+              <h4>Create New Artist for <%=user.username%></h4>
 
                 <form action="/artist" method="POST"><br />
 
                   <select class="invisible" name="userId">
-                      <option value="<%=currentUser._id%>"><%= currentUser.username %></option>
+                      <option value="<%=user._id%>"><%= user.username %></option>
                   </select> <br/>
 
                 <label class= "control-label" for="artistName">Artist Name:</label>
@@ -73,7 +73,7 @@
 
   <footer class="container-fluid text-center">
     <form action="/logout" method="GET">
-        <input type="submit" class="btn-block" id="logout" value="Logout" />
+        <input type="submit" class="btn-block" id="logout" value="Logout <%=user.username%>" />
     </form>
   </footer>
 

@@ -13,9 +13,11 @@ router.get('/', async (req, res, next) => {
 	try {
 		const allArtists = await Artist.find();
 		const loggedIn = await req.session.loggedIn;
+		const currentUser = await User.findOne({"username": req.session.username});
 		res.render('artist/index.ejs', {
 			artists : allArtists,
-			loggedIn : loggedIn
+			loggedIn : loggedIn,
+			user : currentUser
 		});
 
 	} catch(err) {
@@ -27,12 +29,12 @@ router.get('/', async (req, res, next) => {
 router.get('/new', async (req, res, next) => {
 	try {
 		const allUsers = await User.find();
-		const user = await User.findOne({"username": req.session.username});
+		const currentUser = await User.findOne({"username": req.session.username});
 		// console.log(req.session.username, " this is req.session.username");
 		// console.log(user, " this should be the current user")
 		res.render('artist/new.ejs', {
 			users: allUsers,
-			currentUser: user
+			user: currentUser
 		})
 
 	} catch(err) {
@@ -50,6 +52,7 @@ router.post('/', async (req, res, next) => {
 
  	const userArtist = await User.findById(req.body.userId);
     const createdArtist = await Artist.create(req.body);
+    createdArtist.artist_id = createdArtist._id;
 
     // add user to the artist's users with access (basically band members)
     createdArtist.usersWithAccess.push(userArtist);
@@ -285,8 +288,10 @@ router.get('/:id/edit', async (req, res, next) => {
 
 	try {
 		const artistToUpdate = await Artist.findById(req.params.id);
+		const currentUser = await User.findOne({"username": req.session.username});
 		res.render('artist/edit.ejs', {
-			artist: artistToUpdate
+			artist: artistToUpdate,
+			user: currentUser
 		})
 
 	} catch (err) {

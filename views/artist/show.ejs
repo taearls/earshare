@@ -52,7 +52,7 @@
 
                   <div class="card-info"> <span class="card-title"><h3><%=artist.name%></h3></span>
 
-                    <form action="/artist/addUser/<%=user.id%>" method="GET">
+                    <form action="/artist/addUser/<%=user.id%>/<%=artist._id%>" method="GET">
                       <input type="submit" class="btn btn-info btn-lg" id="like-button" value="&hearts; Like <%=artist.name%>" />
                     </form>
                 </div>
@@ -187,8 +187,11 @@
                     </div>
 
                     <div class="tab-pane fade in" id="tab4">
-
-                      <h3> <%=artist.usersWhoLike.length%> Fans</h3>
+                      <%if (artist.usersWhoLike.length === 1){%>
+                        <h3> <%=artist.usersWhoLike.length%> Fan</h3>
+                      <%} else {%>
+                        <h3> <%=artist.usersWhoLike.length%> Fans</h3>
+                      <%}%>
 
                       <ul> <% for (let i = 0; i < artist.usersWhoLike.length; i++) { -%>
                         <li> <a href="/user/<%=artist.usersWhoLike[i].id%>"> <%=artist.usersWhoLike[i].username%> </a></li>
@@ -216,7 +219,7 @@
 
   <footer class="container-fluid text-center">
     <form action="/logout" method="GET">
-        <input type="submit" class="btn-block" id="logout" value="Logout" />
+        <input type="submit" class="btn-block" id="logout" value="Logout <%=user.username%>" />
     </form>
   </footer>
 
