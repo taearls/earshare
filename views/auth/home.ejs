@@ -36,15 +36,28 @@
       </header>
 
       <main>
+        <% if (message) { -%>
+          <p style="background-color: rgba(255, 138, 101, 0.7)"><%= message %></p>
+        <% } -%>
       <div id="homepage-jumbo">
         <div class = "jumbotron">
           <div class="container text-center">
-            <% if (message) { -%>
-              <p style="background-color: rgba(255, 138, 101, 0.7)"><%= message %></p>
-            <% } -%>
+            <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+            	 viewBox="0 0 1208 314" style="enable-background:new 0 0 1208 314;" xml:space="preserve">
+            <style type="text/css">
+            	.st0{fill:none;}
+            	.st1{fill:#C63F17;stroke:#FFA270;stroke-width:3;stroke-miterlimit:10;}
+            	.st2{font-family:'AirwaysPERSONALUSEONLY';}
+            	.st3{font-size:300px;}
+            </style>
+            <rect x="24" y="47.3" class="st0" width="1220.1" height="458.1"/>
+            <text transform="matrix(1 0 0 1 23.9834 257.2144)" class="st1 st2 st3">EarShare</text>
+
+            </svg>
+
+
 
             <h1>Live Music Finder App</h1>
-              <p>Some dang ol' catchy byline will go here</p>
         </div>
       </div>
     </div>
@@ -110,7 +123,7 @@
                                <%} else {%>
                                  <img id= "eventListPic" alt="<%=events[eventNum].name%> Image" src="<%=events[eventNum].img%>">
                                    <h3>
-                                       <a id="event-carousel" href="/event"><%=events[eventtNum].name%></a></h3>
+                                       <a id="event-carousel" href="/event"><%=events[eventNum].name%></a></h3>
                                    <p><%=events[eventNum].description%></p>
 
                                <%}%>

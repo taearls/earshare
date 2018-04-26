@@ -92,9 +92,14 @@ ul {
   transition: .5s ease;
   background-color: rgba(98, 114, 123, 0.75);
 }
-.card-hovercard {
+.container-fluid {
+  background-color: ##cfd8dc;
+}
+#card-hovercard {
   padding: 10px 5px;
   align-content: center;
+  border-style: none;
+  background-color: ##cfd8dc;
 }
 .card-background {
   align-content: center;
