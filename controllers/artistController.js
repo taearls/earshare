@@ -11,13 +11,14 @@ const User = require('../models/user');
 // get index route
 router.get('/', async (req, res, next) => {
 	try {
+
 		const allArtists = await Artist.find();
 		const loggedIn = await req.session.loggedIn;
 		const currentUser = await User.findOne({"username": req.session.username});
 		res.render('artist/index.ejs', {
-			artists : allArtists,
-			loggedIn : loggedIn,
-			user : currentUser
+			artists: allArtists,
+			loggedIn: loggedIn,
+			user: currentUser
 		});
 
 	} catch(err) {
@@ -28,10 +29,10 @@ router.get('/', async (req, res, next) => {
 //new artist get route
 router.get('/new', async (req, res, next) => {
 	try {
+
 		const allUsers = await User.find();
 		const currentUser = await User.findOne({"username": req.session.username});
-		// console.log(req.session.username, " this is req.session.username");
-		// console.log(user, " this should be the current user")
+
 		res.render('artist/new.ejs', {
 			users: allUsers,
 			user: currentUser
@@ -52,6 +53,8 @@ router.post('/', async (req, res, next) => {
 
  	const userArtist = await User.findById(req.body.userId);
     const createdArtist = await Artist.create(req.body);
+
+    // save id of artist in different property artist_id
     createdArtist.artist_id = createdArtist._id;
 
     // add user to the artist's users with access (basically band members)
@@ -109,15 +112,18 @@ router.get('/addUser/:userId/:artistId', async (req, res, next) => {
 			id: band.id
 		})
 
-		// filter through the addedUser.artistsLiked array to eliminate duplicate artists
-
+		// create empty object to store unique artists
 		const uniqueArtists = {};
 
 
-
+		// assign the values of the object uniqueArtists using a universal key
 		for ( let i=0, len = addedUser.artistsLiked.length; i < len; i++ )
 		    uniqueArtists[addedUser.artistsLiked[i]['name']] = addedUser.artistsLiked[i];
 
+		// create a new array
+		// push the values of uniqueArtist to this new array
+		// since we made a new array,
+		// we have to use artist_id to keep the original id
 		addedUser.artistsLiked = new Array();
 		for ( let key in uniqueArtists )
 		    addedUser.artistsLiked.push(uniqueArtists[key]);
@@ -246,16 +252,14 @@ router.get('/:id', async (req, res, next) => {
 		// This should be the user Id of the users that are already in the band
 		const userIds = [];
 
-
+		// for each user with access, push each of their individual ids into the userIds array
 		artist.usersWithAccess.forEach((user) => {
 			userIds.push( user._id );
 		})
 
 
-		// console.log('--------------------------------------------')
-		// console.log(userIds[0], userIds[1] );
-		// console.log('--------------------------------------------')
-
+		// the members in the band have an id in userIds,
+		// non members do not have an id in userIds
 		const bandMembers = await User.find({ "_id": { "$in": userIds} });
 		const nonMembers = await User.find({ "_id": { "$nin": userIds } });
 		// console.log('--------------------------')

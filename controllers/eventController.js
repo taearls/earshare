@@ -14,9 +14,9 @@ router.get('/', async (req, res, next) => {
 		const allEvents = await Event.find();
 		const currentUser = await User.findOne({"username": req.session.username});
 		res.render('event/index.ejs', {
-			events : allEvents,
-			loggedIn : loggedIn,
-			user : currentUser
+			events: allEvents,
+			loggedIn: loggedIn,
+			user: currentUser
 		});
 
 	} catch(err) {
@@ -116,10 +116,8 @@ router.post('/', async (req, res, next) => {
     	artist_id: artistHost._id.toString(),
     	usersWithAccess: artistHost.usersWithAccess
     });
-    // for (let i = 0; i < artistHost.usersWithAccess.length; i++) {
-    // 	createdEvent.hostArtists.usersWithAccess.push(artistHost.usersWithAccess[i]);
-    // }
-    console.log(createdEvent.hostArtists, " this is the artist that created the event");
+
+    // console.log(createdEvent.hostArtists, " this is the artist that created the event");
     const savedEvent = await createdEvent.save();
 
     // this will make the event show up in the artist schema
@@ -174,7 +172,7 @@ router.get('/:id/edit', async (req, res, next) => {
 		const eventToUpdate = await Event.findById(req.params.id);
 		const currentUser = await User.findOne({"username": req.session.username});
 		res.render('event/edit.ejs', {
-			event : eventToUpdate,
+			event: eventToUpdate,
 			user: currentUser
 		});
 	} catch (err) {
