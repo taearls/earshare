@@ -1,12 +1,48 @@
-## User Story
+##USER STORIES
+##Technologies Used
+Full stack application using Express, Node.js, Bootstrap and LESS. <br>
+Balsalmiq wire framing and Trello for organizing workflow. <br>
 
-Three Models: Artist, User, and Event.
+##Approach Taken
+We sought to create a music event sharing app for musicians to share information about upcoming gigs. <br>
 
-Artist - a musician or band that wants to post an event to spread awareness and invite attendees.
+Initial capabilities are a user profile. From here, users can register as an "artist". Once an artist profile has been created, events can be created and members can be added to artist profile.<br>
 
-User - people who go to the events
+Events, artists and users can all be browsed on separate index pages, where a profile picture and name are displayed. To view more information about another user, an artist or an event, a user must be logged in or register. <br>
 
-Events - concerts/shows/sets/etc.
+Our models include: Artist, User and Event. <br>
+
+Views include index, show, edit and new for each model. <br>
+
+Our app also includes an auth view as a landing page where a user can log in or register and a carousel displays current users, artists and events at random. <br>
+
+##Unsolved problems and future possibilities
+An ability to add or remove artists from an event. <br>
+Search and sort functionality with a search bar and filters. <br>
+
+##SCREENSHOTS
+Landing Page:
+![Image of Landing Page](screenshots/landing_page.png)
+
+Login Modal:
+![Image of Login Modal](screenshots/login_modal.png)
+
+Index (Events):
+![Image of Events Index](screenshots/index2.png)
+
+Show (Artist):
+![Image of Artist Show](screenshots/artist_show.png)
+
+Show (Adding User to Artist):
+![Image of Artist Add](screenshots/artist_show2.png)
+
+New (Artist):
+![Image of New Artist Form](screenshots/new_form.png)
+
+Logout Message:
+![Image of Logout Message](screenshots/logout_msg.png)
+
+
 
 ### MVP
 
