@@ -163,9 +163,10 @@ router.get('/:artistId/addUser/:userId', async (req, res, next) => {
 		    uniqueMembers[band.usersWithAccess[i]['username']] = band.usersWithAccess[i];
 
 		band.usersWithAccess = new Array();
-		for ( let key in uniqueMembers )
+		for ( let key in uniqueMembers ) {
 		    band.usersWithAccess.push(uniqueMembers[key]);
-
+		}
+			
 		const savedBand = await band.save();
 
 		// add band to user's affiliated artists
@@ -176,10 +177,15 @@ router.get('/:artistId/addUser/:userId', async (req, res, next) => {
 
 		// iterate through all the members in the band and remove duplicates by
 		// creating new object with only unique names passed into it
-
-		for ( let i=0, len = addedUser.artists.length; i < len; i++ )
+		const origArtistId = [];
+		for ( let i=0, len = addedUser.artists.length; i < len; i++ ) {
 		    uniqueBands[addedUser.artists[i]['name']] = addedUser.artists[i];
+		    addedUser.artists[i].artist_id = addedUser.artists[i].id;
+		    origArtistId.push(addedUser.artists[i].artist_id);
+		}
 
+
+		// this mutates the id of the artist
 		addedUser.artists = new Array();
 		for ( let key in uniqueBands )
 		    addedUser.artists.push(uniqueBands[key]);
