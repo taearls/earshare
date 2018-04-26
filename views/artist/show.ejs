@@ -108,8 +108,9 @@
                           <% } -%>
                         </ul>
 
-
-
+<!--                     only band members should be able to add a member
+ -->                <% for (let i = 0; i < artist.usersWithAccess.length; i++) { -%>
+                      <%if (user.id.toString() === artist.usersWithAccess[i].id.toString()) {%>
                         <div class="btn-group dropright">
                             <button type="button" class="btn btn-success">
                                Add Member
@@ -124,10 +125,15 @@
                               <% } %>
                             </div>
                         </div>
+                      <%}%>
+                    <%}%>
+
 
 <!--                         make the two buttons on top of each other
  -->                    <br/>
-
+<!--                     only band members should be able to remove a member
+ -->                <% for (let i = 0; i < artist.usersWithAccess.length; i++) { -%>
+                      <%if (user.id.toString() === artist.usersWithAccess[i].id.toString()) {%>
                         <div class="btn-group dropright">
                             <button type="button" class="btn btn-danger">
                                Remove Member
@@ -152,6 +158,8 @@
 
                             </div>
                         </div>
+                      <%}%>
+                    <%}%>
 
 
 
@@ -164,7 +172,13 @@
                         <li><a href="/event/<%=artist.events[i]._id%>"> <%= artist.events[i].name%></a></li>
                       <% } -%>
                       </ul>
-                      <a class="btn btn-success" id= "createNewEvent" href="/event/new">Create New Event</a>
+<!--                     only band members should be able to create new events for the band
+ -->                <% for (let i = 0; i < artist.usersWithAccess.length; i++) { -%>
+                      <%if (user.id.toString() === artist.usersWithAccess[i].id.toString()) {%>
+                        <a class="btn btn-success" id= "createNewEvent" href="/event/new">Create New Event</a>
+                      <%}%>
+                    <% } %>
+                    
                     </div>
 
                     <div class="tab-pane fade in" id="tab4">
@@ -182,13 +196,16 @@
               </div>
             </div>
 
-
-              <div class="col-lg-12 col-sm-12">
-          			<a class="btn btn-outline-dark btn-sm btn-block" id="edit-artist" href="/artist/<%= artist.id %>/edit">Edit <%=artist.name%></a>
-          				<form action="/artist/<%= artist.id %>?_method=DELETE" method="POST">
-          					<button class="btn btn-outline-danger btn-sm btn-block" type="submit">Delete <%=artist.name%></button>
-          			</form>
-          		</div>
+            <% for (let i = 0; i < artist.usersWithAccess.length; i++) { -%>
+              <%if (user.id.toString() === artist.usersWithAccess[i].id.toString()) {%>
+                <div class="col-lg-12 col-sm-12">
+            			<a class="btn btn-outline-dark btn-sm btn-block" id="edit-artist" href="/artist/<%= artist.id %>/edit">Edit <%=artist.name%></a>
+            				<form action="/artist/<%= artist.id %>?_method=DELETE" method="POST">
+            					<button class="btn btn-outline-danger btn-sm btn-block" type="submit">Delete <%=artist.name%></button>
+            			</form>
+            		</div>
+              <%}%>
+            <% } %>
 
  	       </main>
          

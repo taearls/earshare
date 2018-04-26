@@ -134,9 +134,25 @@ router.get('/:artistId/addUser/:userId', async (req, res, next) => {
 	try {
 		const addedUser = await User.findById(req.params.userId);
 		const band = await Artist.findById(req.params.artistId);
-		
+		// find all events the band is a part of and give access to new band member
+		const bandEvents = await Event.find({"hostArtists.id": req.params.artistId});
+
+
+
 		// add new member to the band
 		band.usersWithAccess.push(addedUser);
+
+		// give access to new band member to all band events
+		for (let i = 0; i < bandEvents.length; i++) {
+			for (let j = 0; j < bandEvents[i].hostArtists.length; j++) {
+				// check if artist id is the same as band
+				if (band._id === bandEvents[i].hostArtists[j]._id) {
+					console.log("hit");
+					bandEvents[i].hostArtists[j].usersWithAccess.push(addedUser);
+				}
+			}
+		}
+
 
 		const uniqueMembers = {};
 
@@ -217,22 +233,22 @@ router.get('/:id', async (req, res, next) => {
 		// This is the artist that is on the page
 		const artist = await Artist.findById(req.params.id);
 
-		const currentUser = await User.find({"username": req.session.username});
+		const currentUser = await User.findOne({"username": req.session.username});
 		// This should be the user Id of the users that are already in the band
 		const userIds = [];
 
 		
-			artist.usersWithAccess.forEach((user) => {
-				userIds.push( user._id );
-			})
+		artist.usersWithAccess.forEach((user) => {
+			userIds.push( user._id );
+		})
 	
 
 		// console.log('--------------------------------------------')
 		// console.log(userIds[0], userIds[1] );
 		// console.log('--------------------------------------------')
 		
-
-		const nonMembers = await User.find({ "_id": { "$nin": userIds } })
+		const bandMembers = await User.find({ "_id": { "$in": userIds} });
+		const nonMembers = await User.find({ "_id": { "$nin": userIds } });
 		// console.log('--------------------------')
 		// console.log(nonMembers)
 		// console.log('=================================')
@@ -248,7 +264,8 @@ router.get('/:id', async (req, res, next) => {
 		res.render('artist/show.ejs', {
 			artist: artist,
 			user: currentUser,
-			usersToAdd: nonMembers
+			usersToAdd: nonMembers,
+			bandMembers: bandMembers
 		});
 	} catch (err) {
 		next(err);

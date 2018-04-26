@@ -109,8 +109,13 @@ router.post('/', async (req, res, next) => {
     // this will populate the "affiliated artists"
     createdEvent.hostArtists.push({
     	name: artistHost.name.toString(),
-    	id: artistHost.id.toString()
+    	artist_id: artistHost._id.toString(),
+    	usersWithAccess: artistHost.usersWithAccess
     });
+    // for (let i = 0; i < artistHost.usersWithAccess.length; i++) {
+    // 	createdEvent.hostArtists.usersWithAccess.push(artistHost.usersWithAccess[i]);
+    // }
+    console.log(createdEvent.hostArtists, " this is the artist that created the event");
     const savedEvent = await createdEvent.save();
 
     // this will make the event show up in the artist schema
@@ -129,9 +134,28 @@ router.get('/:id', async (req, res, next) => {
 	try {
 		const allUsers = await User.find();
 		const eventToUpdate = await Event.findById(req.params.id);
+
+		// we need the current user to compare against
+		const currentUser = await User.findOne({"username": req.session.username});
+
+		// find the artists who are hosts of the event
+		const hostArtists = await Artist.find({"events._id": req.params.id})
+
+		// push users with access to this array
+		// on show page, if one of these artists is the current user, we will grant access
+		let giveMeAccess;
+
+		hostArtists.forEach((artist) => {
+			giveMeAccess = artist.usersWithAccess;
+		});
+
+		console.log(giveMeAccess, " these are band members");
+
 		res.render('event/show.ejs', {
 			users: allUsers,
-			event: eventToUpdate
+			event: eventToUpdate,
+			bandMembers: giveMeAccess,
+			user: currentUser
 		});
 	} catch (err) {
 		next(err);
