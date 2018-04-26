@@ -1,31 +1,4 @@
 
-// const User = require('../models/user.js');
-// console.log(User);
-
-// console.log("connected");
-
-// $('a').on('click', (e) => {
-//     // console.log(e.currentTarget.innerText);
-//
-//     if(e.currentTarget.innerText === 'Login'){
-//
-//         if($('#login').hasClass('invisible')){
-//            $('#login').toggleClass('invisible');
-//            $('#registration').toggleClass('invisible')
-//
-//         }
-//
-//     } else if (e.currentTarget.innerText === 'Register'){
-//
-//       if($('#registration').hasClass('invisible')){
-//         $('#registration').toggleClass('invisible')
-//         $('#login').toggleClass('invisible')
-//       }
-//     } else {
-//       // console.log("do nothing");
-//     }
-// });
-
 //need to toggle create event button class
 $('#createNewEvent').on('click', e => {
       if($('#createNewEvent').hasClass('invisible')){
@@ -40,13 +13,6 @@ $('#createNewEvent').on('click', e => {
 // $('img[src=""]').hide();
 $('img[src=""]').attr('src', "../images/missing-image.png")
 
-
-
-// make image pics change to this if no input?
-// src="https://placehold.it/150x80?text=IMAGE"
-// $('<img>').error(function(){
-//         $(this).attr('src', 'public/images/missing-image.png');
-// });
 
 //modals
 
@@ -90,4 +56,3 @@ $('#artistUserLike').click(function() {
       return count;
     });
 });
-
