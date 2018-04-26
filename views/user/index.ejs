@@ -14,14 +14,13 @@
 
 
 <body>
+	
 	<header>
-		<nav id="navbar">
+<!-- 		NAV
+ -->	<nav id="navbar">
 				<div class="container-fluid">
 
 						<ul class="nav navbar-left">
-
-
-
 							<li class="active"><a href="/">Home</a></li>
 							<li><a href="/artist">Artists</a></li>
 							<li><a href="/event">Events</a></li>
@@ -30,37 +29,42 @@
 						<ul class="nav navbar-right">
 							<li><a href="/artist/new"><span class="glyphicon glyphicon-plus"></span> Become an Artist</a></li>
 						</ul>
-					</div>
-				</nav>
+				</div>
+		</nav>
+
 
 		<div id="index-jumbo">
 			<div class="jumbotron">
-  			<div class="container text-center">
-    			<h1 class = "indexHeader">Users</h2>
+	  			<div class="container text-center">
+	    			<h1 class = "indexHeader">Users</h2>
 				</div>
-  		</div>
+  			</div>
 		</div>
 
-		</header>
+	</header>
 
-  	<div class="d-flex justify-content-around">
+	<main>
+<!-- 		DISPLAY USERS
+ -->  	<div class="d-flex justify-content-around">
 
-					<%for (let i = 0; i < users.length; i++) {%>
+			<%for (let i = 0; i < users.length; i++) {%>
 
-						<div class="picContainer-fluid">
-							<div class="col-med-6">
+				<div class="picContainer-fluid">
+					<div class="col-med-6">
+						<img src="<%=users[i].avatar%>" id="userListPic" class="img-responsive" style="width:100%" alt="">
+						<div class="overlay">
+							<div class="linkText"><p><a class="indexLink" href="/user/<%=users[i].id%>"><%=users[i].username%></a></p><br /></div>
 
-								<img src="<%=users[i].avatar%>" id="userListPic" class="img-responsive" style="width:100%" alt="">
-								<div class="overlay">
-								<div class="linkText"><p><a class="indexLink" href="/user/<%=users[i].id%>"><%=users[i].username%></a></p><br /></div>
-
-								</div>
-						  </div>
 						</div>
-					<%}%>
+				    </div>
 				</div>
+			<%}%>
+		</div>
 
-	<footer class="container-fluid text-center">
+	</main>
+
+<!-- 	LOGOUT
+ --><footer class="container-fluid text-center">
 
 		<%if (loggedIn) { %>
 			<form action="/logout" method="GET">
@@ -71,7 +75,7 @@
 	</footer>
 
 
-<script src="/js/app.js"></script>
+	<script src="/js/app.js"></script>
 
 </body>
 </html>

@@ -11,7 +11,9 @@
 	</style>
 </head>
 <body>
-	<header>
+
+<!-- 	NAV
+ --><header>
 		<nav id="navbar">
 				<div class="container-fluid">
 
@@ -31,25 +33,26 @@
 		</div>
 	</header>
 
-
-	<div class="container-fluid">
-		<div class="col-lg-12 col-sm-12">
+	<main>
+<!-- 	USER DISPLAY
+	 --><div class="container-fluid">
+			<div class="col-lg-12 col-sm-12">
 				<div class="row justify-content-around">
 
-	    		<div class="card-hovercard">
+		    		<div class="card-hovercard">
 
-	        	<div class="card-background">
-	            <img id="userListPic" class="card-bkimg" alt="<%=user.username%>'s Avatar" src="<%=user.avatar%>">
-	            <!-- Img here-->
-	        	</div>
+		        		<div class="card-background">
+		            		<img id="userListPic" class="card-bkimg" alt="<%=user.username%>'s Avatar" src="<%=user.avatar%>">
+		        		</div>
 
-	        <div class="card-info"> <span class="card-title"><h3> <%=user.username%></h3></span>
-
-	        </div>
-	    	</div>
+		        		<div class="card-info"> <span class="card-title"><h3> <%=user.username%></h3></span></div>
+		    		</div>
+				</div>
 			</div>
+		</div>
 
-	    <div class="btn-pref btn-group btn-group-justified btn-group-lg" role="group" aria-label="...">
+<!-- 		TAB NAMES
+ -->	<div class="btn-pref btn-group btn-group-justified btn-group-lg" role="group" aria-label="...">
 	        <div class="btn-group" role="group">
 	            <button type="button" id="stars" class="btn btn-dark" href="#tab1" data-toggle="tab"><span class="glyphicon glyphicon-star" aria-hidden="true"></span>
 	                <div class="hidden-xs">About</div>
@@ -72,7 +75,8 @@
 	        </div>
 	    </div>
 
-	      <div class="well">
+<!-- 	    TAB CONTENTS
+ -->	    <div class="well">
 			      <div class="tab-content">
 
 			        <div class="tab-pane fade in active" id="tab1">
@@ -110,12 +114,11 @@
       						</ul>
 			        </div>
 			      </div>
-	    </div>
-
-	    </div>
+	    	</div>
 
 
-		<div class="col-lg-12 col-sm-12">
+<!-- 	    EDIT/DELETE USER
+ -->	<div class="col-lg-12 col-sm-12">
 			<%if (user._id.toString() === currentUser._id.toString()) {%>
 				<a class="btn btn-outline-dark btn-sm btn-block" id="edit-user" href="/user/<%= user.id %>/edit">Edit <%=currentUser.username%></a>
 					<form action="/user/<%= user.id %>?_method=DELETE" method="POST">
@@ -123,18 +126,18 @@
 				</form>
 			<%}%>
 		</div>
+	</main>
 
 
 
+<!-- 		LOGOUT BUTTON
+ --><footer class="container-fluid text-center">
+		<form action="/logout" method="GET">
+	   		<input type="submit" class="btn-block" id="logout" value="Logout <%=currentUser.username%>" />
+		</form>
+	</footer>
 
-
-		<footer class="container-fluid text-center">
-			<form action="/logout" method="GET">
-	   			<input type="submit" class="btn-block" id="logout" value="Logout <%=currentUser.username%>" />
-			</form>
-		</footer>
-
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-  		<script src="/js/app.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  	<script src="/js/app.js"></script>
 </body>
 </html>
