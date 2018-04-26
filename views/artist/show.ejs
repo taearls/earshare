@@ -52,8 +52,9 @@
 
                   <div class="card-info"> <span class="card-title"><h3><%=artist.name%></h3></span>
 
-                        <a href="/artist/addUser/<%=user.id%>/<%=artist.id%>">
-                      <span class= "glyphicon glyphicon-heart"></span> Like <%=artist.name%></a>
+                    <form action="/artist/addUser/<%=user.id%>" method="GET">
+                      <input type="submit" class="btn btn-info btn-lg" id="like-button" value="&hearts; Like <%=artist.name%>" />
+                    </form>
                 </div>
             </div>
           </div>
