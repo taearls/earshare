@@ -16,8 +16,8 @@
   	</style>
   </head>
   <body>
-
-      <header>
+<!--       NAV
+ -->  <header>
         <nav id="navbar">
             <div class="container-fluid">
 
@@ -30,21 +30,21 @@
                 <ul class="nav navbar-right">
                   <li><a href="/user"><span class="glyphicon glyphicon-plus"></span> Back to Users</a></li>
                 </ul>
-              </div>
             </div>
-          </nav>
+        </nav>
 
-        </div>
       </header>
 
 
+      <main>
 
         <div class="container-fluid">
           <div class="col-lg-12 col-sm-12">
-            <div class="row justify-content-around">
 
+
+<!--             ARTIST TOP DISPLAY
+ -->        <div class="row justify-content-around">
               <div id="card hovercard">
-
 
                   <div class="card-background">
                     <img id= "artistListPic" class="card-bkimg" alt="<%=artist.name%>'s Avatar" src="<%=artist.img%>">
@@ -53,14 +53,13 @@
                   <div class="card-info"> <span class="card-title"><h3><%=artist.name%></h3></span>
 
                     <a href="/artist/addUser/<%=user.id%>/<%=artist._id%>" class="btn btn-info btn-lg" id="like-button"><span class="glyphicon glyphicon-heart"></span> Like <%=artist.name%></a>
-                   <!--  <form action="/artist/addUser/<%=user.id%>/<%=artist._id%>" method="GET">
-                      <input type="submit" class="btn btn-info btn-lg" id="like-button" value="&hearts; Like <%=artist.name%>" />
-                    </form> -->
-                </div>
-            </div>
-          </div>
 
-            <div class="btn-pref btn-group btn-group-justified btn-group-lg" role="group" aria-label="...">
+                  </div>
+              </div>
+            </div>
+
+<!--             TABS
+ -->          <div class="btn-pref btn-group btn-group-justified btn-group-lg" role="group" aria-label="...">
                 <div class="btn-group" role="group">
                     <button type="button" id="stars" class="btn btn-dark" href="#tab1" data-toggle="tab"><span class="glyphicon glyphicon-star" aria-hidden="true"></span>
                         <div class="hidden-xs">About</div>
@@ -88,11 +87,14 @@
 
             </div>
 
+<!--             TAB CONTENTS
+ -->
               <div class="well">
 
                   <div class="tab-content">
 
-                    <div class="tab-pane fade in active" id="tab1">
+<!--                ABOUT THE ARTIST 
+ -->                <div class="tab-pane fade in active" id="tab1">
                         <ul>
                           <li>Genre: <%=artist.genre%></li>
                           <li>Location: <%=artist.location%></li>
@@ -102,7 +104,10 @@
                       </h3>
                     </div>
 
-                    <div class="tab-pane fade in" id="tab2">
+
+
+<!--                BAND MEMBERS
+ -->                <div class="tab-pane fade in" id="tab2">
                       <h3> <%=artist.name%> Members </h3>
                         <ul>
                           <% for (let i = 0; i < artist.usersWithAccess.length; i++) { -%>
@@ -110,7 +115,9 @@
                           <% } -%>
                         </ul>
 
-<!--                     only band members should be able to add a member
+
+<!--                ADD MEMBERS
+ --><!--            only band members should be able to add a member
  -->                <% for (let i = 0; i < artist.usersWithAccess.length; i++) { -%>
                       <%if (user.id.toString() === artist.usersWithAccess[i].id.toString()) {%>
                         <div class="btn-group dropright">
@@ -130,11 +137,12 @@
                       <%}%>
                     <%}%>
 
-
-<!--                         make the two buttons on top of each other
- -->                    <br/>
-<!--                     only band members should be able to remove a member
- -->                <% for (let i = 0; i < artist.usersWithAccess.length; i++) { -%>
+                    <br/>
+<!--               REMOVE MEMBER
+ -->                    
+<!--               only band members should be able to remove a member
+ -->                
+                    <% for (let i = 0; i < artist.usersWithAccess.length; i++) { -%>
                       <%if (user.id.toString() === artist.usersWithAccess[i].id.toString()) {%>
                         <div class="btn-group dropright">
                             <button type="button" class="btn btn-danger">
@@ -164,9 +172,10 @@
                     <%}%>
 
 
-
                     </div>
 
+<!--                ARTIST EVENTS
+ -->
                     <div class="tab-pane fade in" id="tab3">
                       <h3>Created Events</h3>
                       <ul>
@@ -174,7 +183,9 @@
                         <li><a href="/event/<%=artist.events[i]._id%>"> <%= artist.events[i].name%></a></li>
                       <% } -%>
                       </ul>
-<!--                     only band members should be able to create new events for the band
+
+<!--                CREATE EVENT BUTTON
+ --><!--            only band members should be able to create new events for the band
  -->                <% for (let i = 0; i < artist.usersWithAccess.length; i++) { -%>
                       <%if (user.id.toString() === artist.usersWithAccess[i].id.toString()) {%>
 
@@ -187,6 +198,8 @@
 
                     </div>
 
+<!--                ARTIST FANS
+ -->
                     <div class="tab-pane fade in" id="tab4">
                       <%if (artist.usersWhoLike.length === 1){%>
                         <h3> <%=artist.usersWhoLike.length%> Fan</h3>
@@ -204,8 +217,9 @@
                 </div>
               </div>
             </div>
-
-            <% for (let i = 0; i < artist.usersWithAccess.length; i++) { -%>
+            
+<!--             EDIT AND DELETE ARTIST BUTTONS
+ -->        <% for (let i = 0; i < artist.usersWithAccess.length; i++) { -%>
               <%if (user.id.toString() === artist.usersWithAccess[i].id.toString()) {%>
                 <div class="col-lg-12 col-sm-12">
             			<a class="btn btn-outline-dark btn-sm btn-block" id="edit-artist" href="/artist/<%= artist.id %>/edit">Edit <%=artist.name%></a>
@@ -216,8 +230,9 @@
               <%}%>
             <% } %>
 
- 	       </main>
+ 	    </main>
 
+<!--   LOGOUT -->
   <footer class="container-fluid text-center">
     <form action="/logout" method="GET">
         <input type="submit" class="btn-block" id="logout" value="Logout <%=user.username%>" />
