@@ -124,8 +124,8 @@ router.get('/logout', async (req, res, next) => {
 	try {
 		// find the user
 		// if the user is not in the database, it will return null
+		req.session.message = req.session.username + " has successfully logged out.";
 		req.session.loggedIn = false;
-		req.session.message = "User has successfully logged out.";
 
 		res.redirect('/');
 	} catch (err) {
