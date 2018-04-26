@@ -30,9 +30,12 @@ router.get("/:id", async (req, res, next) => {
 	try {
 		const foundUser = await User.findById(req.params.id);
 		const allArtists = await Artist.find();
+		const loggedUser = await User.findOne({"username": req.session.username});
+		console.log(loggedUser, "this should be the logged in user");
 		res.render('user/show.ejs', {
 			user: foundUser,
-			allArtists: allArtists
+			allArtists: allArtists,
+			currentUser: loggedUser
 		})
 	} catch (err) {
 		next(err);
@@ -104,8 +107,14 @@ router.delete("/:id", async (req, res, next) => {
 				}
 			}
 		}
+		if (deletedUser.username.toString() === req.session.username.toString()) {
+			req.session.message = "User has been deleted. Please log in or register to continue.";
+			req.session.loggedIn = false;
+			res.redirect('/');
+		} else {
+			res.redirect("/user");
+		}
 
-		res.redirect("/user");
 	} catch (err) {
 		next(err);
 	}

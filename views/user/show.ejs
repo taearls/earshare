@@ -117,10 +117,12 @@
 
 
 		<div class="col-lg-12 col-sm-12">
-			<a class="btn btn-outline-dark btn-sm btn-block" id="edit-user" href="/user/<%= user.id %>/edit">Edit User</a>
-				<form action="/user/<%= user.id %>?_method=DELETE" method="POST">
-					<button class="btn btn-outline-danger btn-sm btn-block" type="submit">Delete User</button>
-			</form>
+			<%if (user._id.toString() === currentUser._id.toString()) {%>
+				<a class="btn btn-outline-dark btn-sm btn-block" id="edit-user" href="/user/<%= user.id %>/edit">Edit <%=currentUser.username%></a>
+					<form action="/user/<%= user.id %>?_method=DELETE" method="POST">
+						<button class="btn btn-outline-danger btn-sm btn-block" type="submit">Delete <%=currentUser.username%></button>
+				</form>
+			<%}%>
 		</div>
 
 
