@@ -8,6 +8,7 @@ html {
 	background-color: #eceff1;
 }
 
+
 #navbar {
 	background-color: #102027;
 	font-family: @navFont;
@@ -37,6 +38,7 @@ html {
 	}
 }
 
+
 #logout {
 	background-color: #ff7043;
 	color: white;
@@ -47,7 +49,8 @@ html {
 	}
 }
 
-#edit-user, #edit-artist, #edit-event {
+
+#edit-user, #edit-artist, #edit-event, #edit-submit, #new-submit {
 	&:hover {
 		color: white;
 		transition: .5s ease;
@@ -95,8 +98,6 @@ ul {
 		text-transform: uppercase;
 	}
 }
-
-
 
 
 /* Container holding the image and the text */
@@ -177,6 +178,23 @@ ul {
 }
 
 
+.hidden-xs {
+	font-family: @textFont;
+}
+
+#tab1, #tab2, #tab3, #tab4 {
+	font-family: @textFont;
+	font-size: 1.5em;
+		a {
+			font-size: 1.5em;
+			text-decoration: none;
+			color: #f4511e;
+				&:hover {
+					color: #1c313a;
+				}
+		}
+}
+
 //homepage
 .jumbotron {
     background-color:transparent !important;
@@ -196,6 +214,7 @@ ul {
 	}
 
 //carousel
+
 
 //MODALS
 #loginModal, #registerModal {

@@ -14,7 +14,7 @@
 
   <body>
     <header>
-      <nav class="navbar navbar-inverse">
+      <nav id="navbar" class="navbar navbar-inverse">
           <div class="container-fluid">
 
               <ul class="nav navbar-left">
@@ -52,12 +52,12 @@
               <input type="text" class= "form-control" name="website" value="<%=artist.website%>"><br />
 
               <label class= "control-label" for="artistImage">Edit Image:</label>
-              <input type="text" class= "form-control" name="img" value="<%=artist.img%>"><br />
+              <input type="text" class= "form-control" name="img" value=""><br />
 
               <label class= "control-label" for="artistDescription">Edit Artist Description:</label><br />
               <textarea name="description" rows="12" cols="80" placeholder="Description"><%=artist.description%></textarea><br /><br />
 
-              <button class="btn btn-success mb-2 btn-block" type="submit">Submit Changes</button>
+              <button id="edit-submit" class="btn btn-dark mb-2 btn-block" type="submit">Submit Changes</button>
             </form>
           </div>
 

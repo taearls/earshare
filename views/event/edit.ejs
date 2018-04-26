@@ -13,12 +13,12 @@
 <body>
 
 	<header>
-		<nav class="navbar navbar-inverse">
+		<nav id= "navbar" class="navbar navbar-inverse">
 				<div class="container-fluid">
 
 						<ul class="nav navbar-left">
 							<li class="active"><a href="/">Home</a></li>
-							<li><a href="/user">Users</a></li>									
+							<li><a href="/user">Users</a></li>
 							<li><a href="/artist">Artists</a></li>
 						</ul>
 
@@ -50,12 +50,12 @@
 						<input type="text" class= "form-control" name="date" placeholder="Event Date" value="<%=event.date%>"><br />
 
 						<label class= "control-label" for="updateEventImage">Update Event Image:</label>
-						<input type="text" class= "form-control" name="img" placeholder="Event Image" value="<%=event.img%>"><br />
+						<input type="text" class= "form-control" name="img" placeholder="Event Image" value=""><br />
 
 						<label class= "control-label" for="updateEventDescription">Update Event Description:</label><br />
 						<textarea name="description" rows="4" cols="40" placeholder="Description"><%=event.description%></textarea><br />
 
-						<button class="btn btn-success mb-2 btn-block" type="submit">Submit Changes</button>
+						<button id= "edit-event" class="btn btn-dark mb-2 btn-block" type="submit">Submit Changes</button>
 					</form>
 				</div>
 

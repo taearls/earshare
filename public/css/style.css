@@ -39,7 +39,9 @@ html {
 }
 #edit-user:hover,
 #edit-artist:hover,
-#edit-event:hover {
+#edit-event:hover,
+#edit-submit:hover,
+#new-submit:hover {
   color: white;
   transition: .5s ease;
 }
@@ -151,6 +153,30 @@ ul {
 #fans {
   background-color: #CFD5E5;
   color: white;
+}
+.hidden-xs {
+  font-family: 'Maven Pro', sans-serif;
+}
+#tab1,
+#tab2,
+#tab3,
+#tab4 {
+  font-family: 'Maven Pro', sans-serif;
+  font-size: 1.5em;
+}
+#tab1 a,
+#tab2 a,
+#tab3 a,
+#tab4 a {
+  font-size: 1.5em;
+  text-decoration: none;
+  color: #f4511e;
+}
+#tab1 a:hover,
+#tab2 a:hover,
+#tab3 a:hover,
+#tab4 a:hover {
+  color: #1c313a;
 }
 .jumbotron {
   background-color: transparent !important;
