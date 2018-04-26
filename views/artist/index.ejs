@@ -13,57 +13,56 @@
 
 <body>
 
+	
 	<header>
 		<nav id="navbar">
-				<div class="container-fluid">
+			<div class="container-fluid">
 
-						<ul class="nav navbar-left">
-							<li class="active"><a href="/">Home</a></li>
-							<li><a href="/user">Users</a></li>
-							<li><a href="/event">Events</a></li>
-						</ul>
+				<ul class="nav navbar-left">
+					<li class="active"><a href="/">Home</a></li>
+					<li><a href="/user">Users</a></li>
+					<li><a href="/event">Events</a></li>
+				</ul>
 
-					</div>
-				</div>
-			</nav>
-
-		</div>
+			</div>
+		</nav>
 
 		<div id="index-jumbo">
 			<div class="jumbotron">
-	  		<div class="container text-center">
-	    		<h1 class= "indexHeader">Artists</h1>
-	  	</div>
+		  		<div class="container text-center">
+		    		<h1 class= "indexHeader">Artists</h1>
+		  		</div>
+			</div>
 		</div>
-	</div>
 
 
 	</header>
 
-			<main>
+<!-- 	ALL ARTISTS
+ --><main>
 
 
-						<div class="d-flex justify-content-around">
+		<div class="d-flex justify-content-around">
 
-							<%for (let i = 0; i < artists.length; i++) {%>
-									<div class="picContainer-fluid">
-										<div class="col-med-6">
+			<%for (let i = 0; i < artists.length; i++) {%>
+				<div class="picContainer-fluid">
+					<div class="col-med-6">
 
-												<img src="<%=artists[i].img%>" id="artistListPic" class="img-responsive" style="width:100%" alt="<%=artists[i].name%>'s Photo">
-												<div class="overlay">
+						<img src="<%=artists[i].img%>" id="artistListPic" class="img-responsive" style="width:100%" alt="<%=artists[i].name%>'s Photo">
+						<div class="overlay">
 
-													<div class="linkText"><p><a class="indexLink" href="/artist/<%=artists[i].id%>"><%=artists[i].name%></a></p></div>
+							<div class="linkText"><p><a class="indexLink" href="/artist/<%=artists[i].id%>"><%=artists[i].name%></a></p></div>
 
-										</div>
-									</div>
-								</div>
-
-						<%}%>
+						</div>
+					</div>
 				</div>
+			<%}%>
+		</div>
 
-			</main>
+	</main>
 
-	<footer class="container-fluid text-center">
+<!-- 	LOGOUT
+ -->	<footer class="container-fluid text-center">
 		<%if (loggedIn) { %>
 			<form action="/logout" method="GET">
 	   			<input type="submit" class="btn-block" id="logout" value="Logout <%=user.username%>" />
