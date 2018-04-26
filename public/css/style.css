@@ -130,6 +130,9 @@ ul {
 .card-info a:hover {
   text-decoration: none;
 }
+.card-title h3 {
+  font-size: 36px;
+}
 #stars:hover {
   color: white;
 }
@@ -157,27 +160,29 @@ ul {
 #createNewEvent:hover {
   color: white;
 }
-#tab1,
+#tab1 {
+  font-family: 'Maven Pro', sans-serif;
+}
+#tab1 ul {
+  font-size: 24px;
+}
 #tab2,
 #tab3,
 #tab4 {
   font-family: 'Maven Pro', sans-serif;
   font-size: 1.5em;
 }
-#tab1 ul,
 #tab2 ul,
 #tab3 ul,
 #tab4 ul {
   font-size: 1.5em;
 }
-#tab1 a,
 #tab2 a,
 #tab3 a,
 #tab4 a {
   text-decoration: none;
   color: #f4511e;
 }
-#tab1 a:hover,
 #tab2 a:hover,
 #tab3 a:hover,
 #tab4 a:hover {
