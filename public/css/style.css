@@ -157,21 +157,30 @@ ul {
 #createNewEvent:hover {
   color: white;
 }
-#createNewEvent #tab1,
-#createNewEvent #tab2,
-#createNewEvent #tab3,
-#createNewEvent #tab4 {
+#tab1,
+#tab2,
+#tab3,
+#tab4 {
   font-family: 'Maven Pro', sans-serif;
   font-size: 1.5em;
 }
-#createNewEvent ul {
+#tab1 ul,
+#tab2 ul,
+#tab3 ul,
+#tab4 ul {
   font-size: 1.5em;
 }
-#createNewEvent a {
+#tab1 a,
+#tab2 a,
+#tab3 a,
+#tab4 a {
   text-decoration: none;
   color: #f4511e;
 }
-#createNewEvent a:hover {
+#tab1 a:hover,
+#tab2 a:hover,
+#tab3 a:hover,
+#tab4 a:hover {
   color: #1c313a;
 }
 .jumbotron {
@@ -186,7 +195,7 @@ ul {
 #index-jumbo h1 {
   font-family: 'Shrikhand', cursive;
   color: rgba(230, 96, 67, 0.75);
-  font-size: 5em;
+  font-size: 7em;
 }
 #homepage-jumbo h3,
 #index-jumbo h3 {
