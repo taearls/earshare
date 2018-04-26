@@ -170,29 +170,29 @@ ul {
   font-family: 'Maven Pro', sans-serif;
   color: #e2f1f8;
 }
-.caro #loginModal,
+#loginModal,
 #registerModal {
   background-color: rgba(255, 162, 112, 0.4);
 }
-.caro #loginModal .modal-header,
+#loginModal .modal-header,
 #registerModal .modal-header {
   background-color: #c75b39;
   color: #e0e0e0;
   font-family: 'Permanent Marker', cursive;
   text-transform: uppercase;
 }
-.caro #loginModal .modal-body,
+#loginModal .modal-body,
 #registerModal .modal-body {
   background-color: rgba(207, 216, 220, 0.7);
   font-family: 'Maven Pro', sans-serif;
   text-transform: uppercase;
 }
-.caro #loginModal .btn,
+#loginModal .btn,
 #registerModal .btn {
   background-color: #102027;
   color: #e0e0e0;
 }
-.caro #loginModal .btn:hover,
+#loginModal .btn:hover,
 #registerModal .btn:hover {
   background-color: #FFBB93;
   color: #101f27;
