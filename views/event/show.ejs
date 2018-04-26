@@ -14,6 +14,7 @@
 
 		<body>
 			<header>
+
 				<nav id="navbar">
 						<div class="container-fluid">
 
@@ -27,19 +28,17 @@
 									<li><a href="/event"><span class="glyphicon glyphicon-plus"></span> Back to Events</a></li>
 								</ul>
 							</div>
-						</div>
-					</nav>
+						</nav>
 
-				</div>
 			</header>
 
 
 			<div class="container-fluid">
 				<div class="col-lg-12 col-sm-12">
+
 					<div class="row justify-content-around">
 
-
-			    <div class="card-hovercard">
+			    	<div class="card-hovercard">
 
 			        <div class="card-background">
 			            <img id="eventListPic" class="card-bkimg" alt="<%=event.name%> Image" src="<%=event.img%>">
@@ -48,13 +47,14 @@
 
 			        	<div class="card-info"> <span class="card-title"><h3> <%=event.name%></h3></span>
 			        			<a href="/event/<%=event.id%>/addUser/<%=user.id%>" class="btn btn-info btn-lg" id="event-button"><span class="glyphicon glyphicon-calendar"> </span> Attend <%=event.name%></a>
-								
+
 			      	</div>
 			    	</div>
 					</div>
 
 
 			    <div class="btn-pref btn-group btn-group-justified btn-group-lg" role="group" aria-label="...">
+
 			        <div class="btn-group" role="group">
 			            <button type="button" id="stars" class="btn btn-dark" href="#tab1" data-toggle="tab"><span class="glyphicon glyphicon-star" aria-hidden="true"></span>
 			                <div class="hidden-xs">About</div>
@@ -81,12 +81,12 @@
 
 					        <div class="tab-pane fade in active" id="tab1">
 										<h2>Event Details</h2>
-										<ul>
-											<li>Name: <%= event.name %></li>
-											<li>Description: <%=event.description %></li>
-											<li>Venue: <%= event.venue %></li>
-											<li>Date: <%= event.date %></li>
-										</ul>
+											<ul>
+												<li>Name: <%= event.name %></li>
+												<li>Description: <%=event.description %></li>
+												<li>Venue: <%= event.venue %></li>
+												<li>Date: <%= event.date %></li>
+											</ul>
 					        </div>
 
 
@@ -101,12 +101,12 @@
 
 					        <div class="tab-pane fade in" id="tab3">
 					          <h3>Users Attending: <%= event.usersAttending.length %></h3>
-					          <ul> <% for (let i = 0; i < event.usersAttending.length; i++) { -%>
-		                        <li> <a href="/user/<%=event.usersAttending[i].id%>"> <%=event.usersAttending[i].username%> </a></li>
-		                          <% } -%>
-		                      </ul>
+					          	<ul> <% for (let i = 0; i < event.usersAttending.length; i++) { -%>
+		                       <li> <a href="/user/<%=event.usersAttending[i].id%>"> <%=event.usersAttending[i].username%> </a></li>
+		                         <% } -%>
+		                    </ul>
+										</div>
 
-					        </div>
 					     </div>
 			    	</div>
 			    </div>
@@ -124,22 +124,16 @@
 				</div>
 
 
-
-		</body>
-		</html>
-
-
-
-	<footer class="container-fluid text-center">
-		<form action="/logout" method="GET">
-   			<input type="submit" class="btn-block" id="logout" value="Logout <%=user.username%>" />
-		</form>
-	</footer>
+				<footer class="container-fluid text-center">
+					<form action="/logout" method="GET">
+   				<input type="submit" class="btn-block" id="logout" value="Logout <%=user.username%>" />
+				</form>
+			</footer>
 
 
 
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-  		<script src="/js/app.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  <script src="/js/app.js"></script>
 
 </body>
 </html>
