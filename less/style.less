@@ -151,7 +151,13 @@ ul {
 		a:hover {
 			text-decoration: none;
 		}
+}
+
+.card-title {
+	h3 {
+		font-size: 36px;
 	}
+}
 
 #stars {
 	&:hover {
@@ -186,7 +192,13 @@ ul {
 	}
 }
 
-#tab1, #tab2, #tab3, #tab4 {
+#tab1 {
+	font-family: @textFont;
+	ul {
+		font-size: 24px;
+	}
+}
+#tab2, #tab3, #tab4 {
 	font-family: @textFont;
 	font-size: 1.5em;
 		ul {
@@ -200,6 +212,7 @@ ul {
 				}
 		}
 }
+
 
 //homepage
 .jumbotron {
