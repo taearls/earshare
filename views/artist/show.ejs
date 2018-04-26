@@ -93,10 +93,10 @@
 
                     <div class="tab-pane fade in active" id="tab1">
                         <ul>
-                          <h6>Genre: <%=artist.genre%></h6>
-                          <h6>Location: <%=artist.location%></h6>
-                          <h6>Website: <a href="//<%=artist.website%>"><%=artist.website%></a></h6>
-                          <h6>Description: <%=artist.description%></h6>
+                          <li>Genre: <%=artist.genre%></li>
+                          <li>Location: <%=artist.location%></li>
+                          <li>Website: <a href="//<%=artist.website%>"><%=artist.website%></a></li>
+                          <li>Description: <%=artist.description%></li>
                         </ul>
                       </h3>
                     </div>
@@ -176,10 +176,14 @@
 <!--                     only band members should be able to create new events for the band
  -->                <% for (let i = 0; i < artist.usersWithAccess.length; i++) { -%>
                       <%if (user.id.toString() === artist.usersWithAccess[i].id.toString()) {%>
-                        <a class="btn btn-success" id= "createNewEvent" href="/event/new">Create New Event</a>
+
+                        <form action="/event/new" method="GET">
+                          <input id= "createNewEvent" class="btn-dark" type="submit" value="Create New Event">
+                        </form>
+
                       <%}%>
                     <% } %>
-                    
+
                     </div>
 
                     <div class="tab-pane fade in" id="tab4">
