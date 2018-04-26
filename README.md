@@ -44,34 +44,34 @@ User registration: <br>
 ## Wireframes
 
 Landing Page:
-![Image of Landing Page Wireframe](public/images/wireframes/project_2_wireframes/landing_page_wireframe.png)
+![Image of Landing Page Wireframe](wireframes/project_2_wireframes/landing_page_wireframe.png)
 
 User Registration:
-![Image of User Registration Wireframe](public/images/wireframes/project_2_wireframes/user_artist_registration.png)
+![Image of User Registration Wireframe](wireframes/project_2_wireframes/user_artist_registration.png)
 
 User Login:
-![Image of User Login Wireframe](public/images/wireframes/project_2_wireframes/user_login_wireframe.png)
+![Image of User Login Wireframe](wireframes/project_2_wireframes/user_login_wireframe.png)
 
 User Index:
-![Image of User Index](public/images/wireframes/project_2_wireframes/user_index_wireframe.png)
+![Image of User Index](wireframes/project_2_wireframes/user_index_wireframe.png)
 
 Artist Registration:
-![Image of Artist Registration](public/images/wireframes/project_2_wireframes/user_artist_registration.png)
+![Image of Artist Registration](wireframes/project_2_wireframes/user_artist_registration.png)
 
 Artist Index:
-![Image of Artist Index Wireframe](public/images/wireframes/project_2_wireframes/artist_index.wireframe.png)
+![Image of Artist Index Wireframe](wireframes/project_2_wireframes/artist_index.wireframe.png)
 
 Artist Create Event:
-![Image of Artist Create Event Wireframe](public/images/wireframes/project_2_wireframes/create_event_wireframe.png)
+![Image of Artist Create Event Wireframe](wireframes/project_2_wireframes/create_event_wireframe.png)
 
 Artist Invite User:
-![Image of Artist Invite User Wireframe](public/images/wireframes/project_2_wireframes/artist_invite_users_wireframe.png)
+![Image of Artist Invite User Wireframe](wireframes/project_2_wireframes/artist_invite_users_wireframe.png)
 
 Artist Edit Event:
-![Image of Artist Edit Event Wireframe](public/images/wireframes/project_2_wireframes/edit_event_wireframe.png)
+![Image of Artist Edit Event Wireframe](wireframes/project_2_wireframes/edit_event_wireframe.png)
 
 Event Index:
-![Image of Events Index Wireframe](public/images/wireframes/project_2_wireframes/events_index_wireframe.png)
+![Image of Events Index Wireframe](wireframes/project_2_wireframes/events_index_wireframe.png)
 
 Event By Location:
-![Image of Events by Location Wireframe](public/images/wireframes/project_2_wireframes/wireframe_search_by_location.png)
+![Image of Events by Location Wireframe](wireframes/project_2_wireframes/wireframe_search_by_location.png)

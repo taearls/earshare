@@ -5,7 +5,7 @@ gulp.task("less", () => {
 	// find the file we want to convert
 	// then we need to convert
 	// then we need to send it to where we want
-	gulp.src("./public/less/style.less")
+	gulp.src("./less/style.less")
 		.pipe(less())
 		.pipe(gulp.dest("./public/css/"));
 })

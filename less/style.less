@@ -1,3 +1,4 @@
+@titleFont: 'Shrikhand', cursive;
 @navFont: 'Maven Pro', sans-serif;
 @headerFont:'Permanent Marker', cursive;
 @linkFont: 'Maven Pro', sans-serif;
@@ -127,9 +128,11 @@ ul {
 
 
 //show page card
+
 .container-fluid{
 	background-color: ##cfd8dc;
 }
+
 #card-hovercard {
 	padding: 10px 5px;
 	align-content: center;
@@ -183,6 +186,7 @@ ul {
 	}
 
 #tab1, #tab2, #tab3, #tab4 {
+
 	font-family: @textFont;
 	font-size: 1.5em;
 	}
@@ -207,10 +211,17 @@ ul {
 #homepage-jumbo, #index-jumbo {
 	background-color: #62717b;
 		h1 {
+			font-family: @titleFont;
+			color: rgba(230, 96, 67, 0.75);
+			font-size: 7em;
+		}
+
+		h3 {
 			font-family: @headerFont;
 			font-size: 3em;
 			color: #e2f1f8;
 		}
+
 		p {
 			font-family: @textFont;
 			color: #e2f1f8;
