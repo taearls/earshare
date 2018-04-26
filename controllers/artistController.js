@@ -93,7 +93,7 @@ router.get('/addUser/:userId/:artistId', async (req, res, next) => {
 		band.usersWhoLike = new Array();
 		for ( let key in uniqueFans )
 		    band.usersWhoLike.push(uniqueFans[key]);
-		
+
 		// console.log(uniqueFans, " this should be a list of users without duplicates");
 
 
@@ -111,7 +111,7 @@ router.get('/addUser/:userId/:artistId', async (req, res, next) => {
 		const uniqueArtists = {};
 
 
-		 
+
 		for ( let i=0, len = addedUser.artistsLiked.length; i < len; i++ )
 		    uniqueArtists[addedUser.artistsLiked[i]['name']] = addedUser.artistsLiked[i];
 
@@ -166,7 +166,7 @@ router.get('/:artistId/addUser/:userId', async (req, res, next) => {
 		for ( let key in uniqueMembers ) {
 		    band.usersWithAccess.push(uniqueMembers[key]);
 		}
-			
+
 		const savedBand = await band.save();
 
 		// add band to user's affiliated artists
@@ -200,7 +200,7 @@ router.get('/:artistId/addUser/:userId', async (req, res, next) => {
 	}
 })
 
-// route to delete members from artist 
+// route to delete members from artist
 router.get('/removeUser/:artistId/:userId', async (req, res, next) => {
 	try {
 		const deletedUser = await User.findById(req.params.userId);
@@ -219,15 +219,15 @@ router.get('/removeUser/:artistId/:userId', async (req, res, next) => {
 
 			// remove band from deletedUser's affiliated artist list
 			deletedUser.artists.remove(band);
-			
+
 			// redirect to artist show page using the artistId from the get route
 			res.redirect('/artist/' + req.params.artistId)
-			
-			
+
+
 		}
 
 
-		
+
 	} catch (err) {
 		next(err);
 	}
@@ -243,16 +243,16 @@ router.get('/:id', async (req, res, next) => {
 		// This should be the user Id of the users that are already in the band
 		const userIds = [];
 
-		
+
 		artist.usersWithAccess.forEach((user) => {
 			userIds.push( user._id );
 		})
-	
+
 
 		// console.log('--------------------------------------------')
 		// console.log(userIds[0], userIds[1] );
 		// console.log('--------------------------------------------')
-		
+
 		const bandMembers = await User.find({ "_id": { "$in": userIds} });
 		const nonMembers = await User.find({ "_id": { "$nin": userIds } });
 		// console.log('--------------------------')
@@ -380,7 +380,7 @@ router.delete('/:id', async (req, res, next) => {
     	}
     }
 
-    
+
 
     res.redirect('/artist');
 
@@ -388,6 +388,8 @@ router.delete('/:id', async (req, res, next) => {
     next(err)
   }
 });
+
+
 
 
 

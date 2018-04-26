@@ -5,6 +5,8 @@ const bodyParser = require('body-parser');
 const methodOverride = require('method-override');
 const session = require('express-session');
 const expressLayouts = require('express-ejs-layouts');
+const path = require('path')
+
 
 app.set('view engine', 'ejs')
 require('./db/db');
@@ -22,6 +24,10 @@ app.use(methodOverride('_method'));
 app.use(expressLayouts);
 app.use(bodyParser.urlencoded({extended: false}));
 
+app.get('/svg', (req, res) => {
+	res.setHeader('Content-type', 'image/svg+xml');
+	res.sendFile(path.join(__dirname, './public/images/logo-lrg.svg'))
+})
 
 app.use((req, res, next) => {
 	// check where user is going using req.path
