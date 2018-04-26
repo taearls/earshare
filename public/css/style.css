@@ -154,6 +154,7 @@ ul {
 }
 .jumbotron {
   background-color: transparent !important;
+  margin: 0 !important;
 }
 #homepage-jumbo,
 #index-jumbo {
@@ -162,13 +163,16 @@ ul {
 #homepage-jumbo h1,
 #index-jumbo h1 {
   font-family: 'Permanent Marker', cursive;
-  font-size: 5em;
+  font-size: 3em;
   color: #e2f1f8;
 }
 #homepage-jumbo p,
 #index-jumbo p {
   font-family: 'Maven Pro', sans-serif;
   color: #e2f1f8;
+}
+#carousel {
+  background-color: rgba(207, 216, 220, 0.7);
 }
 #loginModal,
 #registerModal {
