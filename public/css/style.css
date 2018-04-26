@@ -12,6 +12,12 @@ html {
 #navbar a:hover {
   background-color: rgba(46, 57, 62, 0.83);
 }
+#home-message {
+  color: white;
+  text-align: center;
+  font-family: 'Permanent Marker', cursive;
+  font-size: 24px;
+}
 #like-button,
 #event-button {
   background-color: #607d8b;
