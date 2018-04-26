@@ -11,7 +11,7 @@ const eventSchema = new mongoose.Schema({
       img: String,
       hostArtists: [{
           name: String,
-          id: String
+          artist_id: String
       }],
       meta: {
           attending: Number
