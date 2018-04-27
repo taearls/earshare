@@ -72,7 +72,11 @@
                                  <h3> User</h3>
                                  <p> User Description</p>
                                  <%} else {%>
+                                   <div style="max-height:450px; max-width:450px; overflow: hidden">
                                    <img id= "userListPic" alt="<%=users[userNum].username%> Image" src="<%=users[userNum].img%>">
+                                   </div>
+
+                                   </div>
                                     <h3>
                                     <a id="user-carousel" href="/user"><%=users[userNum].username%></a></h3>
                                     <p><%=users[userNum].description%></p>
@@ -89,7 +93,9 @@
                                    <h3> Artist</h3>
                                    <p> Artist Description</p>
                                  <%} else {%>
+                                   <div style="max-height:450px; max-width:450px; overflow: hidden">
                                    <img id="artistListPic" alt="<%=artists[artistNum].name%> Image" src="<%=artists[artistNum].img%>">
+                                 </div>
                                    <h3>
                                     <a id="artist-carousel" href="/artist"><%=artists[artistNum].name%></a></h3>
                                     <p><%=artists[artistNum].description%></p>
@@ -106,7 +112,9 @@
                                  <h3> Event</h3>
                                  <p> Event Description</p>
                                <%} else {%>
-                                 <img id= "eventListPic" alt="<%=events[eventNum].name%> Image" src="<%=events[eventNum].img%>">
+                                 <div style="max-height:450px; max-width:450px; overflow: hidden">
+                                   <img id= "eventListPic" alt="<%=events[eventNum].name%> Image" src="<%=events[eventNum].img%>">
+                                  </div>
                                  <h3>
                                   <a id="event-carousel" href="/event"><%=events[eventNum].name%></a></h3>
                                   <p><%=events[eventNum].description%></p>
