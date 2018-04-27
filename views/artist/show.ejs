@@ -47,7 +47,9 @@
               <div id="card hovercard">
 
                   <div class="card-background">
+                    <div style="max-height:450px; max-width:450px; overflow: hidden">
                     <img id= "artistListPic" class="card-bkimg" alt="<%=artist.name%>'s Avatar" src="<%=artist.img%>">
+                  </div>
                   </div>
 
                   <div class="card-info"> <span class="card-title"><h3><%=artist.name%></h3></span>
@@ -93,7 +95,7 @@
 
                   <div class="tab-content">
 
-<!--                ABOUT THE ARTIST 
+<!--                ABOUT THE ARTIST
  -->                <div class="tab-pane fade in active" id="tab1">
                         <ul>
                           <li>Genre: <%=artist.genre%></li>
@@ -139,9 +141,9 @@
 
                     <br/>
 <!--               REMOVE MEMBER
- -->                    
+ -->
 <!--               only band members should be able to remove a member
- -->                
+ -->
                     <% for (let i = 0; i < artist.usersWithAccess.length; i++) { -%>
                       <%if (user.id.toString() === artist.usersWithAccess[i].id.toString()) {%>
                         <div class="btn-group dropright">
@@ -217,7 +219,7 @@
                 </div>
               </div>
             </div>
-            
+
 <!--             EDIT AND DELETE ARTIST BUTTONS
  -->        <% for (let i = 0; i < artist.usersWithAccess.length; i++) { -%>
               <%if (user.id.toString() === artist.usersWithAccess[i].id.toString()) {%>
