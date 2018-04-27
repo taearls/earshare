@@ -13,7 +13,7 @@
 
 <body>
 
-	
+
 	<header>
 		<nav id="navbar">
 			<div class="container-fluid">
@@ -47,9 +47,10 @@
 			<%for (let i = 0; i < artists.length; i++) {%>
 				<div class="picContainer-fluid">
 					<div class="col-med-6">
+							<img src="<%=artists[i].img%>" id="artistListPic" class="img-responsive" style="width:100%" alt="<%=artists[i].name%>'s Photo" >
+				
 
-						<img src="<%=artists[i].img%>" id="artistListPic" class="img-responsive" style="width:100%" alt="<%=artists[i].name%>'s Photo">
-						<div class="overlay">
+							<div class="overlay">
 
 							<div class="linkText"><p><a class="indexLink" href="/artist/<%=artists[i].id%>"><%=artists[i].name%></a></p></div>
 

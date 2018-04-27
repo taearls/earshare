@@ -47,16 +47,14 @@
               <div id="card hovercard">
 
                   <div class="card-background">
-                    <div style="max-height:450px; max-width:450px; overflow: hidden">
                     <img id= "artistListPic" class="card-bkimg" alt="<%=artist.name%>'s Avatar" src="<%=artist.img%>">
-                  </div>
                   </div>
 
                   <div class="card-info"> <span class="card-title"><h3><%=artist.name%></h3></span>
 
                     <a href="/artist/addUser/<%=user.id%>/<%=artist._id%>" class="btn btn-info btn-lg" id="like-button"><span class="glyphicon glyphicon-heart"></span> Like <%=artist.name%></a>
 
-                  </div>
+                </div>
               </div>
             </div>
 
