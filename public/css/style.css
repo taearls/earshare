@@ -83,10 +83,11 @@ ul {
   text-decoration: none;
   text-transform: uppercase;
 }
-/* Container holding the image and the text */
 #artistListPic,
 #eventListPic,
 #userListPic {
+  max-height: 200px;
+  max-width: 200px;
   border-radius: 200px;
 }
 .picContainer-fluid {
