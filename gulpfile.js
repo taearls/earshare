@@ -11,7 +11,7 @@ gulp.task("less", () => {
 })
 
 gulp.task("watch", () => {
-	gulp.watch(["./public/less/**/*.less"], ["less"]);
+	gulp.watch(["./less/**/*.less"], ["less"]);
 })
 
 gulp.task("default", ["less", "watch"]);
