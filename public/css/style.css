@@ -229,6 +229,7 @@ div.dropdown-menu.show,
 div.dropdown-menu {
   background-color: #102027 !important;
   font-size: 20px;
+  padding-left: 7px;
 }
 #sign-up {
   padding-left: 20px;
