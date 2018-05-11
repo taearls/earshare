@@ -34,6 +34,6 @@
     "method-override": "^2.3.10",
     "mongoose": "^5.0.15",
     "nodemon": "^1.17.4",
-    "npm": "^6.0.0"
+    "npm": "^6.0.1"
   }
 }
