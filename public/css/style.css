@@ -202,7 +202,6 @@ ul {
 }
 #homepage-jumbo,
 #index-jumbo {
-  margin: 0;
   max-height: 50vh;
   background-color: #62717b;
 }
@@ -213,9 +212,11 @@ ul {
   text-shadow: 0.5vw 0.5vw 0vw #62717b, 0.7vw 0.7vw #889DAB;
   letter-spacing: 0.7vw;
   font-size: 15vw;
+  margin: 0;
 }
 #homepage-jumbo h3,
 #index-jumbo h3 {
+  margin: 0;
   font-family: 'Permanent Marker', cursive;
   font-size: 4.5vw;
   color: #e2f1f8;
