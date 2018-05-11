@@ -8,17 +8,7 @@ body {
 	background-color: #62717b !important;
 }
 
-#navbar {
-	background-color: #102027;
-	font-family: @navFont;
-	font-size: 1.5em;
-	a {
-		color: #e2f1f8;
-		&:hover {
-			background-color: rgba(46, 57, 62, 0.83);
-		}
-	}
-}
+
 
 
 #home-message {
@@ -258,6 +248,61 @@ ul {
 
 div.container.text-center {
 	padding: 0;
+}
+nav {
+	height: 50px !important;
+}
+span.navbar-toggler-icon{
+	color: #e2f1f8 !important;
+}
+
+a.nav-item.nav-link, div.dropdown-menu.show, div.dropdown-menu{
+	background-color: #102027 !important;
+	font-size: 20px;
+}
+
+#sign-up {
+	padding-left: 20px;
+	padding-right: 20px;
+	margin-right: 12px;
+}
+.navbar-brand {
+	font-size: 21.5px !important;
+}
+// correction for .navbar-right
+@media (max-width: 767px) {
+	nav {
+		margin-top: -8px;
+	}
+	#browse {
+		position: absolute;
+		top: 1;
+		padding-top: 15px;
+		padding-bottom: 15px;
+	}
+	.navbar-right {
+		position: absolute;
+		top: 0;
+	    right: -1.7vw;
+	}
+}
+#browse {
+	width: 120px;
+	margin: 0;
+	&:focus {
+		background-color: rgba(46, 57, 62, 0.83);
+	}
+}
+#navbar {
+	background-color: #102027;
+	font-family: @navFont;
+	font-size: 1.5em;
+	a {
+		color: #e2f1f8;
+		&:hover {
+			background-color: rgba(46, 57, 62, 0.83);
+		}
+	}
 }
 
 //carousel
