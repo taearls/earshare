@@ -19,14 +19,10 @@ router.get('/', async (req, res, next) => {
 		const allArtists = await Artist.find();
 		const allEvents = await Event.find();
 		
-		console.log(allArtists, " this is allArtists");
 		// generate a random index for each number, store to a variable
 		const userIndex = await Math.floor(Math.random() * allUsers.length);
 		const artistIndex = await Math.floor(Math.random() * allArtists.length);
 		const eventIndex = await Math.floor(Math.random() * allEvents.length);
-		console.log(artistIndex, " this is artistIndex");
-		console.log(eventIndex, " this is eventIndex");
-
 
 		const message = await req.session.message;
 		req.session.message = null;

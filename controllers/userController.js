@@ -33,7 +33,6 @@ router.get("/:id", async (req, res, next) => {
 		const foundUser = await User.findById(req.params.id);
 		const allArtists = await Artist.find();
 		const loggedUser = await User.findOne({"username": req.session.username});
-		console.log(loggedUser, "this should be the logged in user");
 		res.render('user/show.ejs', {
 			user: foundUser,
 			allArtists: allArtists,
@@ -74,8 +73,6 @@ router.put("/:id", async (req, res, next) => {
 
 		for (let i = 0; i < updatedArtists.length; i++) {
 			for (let j = 0; j < updatedArtists[i].usersWithAccess.length; j++) {
-				console.log(updatedArtists[i].usersWithAccess[j].id);
-				console.log(req.params.id, " this is req.params.id");
 				if (updatedArtists[i].usersWithAccess[j].id === req.params.id) {
 					updatedArtists[i].usersWithAccess[j].username = req.body.username;
 					savedArtists = await updatedArtists[i].save();

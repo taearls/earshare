@@ -246,7 +246,7 @@ div.dropdown-menu {
   margin-right: 12px;
 }
 .navbar-brand {
-  font-size: 21.5px !important;
+  font-size: 21.5px;
 }
 @media (max-width: 767px) {
   nav {
@@ -261,6 +261,29 @@ div.dropdown-menu {
   .navbar-right {
     position: absolute;
     top: 0;
+    right: -1.7vw;
+  }
+}
+@media (max-width: 450px) {
+  nav {
+    margin-top: -8px;
+  }
+  nav * {
+    font-size: 12px;
+  }
+  .navbar-brand {
+    font-size: 14px;
+  }
+  #browse {
+    position: absolute;
+    left: -5vw;
+    top: 0.5vw;
+    padding-top: 15px;
+    padding-bottom: 15px;
+  }
+  .navbar-right {
+    position: absolute;
+    top: 2.4vw;
     right: -1.7vw;
   }
 }

@@ -248,8 +248,6 @@ router.delete('/:id', async (req, res, next) => {
     }
     // find all the users attending the event
     const usersAttending = await User.find({"eventsAttending.id" : req.params.id});
-    console.log(usersAttending, " this should be all the users attending an event");
-    console.log(deletedEvent, " this should be the event we want to removes");
     // iterate through all the users attending in a for loop
     // remove event from their eventsAttending array
     let savedUsers;
@@ -264,7 +262,6 @@ router.delete('/:id', async (req, res, next) => {
 	    	}
     	}
     }
-    console.log(savedUsers, " this should be all the users with a blank eventsAttending array");
 
     res.redirect('/event');
 
