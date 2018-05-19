@@ -11,7 +11,6 @@ $('#createNewEvent').on('click', e => {
 
 
 // make any image invisible if there's no src attribute added
-// $('img[src=""]').hide();
 $('img[src=""]').attr('src', "../images/missing-image.png")
 
 
