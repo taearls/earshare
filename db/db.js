@@ -1,9 +1,12 @@
 const mongoose = require('mongoose');
 
-const connectionString = process.env.MONGODB_URI;
+// heroku uses this connection string
+const herokuString = process.env.MONGODB_URI;
 
+// locally, use this connection string 
+const localString = "mongodb://localhost:27017/earshare";
 
-mongoose.connect(connectionString);
+mongoose.connect(herokuString || localString, { useNewUrlParser: true });
 
 mongoose.connection.on("connected", () => {
 	console.log("mongoose connected to db");
