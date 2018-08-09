@@ -3,7 +3,6 @@ const router = express.Router();
 const User = require('../models/user');
 const Artist = require('../models/artist');
 const Event = require('../models/event');
-const bcrypt = require('bcrypt');
 
 // get index route
 
