@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
-const Event = require('./event.js');
-const User = require('./user.js');
+const Event = require('./event');
+const User = require('./user');
 
 const artistSchema = new mongoose.Schema({
       name: {
@@ -10,19 +10,19 @@ const artistSchema = new mongoose.Schema({
       genre: String,
       location: String,
       website: String,
-      img: String,
+      avatar: String,
       description: String,
       events: [{
         name: String,
-        id: String
+        event_id: String
       }],
       usersWithAccess: [{
         username: String,
-        id: String
+        user_id: String
       }],
       usersWhoLike: [{
         username: String,
-        id: String
+        user_id: String
       }],
       artist_id: String
 });

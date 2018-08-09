@@ -1,76 +1,82 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<title>List of Users</title>
-	<link rel="stylesheet" href="../css/style.css">
-	<link href="https://fonts.googleapis.com/css?family=Maven+Pro:500,700|Wire+One" rel="stylesheet">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-	<style>
-	body { padding-top: 10px; };
-	</style>
-</head>
-
+	<head>
+		<title>Earshare Users</title>
+		<link rel="stylesheet" href="../css/style.css">
+		<link href="https://fonts.googleapis.com/css?family=Maven+Pro:500,700|Wire+One" rel="stylesheet">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		<style>
+			body { padding-top: 10px; };
+		</style>
+	</head>
 
 <body>
 
 	<header>
-<!-- 		NAV
- -->	<nav id="navbar">
-				<div class="container-fluid">
 
-						<ul class="nav navbar-left">
-							<li class="active"><a href="/">Home</a></li>
-							<li><a href="/artist">Artists</a></li>
-							<li><a href="/event">Events</a></li>
-						</ul>
+		<!-- NAV -->	
+		<nav id="navbar">
+			<div class="container-fluid">
+				<ul class="nav navbar-left">
+					<li class="active"><a href="/">Home</a></li>
+					<li><a href="/artist">Artists</a></li>
+					<li><a href="/event">Events</a></li>
+				</ul>
 
-						<ul class="nav navbar-right">
-							<li><a href="/artist/new"><span class="glyphicon glyphicon-plus"></span> Become an Artist</a></li>
-						</ul>
-				</div>
+				<ul class="nav navbar-right">
+					<li><a href="/artist/new"><span class="glyphicon glyphicon-plus"></span> Become an Artist</a></li>
+				</ul>
+			</div>
 		</nav>
-
 
 		<div id="index-jumbo">
 			<div class="jumbotron">
-	  			<div class="container text-center">
-	    			<h1 class = "indexHeader">Users</h2>
+	  		<div class="container text-center">
+	    		<h1 class="indexHeader">Users</h1>
 				</div>
-  			</div>
+  		</div>
 		</div>
 
 	</header>
 
 	<main>
-<!-- 		DISPLAY USERS
- -->  	<div class="d-flex justify-content-around">
+		<!-- DISPLAY USERS -->  	
+		<div class="d-flex justify-content-around">
 
-			<%for (let i = 0; i < users.length; i++) {%>
+			<% for (let i = 0; i < users.length; i++) {%>
 
 				<div class="picContainer-fluid">
 					<div class="col-med-6">
 
 						<img src="<%=users[i].avatar%>" id="userListPic" class="img-responsive" style="width:100%" alt="">
 
-							<div class="overlay">
-							<div class="linkText"><p><a class="indexLink" href="/user/<%=users[i].id%>"><%=users[i].username%></a></p><br /></div>
+						<div class="overlay">
+							<div class="linkText">
+								<p>
+									<a class="indexLink" href="/user/<%=users[i].id%>">
+										<%=users[i].username%>
+									</a>
+								</p>
+								<br />								
+							</div>
 
 						</div>
 				  </div>
 				</div>
+
 			<%}%>
 		</div>
 
 	</main>
 
-<!-- 	LOGOUT
- --><footer class="container-fluid text-center">
+	<!-- LOGOUT -->
+	<footer class="container-fluid text-center">
 
 		<%if (loggedIn) { %>
 			<form action="/logout" method="GET">
-	   			<input type="submit" class="btn-block" id="logout" value="Logout <%=user.username%>" />
+	   		<input type="submit" class="btn-block" id="logout" value="Logout <%=user.username%>" />
 			</form>
 		<%}%>
 

@@ -11,7 +11,7 @@ $('#createNewEvent').on('click', e => {
 
 
 // make any image invisible if there's no src attribute added
-$('img[src=""]').attr('src', "../images/missing-image.png")
+$('img[src=""]').attr('src', 'images/missing-image.png').css('border-radius', '50%');
 
 
 //modals
