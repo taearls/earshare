@@ -1,12 +1,8 @@
-const express = require ('express');
+const express = require('express');
 const router = express.Router();
 const Event = require('../models/event');
 const Artist = require('../models/artist');
 const User = require('../models/user');
-
-
-
-
 
 // get index route
 router.get('/', async (req, res, next) => {
@@ -158,7 +154,6 @@ router.get('/:artistId/addUser/:userId', async (req, res, next) => {
 			for (let j = 0; j < bandEvents[i].hostArtists.length; j++) {
 				// check if artist id is the same as band
 				if (band._id === bandEvents[i].hostArtists[j]._id) {
-					console.log("hit");
 					bandEvents[i].hostArtists[j].bandMembers.push(addedUser);
 				}
 			}
@@ -312,10 +307,10 @@ router.put("/:id", async (req, res, next) => {
 		const artistEdit = {};
   		artistEdit.name = req.body.name;
    		artistEdit.genre = req.body.genre;
-		artistEdit.location = req.body.location;
-		artistEdit.website = req.body.website;
-		artistEdit.img = req.body.img;
-		artistEdit.description = req.body.description;
+  		artistEdit.location = req.body.location;
+  		artistEdit.website = req.body.website;
+  		artistEdit.img = req.body.img;
+  		artistEdit.description = req.body.description;
 
 		// find all users who have an artist with the same id as the artist
 		const membersArtist = await User.find({"artists.id" : req.params.id});
