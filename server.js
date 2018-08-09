@@ -1,17 +1,15 @@
 require('dotenv').config();
 const express = require('express');
 const app = express();
-const PORT = 4000;
 const bodyParser = require('body-parser');
 const methodOverride = require('method-override');
 const session = require('express-session');
 const expressLayouts = require('express-ejs-layouts');
 const path = require('path')
-
+const PORT = 4000;
 
 app.set('view engine', 'ejs')
 require('./db/db');
-
 
 // MIDDLEWARE
 app.use(session({
@@ -48,12 +46,12 @@ app.use((req, res, next) => {
 
 
 // CONTROLLERS
-const artistController = require('./controllers/artistController');
-app.use('/artist', artistController);
-const userController = require('./controllers/userController');
-app.use('/user', userController);
 const authController = require('./controllers/authController');
 app.use('/', authController);
+const userController = require('./controllers/userController');
+app.use('/user', userController);
+const artistController = require('./controllers/artistController');
+app.use('/artist', artistController);
 const eventController = require('./controllers/eventController');
 app.use('/event', eventController);
 
