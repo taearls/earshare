@@ -87,7 +87,7 @@
                               <img src="../images/Webp.net-resizeimage.jpg" alt="Second slide">
                                  <div class="carousel-caption">
                                    <%if (artists[0] === undefined) {%>
-                                    <img alt="Static Artist Image" src="">
+                                    <img id="artistCarouselPic" alt="Static Artist Image" src="">
                                     <h3>Artist</h3>
                                     <%} else {%>
                                       <img id="artistCarouselPic" alt="<%=artists[artistNum].name%> Image" src="<%=artists[artistNum].img%>">
@@ -105,7 +105,7 @@
                               <img src="/images/Webp.net-resizeimage.jpg" alt="Third slide">
                                 <div class="carousel-caption">
                                 <%if (events[0] === undefined) {%>
-                                  <img alt="Static Event Image" src="">
+                                  <img id="eventCarouselPic" alt="Static Event Image" src="">
                                   <h3>Event</h3>
                                 <%} else {%>
                                   <img id="eventCarouselPic" alt="<%=events[eventNum].name%> Image" src="<%=events[eventNum].img%>">
