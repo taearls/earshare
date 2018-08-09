@@ -46,6 +46,7 @@ router.post('/login', async (req, res, next) => {
 		const user = await User.findOne({username: req.body.username});
 		// if the user is not in the database, it will return null
 		if (user) {
+			console.log("user was found");
 			// if user is found
 			// now we need to compare the passwords
 			// bcrypt.compareSync returns true or false

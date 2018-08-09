@@ -33,8 +33,7 @@ const seedEvents = async () => {
       hostArtists: {
         name: artist1.name.toString(),
         artist_id: artist1.id.toString()
-      },
-      event_id: ''
+      }
     }),
     new Event({
       name: 'What About This plays at The Owl',
@@ -60,88 +59,17 @@ const seedEvents = async () => {
       eventCount++;
 
       if (eventCount == seededEvents.length) {
-        dataFix();
+        exit();
       } else if (e) {
         console.log("event seed error: ", e);
       }
-    })
+    });
   }
 }
 
 seedEvents();
 
-const dataFix = async () => {
-  // grab all the seeded data
-  const seededUsers = await User.find();
-  const seededArtists = await Artist.find();
-  const seededEvents = await Event.find();
-
-  seededArtists[0].artist_id = await seededArtists[0]._id.toString();
-  seededArtists[1].artist_id = await seededArtists[1]._id.toString();
-
-  seededEvents[0].event_id = await seededEvents[0]._id.toString();
-  seededEvents[1].event_id = await seededEvents[1]._id.toString();
-
-
-  // modify associated user info with artist information
-  seededUsers[0].artists.push({
-    name: seededArtists[0].name,
-    artist_id: seededArtists[0].artist_id
-  });
-  seededUsers[1].artists.push({
-    name: seededArtists[1].name,
-    artist_id: seededArtists[1].artist_id
-  });
-  seededUsers[0].artistsLiked.push({
-    name: seededArtists[0].name,
-    artist_id: seededArtists[0].artist_id
-  });
-  seededUsers[1].artistsLiked.push({
-    name: seededArtists[1].name,
-    artist_id: seededArtists[1].artist_id
-  });
-
-  // modify associated user info with event information
-  seededUsers[0].eventsAttending.push({
-    name: seededEvents[0].name,
-    event_id: seededEvents[0].event_id
-  });
-  seededUsers[1].eventsAttending.push({
-    name: seededEvents[1].name,
-    event_id: seededEvents[1].event_id
-  });
-
-  // modify associated artist info with event information
-  seededArtists[0].events.push({
-    name: seededEvents[0].name,
-    event_id: seededEvents[0].event_id
-  });
-  seededArtists[1].events.push({
-    name: seededEvents[1].name,
-    event_id: seededEvents[1].event_id
-  });
-
-  exit();
-
-}
-
 const exit = async () => {
   console.log("event seed complete");
-
-  // grab all the seeded data
-  const seededUsers = await User.find();
-  const seededArtists = await Artist.find();
-  const seededEvents = await Event.find();
-
-  // return the data in the console
-  console.log("here are the seeded Users:");
-  console.log(seededUsers);
-  console.log("---------------------------");
-  console.log("here are the seeded Artists:");
-  console.log(seededArtists);
-  console.log("---------------------------");
-  console.log("here are the seeded Events:");
-  console.log(seededEvents);
-
   mongoose.disconnect();
 }

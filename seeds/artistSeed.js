@@ -53,14 +53,13 @@ const seedArtists = async () => {
     seededArtists[i].save((e) => {
 
       artistCount++;
-
       if (artistCount == seededArtists.length) {        
         exit();
       } else if (e) {
         console.log("artist seed error: ", e);
       }
 
-    })
+    });
   }
 }
 
