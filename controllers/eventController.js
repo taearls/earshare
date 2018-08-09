@@ -52,7 +52,7 @@ router.get('/:eventId/addUser/:userId', async (req, res, next) => {
 		// add the user to the event model so we can show it on event page
 		event.usersAttending.push({
 			username: addedUser.username,
-			id: addedUser.id
+			user_id: addedUser.id
 		});
 
 		// filter through event.usersAttending array of objects so each obj is unique

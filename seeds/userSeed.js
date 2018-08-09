@@ -28,10 +28,13 @@ const seededUsers = [
 
 let userCount = 0;
 for (let i = 0; i < seededUsers.length; i++) {
+
   seededUsers[i].save((e) => {
     userCount++;
     if (userCount == seededUsers.length) {
       exit();
+    } else if (e) {
+      console.log("user seed error: ", e);
     }
   });
   

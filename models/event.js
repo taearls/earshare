@@ -19,7 +19,7 @@ const eventSchema = new mongoose.Schema({
   attendingCount: Number,
   usersAttending: [{
     username: String,
-    id: String
+    user_id: String
   }],
   event_id: String
 });

@@ -14,7 +14,7 @@ const seedArtists = async () => {
   // grab seeded users
   const user1 = await User.findOne({username: 'tboneearls'});
   const user2 = await User.findOne({username: 'tyler'});
-  var seededArtists = [
+  const seededArtists = [
     new Artist({
       name: 'Cuckoo and the Birds',
       genre: 'Rock',
@@ -45,36 +45,21 @@ const seedArtists = async () => {
       usersWhoLike: {
         username: user2.username.toString(),
         user_id: user2.id.toString()
-      }
+      }    
     })
   ];
   let artistCount = 0;
   for (let i = 0; i < seededArtists.length; i++) {
     seededArtists[i].save((e) => {
 
-      // modify user info with artist information
-      user1.artists.push({
-        name: seededArtists[i].name,
-        artist_id: seededArtists[i].id
-      });
-      user1.artistsLiked.push({
-        name: seededArtists[i].name,
-        artist_id: seededArtists[i].id
-      });
-
-      user2.artists.push({
-        name: seededArtists[i].name,
-        artist_id: seededArtists[i].id
-      });
-      user2.artistsLiked.push({
-        name: seededArtists[i].name,
-        artist_id: seededArtists[i].id
-      });
-
       artistCount++;
-      if (artistCount == seededArtists.length) {
+
+      if (artistCount == seededArtists.length) {        
         exit();
+      } else if (e) {
+        console.log("artist seed error: ", e);
       }
+
     })
   }
 }
