@@ -13,16 +13,12 @@ const eventSchema = new mongoose.Schema({
         name: String,
         artist_id: String
       }],
-      meta: {
-        attending: Number
-      },
+      attendingCount: Number,
       usersAttending: [{
         username: String,
         id: String
-      }]
+      }],
+      event_id: String
 });
 
-
-//creating collection, putting collection into database
-//and setting schema onto information
 module.exports = mongoose.model('Event', eventSchema);

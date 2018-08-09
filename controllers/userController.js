@@ -64,13 +64,13 @@ router.put("/:id", async (req, res, next) => {
 		// have to declare this variable outside the loops
 		let savedArtists;
 		
-		// since there are multiple usersWithAccess being returned in an array, we have to iterate through them
+		// since there are multiple bandMembers being returned in an array, we have to iterate through them
 		// two for loops:
 
 		for (let i = 0; i < updatedArtists.length; i++) {
-			for (let j = 0; j < updatedArtists[i].usersWithAccess.length; j++) {
-				if (updatedArtists[i].usersWithAccess[j].id === req.params.id) {
-					updatedArtists[i].usersWithAccess[j].username = req.body.username;
+			for (let j = 0; j < updatedArtists[i].bandMembers.length; j++) {
+				if (updatedArtists[i].bandMembers[j].id === req.params.id) {
+					updatedArtists[i].bandMembers[j].username = req.body.username;
 					savedArtists = await updatedArtists[i].save();
 				}
 			}
@@ -88,15 +88,15 @@ router.delete("/:id", async (req, res, next) => {
 
 		const allArtists = await Artist.find();
 
-		// check if all associated artists have no users remaining in usersWithAccess array if deletedUser is removed
-		// if they don't have any usersWithAccess remaining, delete artist
+		// check if all associated artists have no users remaining in bandMembers array if deletedUser is removed
+		// if they don't have any bandMembers remaining, delete artist
 		for (let i = 0; i < allArtists.length; i++) {
-			for (let j = 0; j < allArtists[i].usersWithAccess.length; j++) {
-				if (allArtists[i].usersWithAccess[j].id.toString() === req.params.id.toString()) {
+			for (let j = 0; j < allArtists[i].bandMembers.length; j++) {
+				if (allArtists[i].bandMembers[j].id.toString() === req.params.id.toString()) {
 					// remove user from artist array of users
-					allArtists[i].usersWithAccess[j].remove();
+					allArtists[i].bandMembers[j].remove();
 					// if no users left in artist array, delete artist
-					if (allArtists[i].usersWithAccess.length === 0) {
+					if (allArtists[i].bandMembers.length === 0) {
 						allArtists[i].remove();
 					}
 				}

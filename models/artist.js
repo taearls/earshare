@@ -16,7 +16,7 @@ const artistSchema = new mongoose.Schema({
         name: String,
         event_id: String
       }],
-      usersWithAccess: [{
+      bandMembers: [{
         username: String,
         user_id: String
       }],
@@ -27,7 +27,4 @@ const artistSchema = new mongoose.Schema({
       artist_id: String
 });
 
-
-//creating collection, putting collection into database
-//and setting schema onto information
 module.exports = mongoose.model('Artist', artistSchema);

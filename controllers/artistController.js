@@ -26,7 +26,7 @@ router.get('/', async (req, res, next) => {
 	}
 })
 
-//new artist get route
+// new artist get route
 router.get('/new', async (req, res, next) => {
 	try {
 
@@ -43,30 +43,32 @@ router.get('/new', async (req, res, next) => {
 	}
 });
 
-//new artist post route
+// new artist post route
 
 router.post('/', async (req, res, next) => {
-//need to use body-parser
-//also, properties in schema and input form MUST MATCH
 
   try {
 
- 	const userArtist = await User.findById(req.body.userId);
+ 	  const bandMember = await User.findById(req.body.userId);
     const createdArtist = await Artist.create(req.body);
 
     // save id of artist in different property artist_id
     createdArtist.artist_id = createdArtist._id;
 
     // add user to the artist's users with access (basically band members)
-    createdArtist.usersWithAccess.push(userArtist);
+    createdArtist.bandMembers.push({
+      username: bandMember.username,
+      user_id: bandMember.id
+    });
+
     // add artist to the user's list of affiliated artists
-    userArtist.artists.push({
+    bandMember.artists.push({
     	name: createdArtist.name.toString(),
     	artist_id: createdArtist.id.toString()
     });
 
     const savedArtist = await createdArtist.save();
-    const savedUser = await userArtist.save();
+    const savedUser = await bandMember.save();
 
     res.redirect('/artist');
 
@@ -149,7 +151,7 @@ router.get('/:artistId/addUser/:userId', async (req, res, next) => {
 
 
 		// add new member to the band
-		band.usersWithAccess.push(addedUser);
+		band.bandMembers.push(addedUser);
 
 		// give access to new band member to all band events
 		for (let i = 0; i < bandEvents.length; i++) {
@@ -157,7 +159,7 @@ router.get('/:artistId/addUser/:userId', async (req, res, next) => {
 				// check if artist id is the same as band
 				if (band._id === bandEvents[i].hostArtists[j]._id) {
 					console.log("hit");
-					bandEvents[i].hostArtists[j].usersWithAccess.push(addedUser);
+					bandEvents[i].hostArtists[j].bandMembers.push(addedUser);
 				}
 			}
 		}
@@ -168,12 +170,12 @@ router.get('/:artistId/addUser/:userId', async (req, res, next) => {
 		// iterate through all the members in the band and remove duplicates by
 		// creating new object with only unique names passed into it
 
-		for ( let i=0, len = band.usersWithAccess.length; i < len; i++ )
-		    uniqueMembers[band.usersWithAccess[i]['username']] = band.usersWithAccess[i];
+		for ( let i=0, len = band.bandMembers.length; i < len; i++ )
+		    uniqueMembers[band.bandMembers[i]['username']] = band.bandMembers[i];
 
-		band.usersWithAccess = new Array();
+		band.bandMembers = new Array();
 		for ( let key in uniqueMembers ) {
-		    band.usersWithAccess.push(uniqueMembers[key]);
+		    band.bandMembers.push(uniqueMembers[key]);
 		}
 
 		const savedBand = await band.save();
@@ -221,8 +223,8 @@ router.get('/removeUser/:artistId/:userId', async (req, res, next) => {
 		// make condition: if no band members are remaining, artist should be removed from db
 		// otherwise, there would be no users with access to modify the artist
 
-		if (band.usersWithAccess.length > 0) {
-			band.usersWithAccess.remove(deletedUser);
+		if (band.bandMembers.length > 0) {
+			band.bandMembers.remove(deletedUser);
 			const savedBand = await band.save();
 
 
@@ -253,7 +255,7 @@ router.get('/:id', async (req, res, next) => {
 		const userIds = [];
 
 		// for each user with access, push each of their individual ids into the userIds array
-		artist.usersWithAccess.forEach((user) => {
+		artist.bandMembers.forEach((user) => {
 			userIds.push( user._id );
 		})
 

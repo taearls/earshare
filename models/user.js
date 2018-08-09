@@ -1,9 +1,6 @@
 const mongoose = require('mongoose');
 const Artist = require('./artist');
-const Event = require('./event')
-
-// since this model and the artist model both require each other,
-// Artist appears here as an empty object.
+const Event = require('./event');
 
 const userSchema = new mongoose.Schema({
       username: { 
@@ -22,7 +19,7 @@ const userSchema = new mongoose.Schema({
       },
       resetPasswordToken: String,
       resetPasswordExpires: Date,
-      confirmedUser: {
+      userConfirmed: {
         type: Boolean,
         default: false
       },
@@ -41,6 +38,4 @@ const userSchema = new mongoose.Schema({
       }]
 });
 
-//creating collection, putting collection into database
-//and setting schema onto information
 module.exports = mongoose.model('User', userSchema);

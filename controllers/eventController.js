@@ -12,8 +12,8 @@ router.get('/', async (req, res, next) => {
 		const allEvents = await Event.find();
 		const currentUser = await User.findOne({"username": req.session.username});
 		res.render('event/index.ejs', {
+      loggedIn: loggedIn,
 			events: allEvents,
-			loggedIn: loggedIn,
 			user: currentUser
 		});
 
@@ -22,7 +22,7 @@ router.get('/', async (req, res, next) => {
 	}
 })
 
-//new event get route
+// new event get route
 router.get('/new', async (req, res, next) => {
 	try {
 		const allArtists = await Artist.find();
@@ -67,27 +67,28 @@ router.get('/:eventId/addUser/:userId', async (req, res, next) => {
 		    event.usersAttending.push(uniqueUsers[key]);
 
 
-		//add attendance to event Page
+		// add attendance to event Page
 		const savedEvent = await event.save();
 
 		// add the event to the user model so we can show it on user page
 		addedUser.eventsAttending.push({
 			name: event.name,
-			id: event.id
+			event_id: event.id
 		});
 
 		// filter through addedUser.eventsAttending array of objects so each obj is unique
 
+    // addedUser.eventsAttending.filter(name => added)
+
 		const uniqueEvents = {};
 
-		for ( let i=0, len = addedUser.eventsAttending.length; i < len; i++ )
+		for ( let i = 0, len = addedUser.eventsAttending.length; i < len; i++ )
 		    uniqueEvents[addedUser.eventsAttending[i]['name']] = addedUser.eventsAttending[i];
 
 		addedUser.eventsAttending = new Array();
-		for ( let key in uniqueEvents )
-		    addedUser.eventsAttending.push(uniqueEvents[key]);
-
-
+		for ( let key in uniqueEvents ) {
+      addedUser.eventsAttending.push(uniqueEvents[key]);
+    }
 		
 		const savedUser = await addedUser.save();
 
@@ -100,27 +101,33 @@ router.get('/:eventId/addUser/:userId', async (req, res, next) => {
 
 
 
-//new event post route
+// new event post route
 
 router.post('/', async (req, res, next) => {
-//need to use body-parser
-//also, properties in schema and input form MUST MATCH
+
   try {
   	const artistHost = await Artist.findById(req.body.artistId)
     const createdEvent = await Event.create(req.body);
-    // this will populate the "affiliated artists"
+
+    // this will populate the affiliated artists
     createdEvent.hostArtists.push({
     	name: artistHost.name.toString(),
     	artist_id: artistHost._id.toString(),
-    	usersWithAccess: artistHost.usersWithAccess
+    	bandMembers: artistHost.bandMembers
     });
 
-    // console.log(createdEvent.hostArtists, " this is the artist that created the event");
+    // preserve original id of event by storing it in this property
+    createdEvent.event_id = createdEvent.id;
+
     const savedEvent = await createdEvent.save();
 
-    // this will make the event show up in the artist schema
-    artistHost.events.push(createdEvent);
-	const savedArtist = await artistHost.save();
+    // this will make the event appear in the artist schema
+    artistHost.events.push({
+      name: createdEvent.name,
+      event_id: createdEvent.id
+    });
+
+    const savedArtist = await artistHost.save();
     res.redirect('/event');
 
   } catch(err) {
@@ -146,7 +153,7 @@ router.get('/:id', async (req, res, next) => {
 		let giveMeAccess;
 
 		hostArtists.forEach((artist) => {
-			giveMeAccess = artist.usersWithAccess;
+			giveMeAccess = artist.bandMembers;
 		});
 
 		console.log(giveMeAccess, " these are band members");
