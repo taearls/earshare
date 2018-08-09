@@ -6,9 +6,26 @@ const Event = require('./event')
 // Artist appears here as an empty object.
 
 const userSchema = new mongoose.Schema({
-      username: String,
-      password: String,
-      email: String,
+      username: { 
+        type: String, 
+        required: true, 
+        unique: true
+      },
+      email: {
+        type: String,
+        required: true,
+        unique: true
+      },
+      password: {
+        type: String,
+        required: true
+      },
+      resetPasswordToken: String,
+      resetPasswordExpires: Date,
+      confirmedUser: {
+        type: Boolean,
+        default: false
+      },
       avatar: String,
       artists: [{
       	name: String,
