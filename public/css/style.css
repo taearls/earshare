@@ -248,6 +248,26 @@ div.dropdown-menu {
 .navbar-brand {
   font-size: 21.5px;
 }
+@media (max-width: 767px) {
+  #sign-up {
+    margin-right: 0;
+  }
+  .landing-nav {
+    margin-top: -8px;
+  }
+  #browse {
+    position: relative;
+    top: 1;
+    padding-top: 15px;
+    padding-bottom: 15px;
+  }
+  .navbar-right {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding-right: 2.5px;
+  }
+}
 #browse {
   width: 120px;
   margin: 0;

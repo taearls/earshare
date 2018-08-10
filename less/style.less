@@ -277,22 +277,30 @@ a.nav-item.nav-link, div.dropdown-menu.show, div.dropdown-menu{
 	font-size: 21.5px;
 }
 // // correction for .navbar-right
-// @media (max-width: 767px) {
-// 	nav {
-// 		margin-top: -8px;
-// 	}
-// 	#browse {
-// 		position: absolute;
-// 		top: 1;
-// 		padding-top: 15px;
-// 		padding-bottom: 15px;
-// 	}
-// 	.navbar-right {
-// 		position: absolute;
-// 		top: 0;
-// 	    right: -1.7vw;
-// 	}
-// }
+@media (max-width: 767px) {
+	// nav {
+	// 	margin-top: -8px;
+	// }
+	#sign-up {
+		margin-right: 0;
+	}
+	.landing-nav {
+		margin-top: -8px;
+	}
+	#browse {
+		// position: absolute;
+		position: relative;
+		top: 1;
+		padding-top: 15px;
+		padding-bottom: 15px;
+	}
+	.navbar-right {
+		position: absolute;
+		top: 0;
+		right: 0;
+	  padding-right: 2.5px;
+	}
+}
 
 // @media (max-width: 450px) {
 // 	nav {
