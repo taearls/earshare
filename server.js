@@ -1,11 +1,11 @@
-require('dotenv').config();
+require('dotenv').config(); // for heroku deployment
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
 const methodOverride = require('method-override');
 const session = require('express-session');
 const expressLayouts = require('express-ejs-layouts');
-const path = require('path')
+const path = require('path');
 const PORT = 4000;
 
 app.set('view engine', 'ejs')
@@ -55,11 +55,7 @@ app.use('/artist', artistController);
 const eventController = require('./controllers/eventController');
 app.use('/event', eventController);
 
-// seeding data -- adding some data when you start development
-app.get('/seed', (req, res) => {
-	res.send('I just added some data for you');
-})
-
+// APP LISTEN
 app.listen(process.env.PORT || PORT, () => {
 	console.log('Server is running on PORT: ' + PORT);
-})
+});
