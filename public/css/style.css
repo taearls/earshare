@@ -248,45 +248,6 @@ div.dropdown-menu {
 .navbar-brand {
   font-size: 21.5px;
 }
-@media (max-width: 767px) {
-  nav {
-    margin-top: -8px;
-  }
-  #browse {
-    position: absolute;
-    top: 1;
-    padding-top: 15px;
-    padding-bottom: 15px;
-  }
-  .navbar-right {
-    position: absolute;
-    top: 0;
-    right: -1.7vw;
-  }
-}
-@media (max-width: 450px) {
-  nav {
-    margin-top: -8px;
-  }
-  nav * {
-    font-size: 12px;
-  }
-  .navbar-brand {
-    font-size: 14px;
-  }
-  #browse {
-    position: absolute;
-    left: -5vw;
-    top: 0.5vw;
-    padding-top: 15px;
-    padding-bottom: 15px;
-  }
-  .navbar-right {
-    position: absolute;
-    top: 2.4vw;
-    right: -1.7vw;
-  }
-}
 #browse {
   width: 120px;
   margin: 0;
