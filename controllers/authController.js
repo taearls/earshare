@@ -10,8 +10,8 @@ const bcrypt = require('bcrypt');
 
 router.get('/', async (req, res, next) => {
 	try {
+		
 		// grab all of each model
-		// console.log(Artist, " this is Artist");
 		const allUsers = await User.find();
 		const allArtists = await Artist.find();
 		const allEvents = await Event.find();
@@ -46,8 +46,7 @@ router.post('/login', async (req, res, next) => {
 		const user = await User.findOne({username: req.body.username});
 		// if the user is not in the database, it will return null
 		if (user) {
-			console.log("user was found");
-			// if user is found
+
 			// now we need to compare the passwords
 			// bcrypt.compareSync returns true or false
 			if (bcrypt.compareSync(req.body.password, user.password)) {
@@ -116,8 +115,6 @@ router.post('/register', async (req, res, next) => {
 // *** LOGOUT ROUTE ***
 router.get('/logout', async (req, res, next) => {
 	try {
-		// find the user
-		// if the user is not in the database, it will return null
 		req.session.message = req.session.username + " has successfully logged out.";
 		req.session.loggedIn = false;
 
