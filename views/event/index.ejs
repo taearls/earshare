@@ -11,47 +11,46 @@
 
 <body>
 	<header>
-			<nav id="navbar">
-				<div class="container-fluid">
-						<ul class="nav navbar-left">
-							<li class="active"><a href="/">Home</a></li>
-							<li><a href="/user">Users</a></li>
-							<li><a href="/artist">Artists</a></li>
-						</ul>
-
-					</div>
-			</nav>
-
+		<nav id="navbar">
+			<ul class="nav navbar-left">
+				<li class="active"><a id="nav-responsive" href="/">Home</a></li>
+				<li><a id="nav-responsive" href="/user">Users</a></li>
+				<li><a id="nav-responsive" href="/artist">Artists</a></li>
+			</ul>
+		</nav>
 	</header>
 
+	<main>
 
-	<div id="index-jumbo">
-		<div class="jumbotron">
-  		<div class="container text-center">
-    		<h1 class = "indexHeader">Events</h1><br>
-
-  		</div>
-		</div>
-	</div>
-
-
-
-	<div class="d-flex justify-content-md-around">
-
-					<%for (let i = 0; i < events.length; i++) {%>
-
-									<div class="picContainer-fluid">
-										<div class="col-med-6">
-												<img src="<%=events[i].img%>" id="eventListPic" class="img-responsive" style="width:100%" alt="<%=events[i].name%> Image">
-													<div class="overlay">
-												<div class="linkText"> <p><a class="indexLink" href="/event/<%=events[i].id%>"><%=events[i].name%></a></p> </div>
-
-											</div>
-										</div>
-									</div>
-
-						<%}%>
+		<div id="index-jumbo">
+			<div class="jumbotron">
+	  		<div class="container text-center">
+	    		<h1 class="indexHeader">Events</h1><br>
+	  		</div>
 			</div>
+		</div>
+
+
+
+		<div class="d-flex justify-content-md-around">
+
+			<%for (let i = 0; i < events.length; i++) {%>
+
+				<div class="picContainer-fluid">
+					<div class="col-med-6">
+						<img src="<%=events[i].img%>" id="eventListPic" class="img-responsive" style="width:100%" alt="<%=events[i].name%> Image">
+						<div class="overlay">
+							<div class="linkText"> 
+								<p><a class="indexLink" href="/event/<%=events[i].id%>"><%=events[i].name%></a></p> 
+							</div>
+						</div>
+					</div>
+				</div>
+
+			<%}%>
+		</div>
+		
+	</main>		
 
 	<footer class="container-fluid text-center">
 		<%if (loggedIn) { %>

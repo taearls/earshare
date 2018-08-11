@@ -5,6 +5,9 @@ body {
 .container-fluid {
   background-color: none !important;
 }
+#nav-responsive {
+  font-size: 20px;
+}
 #home-message {
   color: white;
   text-align: center;
@@ -270,17 +273,23 @@ div.dropdown-menu {
     padding-right: 2.5px;
   }
 }
-@media (max-width: 450px) {
-  nav {
-    margin-top: -8px;
+@media (max-width: 475px) {
+  a.nav-item.nav-link,
+  div.dropdown-menu.show,
+  div.dropdown-menu {
+    font-size: 15px;
+    padding-left: 5px;
+    padding-right: 0;
   }
-  #navbar {
+  #nav-responsive {
     font-size: 15px;
     margin-right: 0;
+    padding: 15px 5px;
   }
   #sign-up,
   #log-in {
     padding: 15px 5px;
+    font-size: 15px;
   }
   #browse {
     position: absolute;

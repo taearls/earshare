@@ -12,19 +12,15 @@
 	<header>
 
 		<!-- 	NAV -->	
-		<nav id= "navbar" class="navbar navbar-inverse">
-			<div class="container-fluid">
-
+		<nav id= "navbar" class="navbar">
 				<ul class="nav navbar-left">
-					<li class="active"><a href="/">Home</a></li>
-					<li><a href="/artist">Artists</a></li>
-					<li><a href="/event">Events</a></li>
+					<li class="active"><a id="nav-responsive" href="/">Home</a></li>
+					<li><a id="nav-responsive" href="/artist">Artists</a></li>
+					<li><a id="nav-responsive" href="/event">Events</a></li>
 				</ul>
 
 				<ul class="nav navbar-right">
-					<li>
-						<a href="/user/<%= user.id %>">Back to Profile</a>
-					</li>
+					<li><a href="/user/<%= user.id %>">Back to <%=user.name%>'s Profile</a></li>
 				</ul>
 
 			</div>

@@ -12,7 +12,9 @@ body {
 .container-fluid {
 	background-color: none !important;
 }
-
+#nav-responsive {
+	font-size: 20px;
+}
 
 #home-message {
 	color: white;
@@ -302,16 +304,20 @@ a.nav-item.nav-link, div.dropdown-menu.show, div.dropdown-menu{
 	}
 }
 
-@media (max-width: 450px) {
-	nav {
-		margin-top: -8px;
+@media (max-width: 475px) {
+	a.nav-item.nav-link, div.dropdown-menu.show, div.dropdown-menu {
+		font-size: 15px;
+		padding-left: 5px;
+		padding-right: 0;
 	}
-	#navbar {
+	#nav-responsive {
 		font-size: 15px;
 		margin-right: 0;
+		padding: 15px 5px;
 	}
 	#sign-up, #log-in {
 		padding: 15px 5px;
+		font-size: 15px;
 	}
 	#browse {
 		position: absolute;
@@ -337,7 +343,6 @@ a.nav-item.nav-link, div.dropdown-menu.show, div.dropdown-menu{
 #navbar {
 	background-color: #102027;
 	font-family: @navFont;
-	// font-size: 1.5em;
 	a {
 		color: #e2f1f8;
 		&:hover {
@@ -346,7 +351,7 @@ a.nav-item.nav-link, div.dropdown-menu.show, div.dropdown-menu{
 	}
 }
 
-//carousel
+// CAROUSEL
 div.col-md-12 {
 	padding-right: 2vw;
 	padding-left: 2vw;

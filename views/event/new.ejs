@@ -11,21 +11,17 @@
 
 	<header>
 		<nav id="navbar" class="navbar navbar-inverse">
-				<div class="container-fluid">
+			<ul class="nav navbar-left">
+				<li class="active"><a id="nav-responsive" href="/">Home</a></li>
+				<li><a id="nav-responsive" href="/user">Users</a></li>
+				<li><a id="nav-responsive" href="/artist">Artists</a></li>
+			</ul>
 
-						<ul class="nav navbar-left">
-							<li class="active"><a href="/">Home</a></li>
-							<li><a href="/user">Users</a></li>
-							<li><a href="/artist">Artists</a></li>
-						</ul>
-
-						<ul class="nav navbar-right">
-							<li><a href="/artist/<%=artists.id%>"><span class="glyphicon glyphicon-plus"></span>Back to Artist</a></li>
-						</ul>
-					</div>
-				</div>
-			</nav>
-		</header>
+			<ul class="nav navbar-right">
+				<li><a id="nav-responsive" href="/artist/<%=currentArtist.id%>"><span class="glyphicon glyphicon-plus"></span>Back to <%=currentArtist.name%>'s Profile</a></li>
+			</ul>
+		</nav>
+	</header>
 
   	<main>
 
