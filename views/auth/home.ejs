@@ -67,7 +67,7 @@
                                <img src="../images/Webp.net-resizeimage.jpg" alt="First slide">
                                 <div class="carousel-caption">
                                   <%if (users[0] === undefined) {%>
-                                  <img alt="Static User Image" src="">
+                                  <img id="userCarouselPic" alt="Static User Image" src="">
                                   <h3>User</h3>
                                   <%} else {%>
                                     <img id="userCarouselPic" class="backup_picture" alt="<%=users[userNum].username%> Image" src="<%=users[userNum].avatar%>">
