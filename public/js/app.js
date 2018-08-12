@@ -8,11 +8,9 @@ $('#createNewEvent').on('click', e => {
 // set default image if there's no src attribute added
 $('img[src=""]').attr('src', '../images/missing-image.png').css('border-radius', '50%');
 
-// if image does have src attribute but it's broken
-$(document).ready(function() {
-  $(".backup_picture").on("error", function(){
-      $(this).attr('src', '../images/missing-image.png');
-  });
+// if image does have src attribute but the img src is broken
+$('.backup_picture').on("error", function(){
+  $(this).attr('src', '../images/missing-image.png').css('border-radius', '50%');
 });
 
 // modals
