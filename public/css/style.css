@@ -145,6 +145,11 @@ a:hover,
 .card-info a:hover {
   text-decoration: none;
 }
+#userShowPic,
+#artistShowPic,
+#eventShowPic {
+  text-align: center;
+}
 .card-title h3 {
   font-size: 36px;
 }
