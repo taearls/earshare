@@ -70,7 +70,7 @@
                                   <img alt="Static User Image" src="">
                                   <h3>User</h3>
                                   <%} else {%>
-                                    <img id= "userCarouselPic" alt="<%=users[userNum].username%> Image" src="<%=users[userNum].avatar%>">
+                                    <img id="userCarouselPic" class="backup_picture" alt="<%=users[userNum].username%> Image" src="<%=users[userNum].avatar%>">
                                      <h3>
                                      <a id="user-carousel" href="/user"><%=users[userNum].username%></a></h3>
                                   <%}%>
@@ -84,7 +84,7 @@
                                     <img id="artistCarouselPic" alt="Static Artist Image" src="">
                                     <h3>Artist</h3>
                                     <%} else {%>
-                                      <img id="artistCarouselPic" alt="<%=artists[artistNum].name%> Image" src="<%=artists[artistNum].img%>">
+                                      <img class="backup_picture" id="artistCarouselPic" alt="<%=artists[artistNum].name%> Image" src="<%=artists[artistNum].img%>">
                                       <h3>
                                         <a id="artist-carousel" href="/artist">
                                           <%=artists[artistNum].name%>
@@ -99,7 +99,7 @@
                               <img src="/images/Webp.net-resizeimage.jpg" alt="Third slide">
                                 <div class="carousel-caption">
                                 <%if (events[0] === undefined) {%>
-                                  <img id="eventCarouselPic" alt="Static Event Image" src="">
+                                  <img class="backup_picture" id="eventCarouselPic" alt="Static Event Image" src="">
                                   <h3>Event</h3>
                                 <%} else {%>
                                   <img id="eventCarouselPic" alt="<%=events[eventNum].name%> Image" src="<%=events[eventNum].img%>">
