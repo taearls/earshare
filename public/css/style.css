@@ -256,6 +256,9 @@ div.dropdown-menu {
   font-size: 20px;
   padding-left: 7px;
 }
+#sign-up {
+  padding: 10px 15px;
+}
 #browse,
 #navbar {
   font-size: 20px;
