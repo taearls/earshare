@@ -100,7 +100,9 @@ a, #user-carousel, #artist-carousel, #event-carousel {
 		color: white;
 		text-decoration: none;
 		text-transform: uppercase;
+		max-height: 100%;
 	}
+	max-height: 100%;
 }
 
 #artistCarouselPic, #eventCarouselPic, #userCarouselPic {
@@ -111,6 +113,11 @@ a, #user-carousel, #artist-carousel, #event-carousel {
 .carousel-caption {
 	padding-top: 10px !important;
 	padding-bottom: 10px !important;
+}
+.carousel h3 {
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
 }
 
 #artistListPic, #eventListPic, #userListPic {
