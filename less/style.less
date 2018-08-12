@@ -8,6 +8,65 @@ body {
 	background-color: #62717b !important;
 	width: 100%;
 }
+nav {
+	// background-color: #102027 !important;
+	height: 50px !important;
+}
+ul {
+	list-style: none;
+}
+
+// MEDIA QUERIES
+
+@media (max-width: 767px) {
+	#sign-up {
+		margin-right: 0;
+	}
+	.landing-nav {
+		margin-top: -8px;
+	}
+	#browse {
+		position: absolute;
+		top: 1;
+		padding-top: 15px;
+		padding-bottom: 15px;
+	}
+	.navbar-right {
+		position: absolute;
+		top: 0;
+		right: 0;
+	  padding-right: 2.5px;
+	}
+}
+
+@media (max-width: 475px) {
+	a.nav-item.nav-link, div.dropdown-menu.show, div.dropdown-menu {
+		font-size: 15px;
+		padding-left: 5px;
+		padding-right: 0;
+	}
+	#nav-responsive {
+		font-size: 15px;
+		margin-right: 0;
+		padding: 15px 5px;
+	}
+	#sign-up, #log-in {
+		padding: 15px 5px;
+		font-size: 15px;
+	}
+	#browse {
+		position: absolute;
+		font-size: 15px;
+		top: 1;
+		padding: 15px 5px;
+	}
+	.navbar-right {
+		position: absolute;
+	  top: 0;
+		right: 0;
+	  padding-right: 2.5px;
+	}
+}
 
 .container-fluid {
 	background-color: none !important;
@@ -59,18 +118,20 @@ body {
 a, #user-carousel, #artist-carousel, #event-carousel {
 	text-decoration: none;
 	color: white;
-
 	&:hover {
-	text-decoration: none;
+		text-decoration: none;
 	}
-
 }
 
-ul {
-	list-style: none;
-}
+
 
 /* INDEXES */
+
+// allows pics to move on new rows if necessary
+.d-flex {
+	flex-flow: row wrap;
+}
+
 .indexHeader {
 	font-family: @headerFont;
 	text-align: center;
@@ -109,8 +170,8 @@ ul {
 #artistListPic, #eventListPic, #userListPic {
 	width: 100%;
 	height: 100%;
-	max-height: 280px;
-	max-width: 280px;
+	max-height: 200px;
+	max-width: 200px;
 	border-radius: 100%;
 }
 
@@ -139,9 +200,7 @@ ul {
   background-color: rgba(98, 114, 123, 0.75);
 }
 
-
-
-//show page card
+// show page card
 
 #card-hovercard {
 	padding: 10px 5px;
@@ -190,11 +249,9 @@ ul {
 	color: white;
 }
 
-
 .hidden-xs {
 	font-family: @textFont;
 }
-
 
 #createNewEvent {
 	&:hover {
@@ -224,7 +281,7 @@ ul {
 }
 
 
-//homepage
+// homepage
 .jumbotron {
 	width: 100%;
     background-color:transparent !important;
@@ -257,10 +314,6 @@ ul {
 div.container.text-center {
 	padding: 0;
 }
-nav {
-	// background-color: #102027 !important;
-	height: 50px !important;
-}
 span.navbar-toggler-icon{
 	color: #e2f1f8 !important;
 }
@@ -278,59 +331,6 @@ a.nav-item.nav-link, div.dropdown-menu.show, div.dropdown-menu{
 }
 #browse, #navbar {
 	font-size: 20px;
-}
-// // correction for .navbar-right
-@media (max-width: 767px) {
-	// nav {
-	// 	margin-top: -8px;
-	// }
-	#sign-up {
-		margin-right: 0;
-	}
-	.landing-nav {
-		margin-top: -8px;
-	}
-	#browse {
-		position: absolute;
-		top: 1;
-		padding-top: 15px;
-		padding-bottom: 15px;
-	}
-	.navbar-right {
-		position: absolute;
-		top: 0;
-		right: 0;
-	  padding-right: 2.5px;
-	}
-}
-
-@media (max-width: 475px) {
-	a.nav-item.nav-link, div.dropdown-menu.show, div.dropdown-menu {
-		font-size: 15px;
-		padding-left: 5px;
-		padding-right: 0;
-	}
-	#nav-responsive {
-		font-size: 15px;
-		margin-right: 0;
-		padding: 15px 5px;
-	}
-	#sign-up, #log-in {
-		padding: 15px 5px;
-		font-size: 15px;
-	}
-	#browse {
-		position: absolute;
-		font-size: 15px;
-		top: 1;
-		padding: 15px 5px;
-	}
-	.navbar-right {
-		position: absolute;
-	  top: 0;
-		right: 0;
-	  padding-right: 2.5px;
-	}
 }
 
 #browse {
@@ -352,6 +352,7 @@ a.nav-item.nav-link, div.dropdown-menu.show, div.dropdown-menu{
 }
 
 // CAROUSEL
+
 div.col-md-12 {
 	padding-right: 2vw;
 	padding-left: 2vw;
@@ -367,9 +368,8 @@ div.col-md-12 {
 	}
 }
 .carousel-indicators * {
-
-	max-width: 3vw ;
-	max-height: 3vw ;
+	max-width: 3vw;
+	max-height: 3vw;
 }
 
 // NEW VIEW
@@ -381,28 +381,26 @@ div.col-md-12 {
 	color: white;
 }
 
-
-//MODALS
+// MODALS
 #loginModal, #registerModal {
 	background-color: rgba(255, 162, 112, 0.4);
-		.modal-header {
+	.modal-header {
 		background-color: rgb(199, 91, 57);
 		color: #e0e0e0;
 		font-family: @headerFont;
 		text-transform: uppercase;
 	}
-		.modal-body {
-			background-color: rgba(207, 216, 220, 0.7);
-			font-family: @linkFont;
-			text-transform: uppercase;
-
-		}
-		.btn {
-			background-color: #102027;
-			color: #e0e0e0;
-				&:hover {
-					background-color: #FFBB93;
-					color: #101f27;
-				}
-		}
+	.modal-body {
+		background-color: rgba(207, 216, 220, 0.7);
+		font-family: @linkFont;
+		text-transform: uppercase;
+	}
+	.btn {
+		background-color: #102027;
+		color: #e0e0e0;
+			&:hover {
+				background-color: #FFBB93;
+				color: #101f27;
+			}
+	}
 }
