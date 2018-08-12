@@ -44,7 +44,7 @@
 					<input type="text" class="form-control" name="email" placeholder="Email Address" value="<%=user.email%>"><br />
 
 					<label class= "control-label" for="updateUserAvatar">Update Avatar:</label>
-					<input type="text" class="form-control" name="avatar" placeholder="Image Link"><br />
+					<input type="text" class="form-control" name="avatar" placeholder="Image Link" value="<%=user.avatar%>"><br />
 
 		<!-- 		unable to edit password. if we set the value as the user password, the form will generate the password hash.
 					for this to work, I think we'd need to bcrypt the password that's submitted in this form.
