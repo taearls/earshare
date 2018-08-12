@@ -135,7 +135,7 @@ a:hover,
   background-color: #cfd8dc;
 }
 .card-background {
-  align-content: center;
+  text-align: center;
 }
 .card-info {
   text-align: center;
@@ -153,7 +153,6 @@ a:hover,
   max-height: 200px;
   max-width: 200px;
   border-radius: 100%;
-  text-align: center;
 }
 .card-title h3 {
   font-size: 36px;
