@@ -14,7 +14,7 @@ router.get('/', async (req, res, next) => {
 		res.render('artist/index.ejs', {
 			artists: allArtists,
 			loggedIn: loggedIn,
-			user: currentUser
+			currentUser: currentUser
 		});
 
 	} catch(err) {
@@ -31,7 +31,7 @@ router.get('/new', async (req, res, next) => {
 
 		res.render('artist/new.ejs', {
 			users: allUsers,
-			user: currentUser
+			currentUser: currentUser
 		})
 
 	} catch(err) {
@@ -273,7 +273,7 @@ router.get('/:id', async (req, res, next) => {
 
 		res.render('artist/show.ejs', {
 			artist: artist,
-			user: currentUser,
+			currentUser: currentUser,
 			usersToAdd: nonMembers,
 			bandMembers: bandMembers
 		});
@@ -292,7 +292,7 @@ router.get('/:id/edit', async (req, res, next) => {
 		const currentUser = await User.findOne({"username": req.session.username});
 		res.render('artist/edit.ejs', {
 			artist: artistToUpdate,
-			user: currentUser
+			currentUser: currentUser
 		})
 
 	} catch (err) {

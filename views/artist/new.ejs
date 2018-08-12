@@ -20,7 +20,7 @@
 				</ul>
 
 				<ul class="nav navbar-right">
-					<li><a id="nav-responsive" href="/user/<%=users.id%>">Back to User</a></li>
+					<li><a id="nav-responsive" href="/user/<%=currentUser.id%>">Back to User Profile</a></li>
 				</ul>
 
       </nav>
@@ -32,12 +32,12 @@
           <div class="container-fluid text-center">
     				<div class="col-lg-12 col-sm-12">
 
-              <h1 class="create-new">Create New Artist for <%=user.username%></h1>
+              <h1 class="create-new">Create New Artist for <%=currentUser.username%></h1>
 
                 <form action="/artist" method="POST"><br />
 
                   <select class="invisible" name="userId">
-                      <option value="<%=user._id%>"><%= user.username %></option>
+                      <option value="<%=currentUser._id%>"><%=currentUser.username%></option>
                   </select> <br/>
 
                 <label class= "control-label" for="artistName">Artist Name:</label>
@@ -68,7 +68,7 @@
 
   <footer class="container-fluid">
     <form action="/logout" method="GET">
-        <input type="submit" class="btn btn-block form-control" id="logout" value="Logout <%=user.username%>" />
+        <input type="submit" class="btn btn-block form-control" id="logout" value="Logout <%=currentUser.username%>" />
     </form>
   </footer>
 

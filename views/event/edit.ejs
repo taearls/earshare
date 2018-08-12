@@ -34,22 +34,22 @@
 
 					<form class= "form-inline-block" action="/event/<%=event.id%>?_method=PUT" method="POST">
 
-						<label class= "control-label" for="updateEventName">Update Event Name:</label>
-						<input type="text" class= "form-control" name="name" id= "updateEventName" placeholder="Eventname" value="<%=event.name%>"><br />
+						<label class="control-label" for="updateEventName">Update Event Name:</label>
+						<input type="text" class="form-control" name="name" id="updateEventName" placeholder="Eventname" value="<%=event.name%>"><br />
 
-						<label class= "control-label" for="updateVenue">Update Event Venue:</label>
-						<input type="text" class= "form-control" name="venue" placeholder="Venue" value="<%=event.venue%>"><br />
+						<label class="control-label" for="updateVenue">Update Event Venue:</label>
+						<input type="text" class="form-control" name="venue" placeholder="Venue" value="<%=event.venue%>"><br />
 
-						<label class= "control-label" for="updateEventDate">Update Event Date:</label>
-						<input type="text" class= "form-control" name="date" placeholder="Event Date" value="<%=event.date%>"><br />
+						<label class="control-label" for="updateEventDate">Update Event Date:</label>
+						<input type="date" class="form-control" name="date" placeholder="Event Date" value="<%=event.date%>"><br />
 
-						<label class= "control-label" for="updateEventImage">Update Event Image:</label>
-						<input type="text" class= "form-control" name="img" placeholder="Event Image" value="<%=event.img%>"><br />
+						<label class="control-label" for="updateEventImage">Update Event Image:</label>
+						<input type="text" class="form-control" name="img" placeholder="Event Image" value="<%=event.img%>"><br />
 
-						<label class= "control-label" for="updateEventDescription">Update Event Description:</label><br />
+						<label class="control-label" for="updateEventDescription">Update Event Description:</label><br />
 						<textarea name="description" rows="4" cols="40" placeholder="Description"><%=event.description%></textarea><br />
 
-						<button id= "edit-event" class="btn btn-dark mb-2 btn-block" type="submit">Submit Changes</button>
+						<button id="edit-event" class="btn btn-dark mb-2 btn-block" type="submit">Submit Changes</button>
 					</form>
 				</div>
 

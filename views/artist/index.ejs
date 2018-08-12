@@ -59,7 +59,7 @@
  -->	<footer class="container-fluid text-center">
 		<%if (loggedIn) { %>
 			<form action="/logout" method="GET">
-	   			<input type="submit" class="btn-block" id="logout" value="Logout <%=user.username%>" />
+	   			<input type="submit" class="btn-block" id="logout" value="Logout <%=currentUser.username%>" />
 			</form>
 		<%}%>
 	</footer>
