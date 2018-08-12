@@ -8,57 +8,6 @@ nav {
 ul {
   list-style: none;
 }
-@media (max-width: 767px) {
-  #sign-up {
-    margin-right: 0;
-  }
-  .landing-nav {
-    margin-top: -8px;
-  }
-  #browse {
-    position: absolute;
-    top: 1;
-    padding-top: 15px;
-    padding-bottom: 15px;
-  }
-  .navbar-right {
-    position: absolute;
-    top: 0;
-    right: 0;
-    padding-right: 2.5px;
-  }
-}
-@media (max-width: 475px) {
-  a.nav-item.nav-link,
-  div.dropdown-menu.show,
-  div.dropdown-menu {
-    font-size: 15px;
-    padding-left: 5px;
-    padding-right: 0;
-  }
-  #nav-responsive {
-    font-size: 15px;
-    margin-right: 0;
-    padding: 15px 5px;
-  }
-  #sign-up,
-  #log-in {
-    padding: 15px 5px;
-    font-size: 15px;
-  }
-  #browse {
-    position: absolute;
-    font-size: 15px;
-    top: 1;
-    padding: 15px 5px;
-  }
-  .navbar-right {
-    position: absolute;
-    top: 0;
-    right: 0;
-    padding-right: 2.5px;
-  }
-}
 .container-fluid {
   background-color: none !important;
 }
@@ -370,4 +319,55 @@ div.col-md-12 {
 #registerModal .btn:hover {
   background-color: #FFBB93;
   color: #101f27;
+}
+@media (max-width: 767px) {
+  #sign-up {
+    margin-right: 0;
+  }
+  .landing-nav {
+    margin-top: -8px;
+  }
+  #browse {
+    position: absolute;
+    top: 1;
+    padding-top: 15px;
+    padding-bottom: 15px;
+  }
+  .navbar-right {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding-right: 2.5px;
+  }
+}
+@media (max-width: 475px) {
+  a.nav-item.nav-link,
+  div.dropdown-menu.show,
+  div.dropdown-menu {
+    font-size: 15px;
+    padding-left: 5px;
+    padding-right: 0;
+  }
+  #nav-responsive {
+    font-size: 15px;
+    margin-right: 0;
+    padding: 15px 5px;
+  }
+  #sign-up,
+  #log-in {
+    padding: 15px 5px;
+    font-size: 15px;
+  }
+  #browse {
+    position: absolute;
+    font-size: 15px;
+    top: 1;
+    padding: 15px 5px;
+  }
+  .navbar-right {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding-right: 2.5px;
+  }
 }
