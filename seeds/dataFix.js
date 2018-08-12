@@ -19,11 +19,11 @@ const dataFix = async () => {
 
   const artist1ID = await seededArtists[0]._id.toString();
   const artist2ID = await seededArtists[1]._id.toString();
-  console.log(artist1ID, " this is the first artist id");
-  console.log(seededArtists[0].artist_id, " this should be the same ^^")
 
   seededArtists[0].artist_id = artist1ID;
   seededArtists[1].artist_id = artist2ID;
+  console.log(artist1ID, " this is the first artist id");
+  console.log(seededArtists[0].artist_id, " this should be the same ^^");
 
   const event1ID = await seededEvents[0]._id.toString();
   const event2ID = await seededEvents[1]._id.toString();
