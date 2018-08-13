@@ -57,12 +57,12 @@
 			</div>
   	</main>
 
-  	<footer class="container-fluid text-center">
-
-		<form action="/logout" method="GET">
-   			<input type="submit" class="btn-block" id="logout" value="Logout <%=user.username%>" />
-		</form>
-
+  <footer class="container-fluid">
+  	<div class="col-lg-12 col-sm-12">
+			<form action="/logout" method="GET">
+	   			<input type="submit" class="btn btn-block form-control" id="logout" value="Logout <%=user.username%>" />
+			</form>
+		</div>
 	</footer>
 
 </body>

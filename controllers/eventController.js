@@ -52,14 +52,14 @@ router.get('/:eventId/addUser/:userId', async (req, res, next) => {
 		// add the user to the event model so we can show it on event page
 		event.usersAttending.push({
 			username: addedUser.username,
-			user_id: addedUser.id
+			user_id: addedUser.id // has to be .id here (no user_id prop in user model)
 		});
 
 		// filter through event.usersAttending array of objects so each obj is unique
 
 		const uniqueUsers = {};
 
-		for ( let i=0, len = event.usersAttending.length; i < len; i++ )
+		for ( let i = 0, len = event.usersAttending.length; i < len; i++ )
 		    uniqueUsers[event.usersAttending[i]['username']] = event.usersAttending[i];
 
 		event.usersAttending = new Array();
@@ -73,7 +73,7 @@ router.get('/:eventId/addUser/:userId', async (req, res, next) => {
 		// add the event to the user model so we can show it on user page
 		addedUser.eventsAttending.push({
 			name: event.name,
-			event_id: event.id
+			event_id: event.event_id
 		});
 
 		// filter through addedUser.eventsAttending array of objects so each obj is unique
