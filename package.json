@@ -8,6 +8,9 @@
     "start": "node server.js",
     "seed": "node ./seeds/userSeed.js && node ./seeds/artistSeed.js && node ./seeds/eventSeed.js && node ./seeds/dataFix.js"
   },
+  "engines": {
+    "node": "8.9.4"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/tboneearls/project2.git"
