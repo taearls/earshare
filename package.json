@@ -9,7 +9,7 @@
     "seed": "node ./seeds/userSeed.js && node ./seeds/artistSeed.js && node ./seeds/eventSeed.js && node ./seeds/dataFix.js"
   },
   "engines": {
-    "node": "8.9.4"
+    "node": "6.3.x"
   },
   "repository": {
     "type": "git",
