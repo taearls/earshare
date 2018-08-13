@@ -119,9 +119,9 @@
 				<div class="container-fluid">
 					<%for (let i = 0; i < bandMembers.length; i++) {%>
 						<%if (bandMembers[i].user_id.toString() === user._id.toString()) {%>
-							<a class="btn btn-dark" id="edit-event" href="/event/<%= event.id %>/edit">Edit Event</a>
+							<a class="btn btn-dark" id="edit-event" href="/event/<%= event.id %>/edit">Edit <%=event.name%></a>
 								<form action="/event/<%= event.id %>?_method=DELETE" method="POST">
-									<button class="btn btn-danger form-control" type="submit">Delete Event</button>
+									<button class="btn btn-danger form-control" type="submit">Delete <%=event.name%></button>
 								</form>
 						<%}%>
 					<%}%>
