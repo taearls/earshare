@@ -79,12 +79,17 @@
 					      <div class="tab-content">
 
 					        <div class="tab-pane fade in active" id="tab1">
-										<h2>Event Details</h2>
+										<h3><%=event.name%> Info</h3>
 											<ul>
-												<li>Name: <%= event.name %></li>
-												<li>Description: <%=event.description %></li>
-												<li>Venue: <%= event.venue %></li>
-												<li>Date: <%= event.date %></li>
+												<%if (event.description) {%>
+													<li><span class="category">Description:</span> <%=event.description %></li>
+												<%}%>
+												<%if (event.venue) {%>
+													<li><span class="category">Venue:</span> <%= event.venue %></li>
+												<%}%>
+												<%if (event.date) {%>
+													<li><span class="category">Date:</span> <%= event.date %></li>
+												<%}%>
 											</ul>
 					        </div>
 
@@ -101,7 +106,7 @@
 					        <div class="tab-pane fade in" id="tab3">
 					          <h3>Users Attending: <%= event.usersAttending.length %></h3>
 					          	<ul> <% for (let i = 0; i < event.usersAttending.length; i++) { -%>
-		                       <li> <a href="/user/<%=event.usersAttending[i].id%>"> <%=event.usersAttending[i].username%> </a></li>
+		                       <li> <a href="/user/<%=event.usersAttending[i].user_id%>"> <%=event.usersAttending[i].username%> </a></li>
 		                         <% } -%>
 		                    </ul>
 										</div>
@@ -111,12 +116,12 @@
 			    </div>
 				</div>
 
-				<div class="col-lg-12 col-sm-12">
+				<div class="container-fluid">
 					<%for (let i = 0; i < bandMembers.length; i++) {%>
-						<%if (bandMembers[i]._id.toString() === user._id.toString()) {%>
-							<a class="btn btn-outline-dark btn-sm btn-block" id="edit-event" href="/event/<%= event.id %>/edit">Edit Event</a>
+						<%if (bandMembers[i].user_id.toString() === user._id.toString()) {%>
+							<a class="btn btn-dark" id="edit-event" href="/event/<%= event.id %>/edit">Edit Event</a>
 								<form action="/event/<%= event.id %>?_method=DELETE" method="POST">
-									<button class="btn btn-outline-danger btn-sm btn-block" type="submit">Delete Event</button>
+									<button class="btn btn-danger form-control" type="submit">Delete Event</button>
 								</form>
 						<%}%>
 					<%}%>
@@ -124,11 +129,9 @@
 
 
 			<footer class="container-fluid">
-				<div class="col-lg-12 col-sm-12">
-					<form action="/logout" method="GET">
-	   				<input type="submit" class="btn btn-block form-control" id="logout" value="Logout <%=user.username%>" />
-					</form>
-				</div>
+				<form action="/logout" method="GET">
+   				<input type="submit" class="btn btn-block form-control" id="logout" value="Logout <%=user.username%>" />
+				</form>
 			</footer>
 
 

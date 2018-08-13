@@ -144,7 +144,7 @@ router.get('/:id', async (req, res, next) => {
 
 		// we need the current user to compare against
 		const currentUser = await User.findOne({"username": req.session.username});
-
+    console.log(currentUser, " this is currentUser from event show route");
 		// find the artists who are hosts of the event
 		const hostArtists = await Artist.find({"events.event_id": req.params.id})
 
@@ -245,14 +245,14 @@ router.delete('/:id', async (req, res, next) => {
     let savedArtists;
     for (let i = 0; i < allArtists.length; i++) {
     	for (let j = 0; j < allArtists[i].events.length; j++) {
-    		if (allArtists[i].events[j]._id.toString() === req.params.id.toString()) {
+    		if (allArtists[i].events[j].event_id.toString() === req.params.id.toString()) {
     			allArtists[i].events.splice(j, 1);
     			savedArtists = await allArtists[i].save();
     		}
     	}
     }
     // find all the users attending the event
-    const usersAttending = await User.find({"eventsAttending.id" : req.params.id});
+    const usersAttending = await User.find({"eventsAttending.event_id" : req.params.id});
     // iterate through all the users attending in a for loop
     // remove event from their eventsAttending array
     let savedUsers;
@@ -260,7 +260,7 @@ router.delete('/:id', async (req, res, next) => {
     	// iterate through all events the users are attending
     	for (let j = 0; j < usersAttending[i].eventsAttending.length; j++) {
     		// check if the event has the same id as the event we're deleting
-    		if (usersAttending[i].eventsAttending[j].id === req.params.id) {
+    		if (usersAttending[i].eventsAttending[j].event_id === req.params.id) {
     			// if it has the same id, remove that event
 	    		usersAttending[i].eventsAttending.remove(usersAttending[i].eventsAttending[j]);
 	    		savedUsers = await usersAttending[i].save();

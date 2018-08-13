@@ -89,12 +89,23 @@
 
 <!--                ABOUT THE ARTIST
  -->                <div class="tab-pane fade in active" id="tab1">
-                        <ul>
-                          <li>Genre: <%=artist.genre%></li>
-                          <li>Location: <%=artist.location%></li>
-                          <li>Website: <a href="//<%=artist.website%>"><%=artist.website%></a></li>
-                          <li>Description: <%=artist.description%></li>
-                        </ul>
+                      <h3><%=artist.name%>'s Info</h3>
+                      
+                      <ul>
+                        <%if (artist.genre) { %>
+                          <li><span class="category">Genre:</span> <%=artist.genre%></li>
+                        <%}%>
+                        <%if (artist.location) { %>
+                          <li><span class="category">Location:</span> <%=artist.location%></li>
+                        <%}%>
+                        <%if (artist.website) { %>
+                          <li><span class="category">Website:</span> <a href="//<%=artist.website%>" target="_blank"><%=artist.website%></a></li>
+                        <%}%>
+                        <%if (artist.description) { %>
+                          <li><span class="category">Description:</span> <%=artist.description%></li>
+                        <%}%>
+                      </ul>
+
                       </h3>
                     </div>
 
@@ -123,8 +134,13 @@
                             </button>
                             <div class="dropdown-menu">
 <!--                               loop only over array of users NOT in the band
- -->                              <% for (let i = 0; i < usersToAdd.length; i++) { %>
-                                 <a href="/artist/<%=artist.id%>/addUser/<%=usersToAdd[i].id%>" class="dropdown-item"><%=usersToAdd[i].username%></a>
+ -->                          <% if (usersToAdd.length > 0) { %> 
+                                <% for (let i = 0; i < usersToAdd.length; i++) { %>
+                                
+                                  <a href="/artist/<%=artist.id%>/addUser/<%=usersToAdd[i].id%>" class="dropdown-item"><%=usersToAdd[i].username%></a>
+                                <% } %>
+                              <% } else { %>
+                                <a href="#" class="dropdown-item">[no users left]</a>
                               <% } %>
                             </div>
                         </div>
@@ -155,7 +171,7 @@
                                   </form>
                                 <% } else {%>
 <!--                                      otherwise, only delete the member
- -->                               <a href="/artist/removeUser/<%=artist.id%>/<%=artist.bandMembers[i].id%>" class="dropdown-item"><%=artist.bandMembers[i].username%></a>
+ -->                               <a href="/artist/removeUser/<%=artist.id%>/<%=artist.bandMembers[i].user_id%>" class="dropdown-item"><%=artist.bandMembers[i].username%></a>
                                 <% } %>
 
                               <%}%>
@@ -168,13 +184,12 @@
 
                     </div>
 
-<!--                ARTIST EVENTS
- -->
+                    <!-- ARTIST EVENTS -->
                     <div class="tab-pane fade in" id="tab3">
                       <h3>Created Events</h3>
                       <ul>
                       <% for (let i = 0; i < artist.events.length; i++) { -%>
-                        <li><a href="/event/<%=artist.events[i]._id%>"> <%= artist.events[i].name%></a></li>
+                        <li><a href="/event/<%=artist.events[i].event_id%>"> <%=artist.events[i].name%></a></li>
                       <% } -%>
                       </ul>
 
@@ -184,7 +199,7 @@
                       <%if (currentUser.id.toString() === artist.bandMembers[i].user_id.toString()) {%>
 
                         <form action="/event/new" method="GET">
-                          <input id= "createNewEvent" class="btn-dark" type="submit" value="Create New Event">
+                          <input id="createNewEvent" class="btn-success" type="submit" value="Create New Event">
                         </form>
 
                       <%}%>
@@ -215,12 +230,12 @@
 <!--             EDIT AND DELETE ARTIST BUTTONS
  -->        <% for (let i = 0; i < artist.bandMembers.length; i++) { -%>
               <%if (currentUser.id.toString() === artist.bandMembers[i].user_id.toString()) {%>
-                <div class="col-lg-12 col-sm-12">
-            			<a class="btn btn-outline-dark btn-sm btn-block" id="edit-artist" href="/artist/<%= artist.id %>/edit">Edit <%=artist.name%></a>
-            				<form action="/artist/<%= artist.id %>?_method=DELETE" method="POST">
-            					<button class="btn btn-outline-danger btn-sm btn-block" type="submit">Delete <%=artist.name%></button>
+                <div class="container-fluid">
+            			<a class="btn btn-dark" id="edit-artist" href="/artist/<%= artist.id %>/edit">Edit <%=artist.name%></a>
+            				<form action="/artist/<%=artist.id%>?_method=DELETE" method="POST">
+            					<button class="btn btn-danger form-control" type="submit">Delete <%=artist.name%></button>
             			</form>
-            		</div>
+                </div>
               <%}%>
             <% } %>
 
@@ -228,11 +243,9 @@
 
 <!--   LOGOUT -->
   <footer class="container-fluid">
-    <div class="col-lg-12 col-sm-12">
-      <form action="/logout" method="GET">
-        <input type="submit" class="btn btn-block form-control" id="logout" value="Logout <%=currentUser.username%>" />
-      </form>
-    </div>
+    <form action="/logout" method="GET">
+      <input type="submit" class="btn btn-block form-control" id="logout" value="Logout <%=currentUser.username%>" />
+    </form>
   </footer>
 
   <script src="/js/app.js"></script>

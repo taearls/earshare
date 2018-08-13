@@ -149,7 +149,7 @@ router.get('/:artistId/addUser/:userId', async (req, res, next) => {
 		const addedUser = await User.findById(req.params.userId);
 		const band = await Artist.findById(req.params.artistId);
 		// find all events the band is a part of and give access to new band member
-		const bandEvents = await Event.find({"hostArtists.id": req.params.artistId});
+		const bandEvents = await Event.find({"hostArtists.artist_id": req.params.artistId});
 
 
 
@@ -160,7 +160,7 @@ router.get('/:artistId/addUser/:userId', async (req, res, next) => {
 		for (let i = 0; i < bandEvents.length; i++) {
 			for (let j = 0; j < bandEvents[i].hostArtists.length; j++) {
 				// check if artist id is the same as band
-				if (band._id === bandEvents[i].hostArtists[j]._id) {
+				if (band._id === bandEvents[i].hostArtists[j].artist_id) {
 					bandEvents[i].hostArtists[j].bandMembers.push(addedUser);
 				}
 			}
@@ -172,7 +172,7 @@ router.get('/:artistId/addUser/:userId', async (req, res, next) => {
 		// iterate through all the members in the band and remove duplicates by
 		// creating new object with only unique names passed into it
 
-		for ( let i=0, len = band.bandMembers.length; i < len; i++ )
+		for ( let i = 0, len = band.bandMembers.length; i < len; i++ )
 		    uniqueMembers[band.bandMembers[i]['username']] = band.bandMembers[i];
 
 		band.bandMembers = new Array();
@@ -190,16 +190,16 @@ router.get('/:artistId/addUser/:userId', async (req, res, next) => {
 
 		// iterate through all the members in the band and remove duplicates by
 		// creating new object with only unique names passed into it
-		const origArtistId = [];
-		for ( let i=0, len = addedUser.artists.length; i < len; i++ ) {
+		// const origArtistId = [];
+
+		for ( let i = 0, len = addedUser.artists.length; i < len; i++ ) {
 		    uniqueBands[addedUser.artists[i]['name']] = addedUser.artists[i];
-		    addedUser.artists[i].artist_id = addedUser.artists[i].id;
-		    origArtistId.push(addedUser.artists[i].artist_id);
+		    // addedUser.artists[i].artist_id = addedUser.artists[i].id;
+		    // origArtistId.push(addedUser.artists[i].artist_id);
 		}
 
 
 		// this mutates the id of the artist
-		addedUser.artists = new Array();
 		for ( let key in uniqueBands )
 		    addedUser.artists.push(uniqueBands[key]);
 
@@ -258,21 +258,31 @@ router.get('/:id', async (req, res, next) => {
 
 		// for each user with access, push each of their individual ids into the userIds array
 		artist.bandMembers.forEach((user) => {
-			userIds.push( user._id );
+			userIds.push( user.user_id );
 		})
-
+    console.log(userIds, " this is the array of userIds");
 
 		// the members in the band have an id in userIds,
 		// non members do not have an id in userIds
-		const bandMembers = await User.find({ "_id": { "$in": userIds} });
-		const nonMembers = await User.find({ "_id": { "$nin": userIds } });
+		// const bandMembers = await User.find({ "id": { "$in": userIds } });
+		// const nonMembers = await User.find({ "id": { "$nin": userIds } });
 		const allUsers = await User.find();
+    const bandMembers = await allUsers.filter(() => {
+      for (let i = 0; i < userIds.length; i++) {
+        return user => user.id.toString() == userIds[i]
+      }
+    })
+    const nonMembers = await allUsers.filter(() => {
+      for (let i = 0; i < userIds.length; i++) {
+        return user => user.id.toString() != userIds[i]
+      }
+    })
 
 
-
-
-		// console.log(nonMembers, " this should be a list of all users who aren't members of the band");
-		// use this to keep track of current artist; on our site they have to go to the artist show page to create an event
+    console.log(bandMembers, " this should be all the users who are band members");
+		console.log(nonMembers, " this should be a list of all users who aren't members of the band");
+		console.log(allUsers, " this is all users");
+    // use this to keep track of current artist; on our site they have to go to the artist show page to create an event
 		req.session.currentArtist = artist.name.toString();
 
 		res.render('artist/show.ejs', {
@@ -354,7 +364,7 @@ router.delete('/:id', async (req, res, next) => {
     const allEvents = await Event.find();
     for (let i = 0; i < allEvents.length; i++) {
     	for (let j = 0; j < deletedArtist.events.length; j++) {
-    		if (allEvents[i]._id.toString() === deletedArtist.events[j]._id.toString()) {
+    		if (allEvents[i].event_id.toString() === deletedArtist.events[j].event_id.toString()) {
     			// remove in event show page if there are no more affiliated artists
     			allEvents[i].hostArtists.splice(deletedArtist.name.indexOf(), 1);
     			if (allEvents[i].hostArtists.length === 0) {
@@ -378,12 +388,12 @@ router.delete('/:id', async (req, res, next) => {
 
     // remove artist info from all users who like them
     // find all the users who are fans of the artist we're deleting
-    const fansArtist = await User.find({"artistsLiked.artist_id" : req.params.id})
+    const fansArtist = await User.find({"artistsLiked.artist_id" : req.params.id});
     let savedFans;
 
     for (let i = 0; i < fansArtist.length; i++) {
     	for (let k = 0; k < fansArtist[i].artistsLiked.length; k++) {
-	    	if (fansArtist[i].artistsLiked[k].id.toString() === req.params.id.toString()) {
+	    	if (fansArtist[i].artistsLiked[k].artist_id.toString() === req.params.id.toString()) {
 	    		fansArtist[i].artistsLiked.remove(fansArtist[i].artistsLiked[k]);
 		    	savedFans = await fansArtist[i].save();
 	    	}

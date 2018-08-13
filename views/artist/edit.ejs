@@ -34,22 +34,22 @@
             <form action="/artist/<%=artist.id%>?_method=PUT" method="POST"><br />
 
               <label class= "control-label" for="artistName">Edit Artist Name:</label>
-              <input type="text" class= "form-control" name="name" id= "artistName" value="<%=artist.name%>"><br />
+              <input type="text" class="form-control" name="name" id="artistName" placeholder="Name" value="<%=artist.name%>" required><br />
 
               <label class= "control-label" for="artistGenre">Edit Genre:</label>
-              <input type="text" class= "form-control" name="genre" value="<%=artist.genre%>"><br />
+              <input type="text" class="form-control" name="genre" value="<%=artist.genre%>" placeholder="Genre"><br />
 
-              <label class= "control-label" for="artistLocation">Edit Location:</label>
-              <input type="text" class= "form-control" name="location" value="<%=artist.location%>"><br />
+              <label class="control-label" for="artistLocation">Edit Location:</label>
+              <input type="text" class="form-control" name="location" placeholder="Location" value="<%=artist.location%>"><br />
 
-              <label class= "control-label" for="artistWebsite">Edit Website:</label>
-              <input type="text" class= "form-control" name="website" value="<%=artist.website%>"><br />
+              <label class="control-label" for="artistWebsite">Edit Website:</label>
+              <input type="text" class="form-control" name="website" placeholder="Website" value="<%=artist.website%>"><br />
 
               <label class="control-label" for="artistImage">Edit Image:</label>
-              <input type="text" class= "form-control" name="avatar" value="<%=artist.avatar%>"><br />
+              <input type="text" class="form-control" name="avatar" placeholder="Image Link" value="<%=artist.avatar%>"><br />
 
               <label class= "control-label" for="artistDescription">Edit Artist Description:</label><br />
-              <textarea name="description" rows="12" cols="80" placeholder="Description"><%=artist.description%></textarea><br /><br />
+              <textarea name="description" class="form-control" rows="8" placeholder="Description" value="<%=artist.description%>"></textarea><br /><br />
 
               <button id="edit-submit" class="btn btn-dark mb-2 btn-block" type="submit">Submit Changes</button>
             </form>

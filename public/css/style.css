@@ -19,6 +19,7 @@ ul {
   text-align: center;
   font-family: 'Permanent Marker', cursive;
   font-size: 24px;
+  background-color: rgba(255, 138, 101, 0.7);
 }
 #like-button,
 #event-button {
@@ -34,11 +35,18 @@ ul {
 #logout {
   background-color: #ff7043;
   color: white;
-  padding: 0 !important;
+  border-color: #ff7043;
 }
 #logout:hover {
   background-color: #ffa270;
   transition: 0.5s ease;
+}
+#edit-user,
+#edit-artist,
+#edit-event,
+#edit-submit,
+#new-submit {
+  width: 100%;
 }
 #edit-user:hover,
 #edit-artist:hover,
@@ -191,8 +199,8 @@ a:hover,
 .hidden-xs {
   font-family: 'Maven Pro', sans-serif;
 }
-#createNewEvent:hover {
-  color: white;
+#createNewEvent {
+  border-radius: 5px;
 }
 #tab1 {
   font-family: 'Maven Pro', sans-serif;
@@ -221,6 +229,9 @@ a:hover,
 #tab3 a:hover,
 #tab4 a:hover {
   color: #1c313a;
+}
+.category {
+  color: #3385c6;
 }
 .jumbotron {
   width: 100%;
@@ -265,6 +276,9 @@ div.dropdown-menu {
   background-color: #102027 !important;
   font-size: 20px;
   padding-left: 7px;
+}
+button.dropdown-item {
+  color: #f4511e;
 }
 #sign-up {
   padding: 10px 15px;

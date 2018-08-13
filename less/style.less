@@ -28,6 +28,7 @@ ul {
 	text-align: center;
 	font-family: 'Permanent Marker', cursive;
 	font-size: 24px;
+	background-color: rgba(255, 138, 101, 0.7);
 }
 
 #like-button, #event-button {
@@ -44,7 +45,7 @@ ul {
 #logout {
 	background-color: #ff7043;
 	color: white;
-	padding: 0 !important;
+	border-color: #ff7043;
 	&:hover {
 		background-color: #ffa270;
 		transition: .5s ease;
@@ -57,6 +58,8 @@ ul {
 		color: white;
 		transition: .5s ease;
 	}
+	width: 100%;
+	// background-color: black;
 }
 
 a, #user-carousel, #artist-carousel, #event-carousel {
@@ -216,9 +219,7 @@ a, #user-carousel, #artist-carousel, #event-carousel {
 }
 
 #createNewEvent {
-	&:hover {
-		color: white
-	}
+	border-radius: 5px;
 }
 
 #tab1 {
@@ -241,7 +242,9 @@ a, #user-carousel, #artist-carousel, #event-carousel {
 				}
 		}
 }
-
+.category {
+	color: #3385c6;
+}
 
 // homepage
 .jumbotron {
@@ -284,6 +287,9 @@ a.nav-item.nav-link, div.dropdown-menu.show, div.dropdown-menu{
 	background-color: #102027 !important;
 	font-size: 20px;
 	padding-left: 7px;
+}
+button.dropdown-item {
+	color: #f4511e;
 }
 
 #sign-up {
