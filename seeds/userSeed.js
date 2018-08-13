@@ -13,7 +13,7 @@ const seededUsers = [
   new User({
     username: 'tboneearls',
     email: 'tboneearls@gmail.com',
-    password: '$2y$12$mj8j4mk/aIV2kjRv1YEUAeQN7smNWWMaSiBdxsHxuYpFbqMlTiYPW', // tboneearls
+    password: '$2b$10$jthGk9yLigxOa/Ic55k8zev7mMN8GQTopOkFIblZKFD3ygp/o0N9S', // tboneearls
     avatar: 'https://amp.businessinsider.com/images/59e5d4a1b0c292755836e078-750-562.jpg',
     userConfirmed: true,
     artists: [],
@@ -23,7 +23,7 @@ const seededUsers = [
   new User({
     username: 'tyler',
     email: 'tyler.a.earls@gmail.com',
-    password: '$2y$12$ynaKcjEUmrukkP0HI9qaxeCt4sPmvaPNh2XKQab.YEjD5ZbmFfA4.', // tyler
+    password: '$2b$10$Wp3SKJTi6WVFg2dKjbsPkuCBJLpwr9Ip4hYrfxtebuLia3c0gh5Hi', // tyler
     avatar: 'https://data.whicdn.com/images/14922648/large.jpg',
     userConfirmed: false,
     artists: [],
