@@ -106,7 +106,7 @@ router.get('/:eventId/addUser/:userId', async (req, res, next) => {
 router.post('/', async (req, res, next) => {
 
   try {
-  	const artistHost = await Artist.findById(req.body.artistId)
+  	const artistHost = await Artist.findOne({"name": req.session.currentArtist});
     const createdEvent = await Event.create(req.body);
 
     // this will populate the affiliated artists
@@ -124,7 +124,7 @@ router.post('/', async (req, res, next) => {
     // this will make the event appear in the artist schema
     artistHost.events.push({
       name: createdEvent.name,
-      event_id: createdEvent.id
+      event_id: createdEvent.event_id
     });
 
     const savedArtist = await artistHost.save();
@@ -146,7 +146,7 @@ router.get('/:id', async (req, res, next) => {
 		const currentUser = await User.findOne({"username": req.session.username});
 
 		// find the artists who are hosts of the event
-		const hostArtists = await Artist.find({"events._id": req.params.id})
+		const hostArtists = await Artist.find({"events.event_id": req.params.id})
 
 		// push users with access to this array
 		// on show page, if one of these artists is the current user, we will grant access

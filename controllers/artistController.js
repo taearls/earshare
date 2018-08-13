@@ -4,6 +4,12 @@ const Event = require('../models/event');
 const Artist = require('../models/artist');
 const User = require('../models/user');
 
+const uniqueArray = (arrArg) => {
+  return arrArg.filter((elem, pos, arr) => {
+    return arr.indexOf(elem) == pos;
+  });
+}
+
 // get index route
 router.get('/', async (req, res, next) => {
 	try {
@@ -82,21 +88,22 @@ router.get('/addUser/:userId/:artistId', async (req, res, next) => {
 
 		band.usersWhoLike.push({
 			username: addedUser.username,
-			id: addedUser.id
+			user_id: addedUser.id // has to be addedUser.id because on the user model, there is no user_id property
 		});
 		// filter through the band.usersWhoLike array to eliminate duplicate users
+    // CAN'T USE FILTER METHOD BECAUSE UNIQUE OBJECT IDS MAKE IT IMPOSSIBLE TO USE FILTER
 
 		// create new object to store unique fans (since we're working with an array of objects)
 		const uniqueFans = {};
 
-
-
-		for ( let i=0, len = band.usersWhoLike.length; i < len; i++ )
+		for ( let i = 0, len = band.usersWhoLike.length; i < len; i++ )
 		    uniqueFans[band.usersWhoLike[i]['username']] = band.usersWhoLike[i];
 
 		band.usersWhoLike = new Array();
 		for ( let key in uniqueFans )
 		    band.usersWhoLike.push(uniqueFans[key]);
+  
+
 
 		// console.log(uniqueFans, " this should be a list of users without duplicates");
 
@@ -107,7 +114,7 @@ router.get('/addUser/:userId/:artistId', async (req, res, next) => {
 		// add like to user page
 		addedUser.artistsLiked.push({
 			name: band.name,
-			id: band.id
+			artist_id: band.artist_id
 		})
 
 		// create empty object to store unique artists
@@ -242,11 +249,11 @@ router.get('/removeUser/:artistId/:userId', async (req, res, next) => {
 // get show route
 router.get('/:id', async (req, res, next) => {
 	try {
-		// This is the artist that is on the page
+		// this is the artist that is on the page
+    // has to be req.params.id since that is the param being passed above
 		const artist = await Artist.findById(req.params.id);
-
 		const currentUser = await User.findOne({"username": req.session.username});
-		// This should be the user Id of the users that are already in the band
+		// this should be the user Id of the users that are already in the band
 		const userIds = [];
 
 		// for each user with access, push each of their individual ids into the userIds array
@@ -259,9 +266,6 @@ router.get('/:id', async (req, res, next) => {
 		// non members do not have an id in userIds
 		const bandMembers = await User.find({ "_id": { "$in": userIds} });
 		const nonMembers = await User.find({ "_id": { "$nin": userIds } });
-		// console.log('--------------------------')
-		// console.log(nonMembers)
-		// console.log('=================================')
 		const allUsers = await User.find();
 
 
@@ -374,7 +378,7 @@ router.delete('/:id', async (req, res, next) => {
 
     // remove artist info from all users who like them
     // find all the users who are fans of the artist we're deleting
-    const fansArtist = await User.find({"artistsLiked.id" : req.params.id})
+    const fansArtist = await User.find({"artistsLiked.artist_id" : req.params.id})
     let savedFans;
 
     for (let i = 0; i < fansArtist.length; i++) {
@@ -385,8 +389,6 @@ router.delete('/:id', async (req, res, next) => {
 	    	}
     	}
     }
-
-
 
     res.redirect('/artist');
 

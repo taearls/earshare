@@ -202,7 +202,7 @@
                       <%}%>
 
                       <ul> <% for (let i = 0; i < artist.usersWhoLike.length; i++) { -%>
-                        <li> <a href="/user/<%=artist.usersWhoLike[i].id%>"> <%=artist.usersWhoLike[i].username%> </a></li>
+                        <li> <a href="/user/<%=artist.usersWhoLike[i].user_id%>"> <%=artist.usersWhoLike[i].username%> </a></li>
                           <% } -%>
                       </ul>
 

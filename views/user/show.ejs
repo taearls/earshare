@@ -89,8 +89,8 @@
 				<div class="tab-pane fade in active" id="tab1">
 
 					<ul>
-						<li>Username: <%= user.username %></li>
-						<li>Email: <%=user.email %></li>
+						<li>Username: <%=user.username%> </li>
+						<li>Email: <%=user.email%> </li>
 					</ul>
 
 	      </div>
@@ -100,7 +100,7 @@
 	      	<ul>
 	      		<% for (let i = 0; i < user.artistsLiked.length; i++) { -%>
 	      			<li>
-	      				<a href="/artist/<%=user.artistsLiked[i].id%>">
+	      				<a href="/artist/<%=user.artistsLiked[i].artist_id%>">
 	      					<%=user.artistsLiked[i].name%>
 	      				</a>
 	      			</li>
