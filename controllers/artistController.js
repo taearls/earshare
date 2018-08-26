@@ -325,7 +325,7 @@ router.put("/:id", async (req, res, next) => {
   		artistEdit.description = req.body.description;
 
 		// find all users who have an artist with the same id as the artist
-		const membersArtist = await User.find({"artists.id" : req.params.id});
+		const membersArtist = await User.find({"artists.artist_id" : req.params.id.toString()});
 		let savedUsers;
 
 
@@ -335,7 +335,7 @@ router.put("/:id", async (req, res, next) => {
 
 		for (let i = 0; i < membersArtist.length; i++) {
 			for (let j = 0; j < membersArtist[i].artists.length; j++) {
-				if (membersArtist[i].artists[j].id === req.params.id) {
+				if (membersArtist[i].artists[j].artist_id === req.params.id.toString()) {
 					membersArtist[i].artists[j].name = req.body.name;
 					savedUsers = await membersArtist[i].save();
 				}
