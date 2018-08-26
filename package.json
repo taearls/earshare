@@ -9,7 +9,8 @@
     "seed": "node ./seeds/userSeed.js && node ./seeds/artistSeed.js && node ./seeds/eventSeed.js && node ./seeds/dataFix.js"
   },
   "engines": {
-    "node": "6.3.x"
+    "node": "5.0.0",
+    "npm": "4.6.1"
   },
   "repository": {
     "type": "git",
@@ -38,7 +39,6 @@
     "mongoose": "^5.2.7",
     "nodemailer": "^4.6.7",
     "nodemon": "^1.18.3",
-    "npm": "^6.3.0",
-    "serve-favicon": "^2.5.0"
+    "npm": "^6.3.0"
   }
 }
