@@ -210,7 +210,7 @@ router.put("/:id", async (req, res, next) => {
 
 		for (let i = 0; i < hostArtists.length; i++) {
 			for (let j = 0; j < hostArtists[i].events.length; j++) {
-				if (hostArtists[i].events[j]._id.toString() === req.params.id.toString()) {
+				if (hostArtists[i].events[j].event_id.toString() === req.params.id.toString()) {
 					// update all the keys of the object in the event array
 					hostArtists[i].events[j].name = req.body.name;
 					hostArtists[i].events[j].genre = req.body.genre;
