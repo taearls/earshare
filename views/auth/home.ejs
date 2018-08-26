@@ -3,9 +3,10 @@
   <head>
     <meta charset="utf-8">
     <title>Music App Landing Page</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="/css/style.css">
     <link href="https://fonts.googleapis.com/css?family=Maven+Pro:500,700|Permanent+Marker|Shrikhand" rel="stylesheet">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   </head>
@@ -42,7 +43,7 @@
 
 
     <div id="homepage-jumbo">
-      <div class = "jumbotron">
+      <div class="jumbotron" id="jumbotron">
         <div class="container text-center">
           <h1>EarShare</h1>
           <h3>Share Your Ears With Your Peers!</h3>
@@ -53,71 +54,73 @@
     <div id="carousel">
       <div class="row">
         <div class="col-md-12">
-          <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+          <div id="center-content">
+            <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
 
-            <ol class="carousel-indicators">
-              <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-              <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-              <li data-target="#carousel-example-generic" data-slide-to="2"></li>
-            </ol>
+              <ol class="carousel-indicators">
+                <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+                <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+              </ol>
 
-            <div class="carousel-inner">
-              <div class="item active">
-                <img src="../images/Webp.net-resizeimage.jpg" alt="First slide">
-                <div class="carousel-caption">
-                  <%if (users[0] === undefined) {%>
-                    <img id="userCarouselPic" alt="Static User Image" src="">
-                    <h3>User</h3>
-                  <%} else {%>
-                    <img id="userCarouselPic" class="backup_picture" alt="<%=users[userNum].username%> Image" src="<%=users[userNum].avatar%>">
+              <div class="carousel-inner">
+                <div class="item active">
+                  <img src="../images/Webp.net-resizeimage.jpg" alt="First slide">
+                  <div class="carousel-caption">
+                    <%if (users[0] === undefined) {%>
+                      <img id="userCarouselPic" alt="Static User Image" src="">
+                      <h3>User</h3>
+                    <%} else {%>
+                      <img id="userCarouselPic" class="backup_picture" alt="<%=users[userNum].username%> Image" src="<%=users[userNum].avatar%>">
+                        <h3>
+                          <a id="user-carousel" href="/user"><%=users[userNum].username%></a>
+                        </h3>
+                    <%}%>
+                  </div>
+                </div>
+
+                <div class="item">
+                  <img src="../images/Webp.net-resizeimage.jpg" alt="Second slide">
+                  <div class="carousel-caption">
+                    <%if (artists[0] === undefined) {%>
+                      <img id="artistCarouselPic" alt="Static Artist Image" src="">
+                      <h3>Artist</h3>
+                    <%} else {%>
+                      <img class="backup_picture" id="artistCarouselPic" alt="<%=artists[artistNum].name%> Image" src="<%=artists[artistNum].avatar%>">
                       <h3>
-                        <a id="user-carousel" href="/user"><%=users[userNum].username%></a>
+                        <a id="artist-carousel" href="/artist"><%=artists[artistNum].name%></a>
                       </h3>
-                  <%}%>
+                    <%}%>
+                 </div>
                 </div>
-              </div>
-
-              <div class="item">
-                <img src="../images/Webp.net-resizeimage.jpg" alt="Second slide">
-                <div class="carousel-caption">
-                  <%if (artists[0] === undefined) {%>
-                    <img id="artistCarouselPic" alt="Static Artist Image" src="">
-                    <h3>Artist</h3>
-                  <%} else {%>
-                    <img class="backup_picture" id="artistCarouselPic" alt="<%=artists[artistNum].name%> Image" src="<%=artists[artistNum].avatar%>">
-                    <h3>
-                      <a id="artist-carousel" href="/artist"><%=artists[artistNum].name%></a>
-                    </h3>
-                  <%}%>
-               </div>
-              </div>
 
 
-              <div class="item">
-                <img src="/images/Webp.net-resizeimage.jpg" alt="Third slide">
-                <div class="carousel-caption">
-                  <%if (events[0] === undefined) {%>
-                    <img class="backup_picture" id="eventCarouselPic" alt="Static Event Image" src="">
-                    <h3>Event</h3>
-                  <%} else {%>
-                    <img class="backup_picture" id="eventCarouselPic" alt="<%=events[eventNum].name%> Image" src="<%=events[eventNum].img%>">
-                    <h3>
-                     <a id="event-carousel" href="/event"><%=events[eventNum].name%></a>
-                    </h3>
-                  <%}%>
+                <div class="item">
+                  <img src="/images/Webp.net-resizeimage.jpg" alt="Third slide">
+                  <div class="carousel-caption">
+                    <%if (events[0] === undefined) {%>
+                      <img class="backup_picture" id="eventCarouselPic" alt="Static Event Image" src="">
+                      <h3>Event</h3>
+                    <%} else {%>
+                      <img class="backup_picture" id="eventCarouselPic" alt="<%=events[eventNum].name%> Image" src="<%=events[eventNum].img%>">
+                      <h3>
+                       <a id="event-carousel" href="/event"><%=events[eventNum].name%></a>
+                      </h3>
+                    <%}%>
+                  </div>
                 </div>
+
               </div>
+
+              <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a>
+              <a class="right carousel-control" href="#carousel-example-generic" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
 
             </div>
 
-            <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a>
-            <a class="right carousel-control" href="#carousel-example-generic" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
-
-          </div>
-
-          <div class="main-text hidden-xs">
-            <div class="col-md-12 text-center">
-              <div class=""></div>
+            <div class="main-text hidden-xs">
+              <div class="col-md-12 text-center">
+                <div class=""></div>
+              </div>
             </div>
           </div>
         </div>

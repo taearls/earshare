@@ -8,6 +8,14 @@ nav {
 ul {
   list-style: none;
 }
+#carousel-example-generic {
+  margin: 0 auto;
+}
+#center-content {
+  min-height: 100%;
+  display: flex;
+  align-items: center;
+}
 #carousel .row {
   margin-left: 0 !important;
   margin-right: 0 !important;
@@ -15,6 +23,9 @@ ul {
   bottom: 0;
   max-height: 50vh !important;
   width: 100%;
+}
+#carousel .row * {
+  vertical-align: middle;
 }
 #carousel-example-generic {
   max-height: 50vh !important;
@@ -133,6 +144,10 @@ a:hover,
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
+}
+.carousel .item img {
+  max-width: 1200px;
+  margin: 0 auto;
 }
 #artistListPic,
 #eventListPic,
@@ -401,6 +416,42 @@ div.col-md-12 {
     padding-right: 2.5px;
   }
 }
+@media (min-width: 768px) {
+  #jumbotron {
+    padding-top: 30px;
+    padding-bottom: 30px;
+  }
+  #artistCarouselPic,
+  #eventCarouselPic,
+  #userCarouselPic {
+    width: 50%;
+    height: 50%;
+    max-width: 230px;
+    max-height: 230px;
+    border-radius: 100%;
+  }
+  .carousel-caption {
+    right: 15%;
+    left: 15%;
+  }
+  .carousel-control .glyphicon-chevron-left,
+  .carousel-control .glyphicon-chevron-right,
+  .carousel-control .icon-prev,
+  .carousel-control .icon-next {
+    width: 20px;
+    height: 20px;
+    margin-top: -10px;
+    font-size: 30px;
+  }
+  .carousel-control .glyphicon-chevron-left,
+  .carousel-control .icon-prev {
+    margin-left: -10px;
+  }
+  .carousel-control .glyphicon-chevron-right,
+  .carousel-control .icon-next {
+    margin-right: -10px;
+  }
+}
 @media (max-width: 475px) {
   a.nav-item.nav-link,
   div.dropdown-menu.show,
@@ -434,12 +485,6 @@ div.col-md-12 {
   .carousel h3 {
     font-size: 16px;
   }
-  #artistCarouselPic,
-  #eventCarouselPic,
-  #userCarouselPic {
-    max-width: 40%;
-    max-height: 40%;
-  }
 }
 @media (max-width: 350px) {
   #artistCarouselPic,
@@ -456,6 +501,42 @@ div.col-md-12 {
   }
   #index-jumbo h3,
   #homepage-jumbo h3 {
+    font-size: 40px;
+  }
+}
+@media (max-width: 630px) {
+  #index-jumbo h1,
+  #homepage-jumbo h1 {
+    font-size: 90px;
+  }
+  #index-jumbo h3,
+  #homepage-jumbo h3 {
+    font-size: 25px;
+  }
+}
+@media (max-width: 510px) {
+  #index-jumbo h1,
+  #homepage-jumbo h1 {
+    font-size: 70px;
+  }
+  #index-jumbo h3,
+  #homepage-jumbo h3 {
+    font-size: 20px;
+  }
+}
+@media (max-width: 400px) {
+  #index-jumbo h1,
+  #homepage-jumbo h1 {
+    font-size: 55px;
+  }
+  #index-jumbo h3,
+  #homepage-jumbo h3 {
+    font-size: 15px;
+  }
+}
+@media (max-width: 320px) {
+  #index-jumbo h1,
+  #homepage-jumbo h1 {
     font-size: 40px;
   }
 }
