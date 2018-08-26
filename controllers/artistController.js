@@ -4,12 +4,6 @@ const Event = require('../models/event');
 const Artist = require('../models/artist');
 const User = require('../models/user');
 
-const uniqueArray = (arrArg) => {
-  return arrArg.filter((elem, pos, arr) => {
-    return arr.indexOf(elem) == pos;
-  });
-}
-
 // get index route
 router.get('/', async (req, res, next) => {
 	try {
@@ -72,7 +66,7 @@ router.post('/', async (req, res, next) => {
     const savedArtist = await createdArtist.save();
     const savedUser = await bandMember.save();
 
-    res.redirect('/artist');
+    res.redirect('/artist/' + createdArtist.id.toString());
 
   } catch(err) {
     next(err)
@@ -351,7 +345,7 @@ router.put("/:id", async (req, res, next) => {
 		const updatedArtist = await Artist.findByIdAndUpdate(req.params.id, req.body);
 		const savedArtist = await updatedArtist.save();
 
-		res.redirect("/artist");
+		res.redirect("/artist/" + req.params.id);
 	} catch (err) {
 		next(err);
 	}
