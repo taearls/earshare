@@ -1,14 +1,13 @@
 require('dotenv').config(); // for heroku deployment
 const express = require('express');
 const app = express();
-const favicon = require('serve-favicon');
+// const favicon = require('serve-favicon');
 const bodyParser = require('body-parser');
 const methodOverride = require('method-override');
 const session = require('express-session');
 const expressLayouts = require('express-ejs-layouts');
 const path = require('path');
-const PORT = 4000;
-
+const devPORT = 4000;
 
 app.set('view engine', 'ejs');
 require('./db/db');
@@ -58,6 +57,6 @@ const eventController = require('./controllers/eventController');
 app.use('/event', eventController);
 
 // APP LISTEN
-app.listen(process.env.PORT || PORT, () => {
-	console.log('Server is running on PORT: ' + PORT);
+app.listen(process.env.PORT || devPORT, () => {
+	console.log('Server is running on PORT: ' + devPORT);
 });
