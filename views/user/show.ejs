@@ -136,10 +136,10 @@
 							</li>
 						<% } %>
 					</ul>
-					<% if (user.artists.length == 0) { %>
-						<ul>
-							<li>No Artists registered. To register, click <a href="/artist/new">here.</a></li>
-						</ul>
+					<% if (user.user_id == currentUser.user_id) { %>
+							<form action="/artist/new" method="GET">
+                <input id="registerNewArtist" class="btn-success" type="submit" value="Register New Artist">
+              </form>
 					<% } %>
 
 		    </div>

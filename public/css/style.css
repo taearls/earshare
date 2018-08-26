@@ -175,6 +175,7 @@ a:hover,
   border-radius: 100%;
 }
 .card-title h3 {
+  color: white;
   font-size: 36px;
 }
 #stars:hover {
@@ -201,7 +202,8 @@ a:hover,
 .hidden-xs {
   font-family: 'Maven Pro', sans-serif;
 }
-#createNewEvent {
+#createNewEvent,
+#registerNewArtist {
   border-radius: 5px;
 }
 #tab1 {
