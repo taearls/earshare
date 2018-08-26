@@ -6,9 +6,9 @@ const methodOverride = require('method-override');
 const session = require('express-session');
 const expressLayouts = require('express-ejs-layouts');
 const path = require('path');
-const PORT = 4000;
+// const PORT = 4000;
 
-app.set('view engine', 'ejs')
+app.set('view engine', 'ejs');
 require('./db/db');
 
 // MIDDLEWARE
