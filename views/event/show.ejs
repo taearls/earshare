@@ -80,14 +80,14 @@
 		      <div class="tab-pane fade in active" id="tab1">
 						<h3><%=event.name%> Info</h3>
 						<ul>
-							<%if (event.description) {%>
-								<li><span class="category">Description:</span> <%=event.description %></li>
-							<%}%>
 							<%if (event.venue) {%>
 								<li><span class="category">Venue:</span> <%= event.venue %></li>
 							<%}%>
 							<%if (event.date) {%>
 								<li><span class="category">Date:</span> <%= event.date %></li>
+							<%}%>
+							<%if (event.description) {%>
+								<li><span class="category">Description:</span> <%=event.description %></li>
 							<%}%>
 						</ul>
 		      </div>
