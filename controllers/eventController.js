@@ -252,7 +252,7 @@ router.delete('/:id', async (req, res, next) => {
     	}
     }
     // find all the users attending the event
-    const usersAttending = await User.find({"eventsAttending.event_id" : req.params.id});
+    const usersAttending = await User.find({"eventsAttending.event_id" : req.params.id.toString()});
     // iterate through all the users attending in a for loop
     // remove event from their eventsAttending array
     let savedUsers;
@@ -260,7 +260,7 @@ router.delete('/:id', async (req, res, next) => {
     	// iterate through all events the users are attending
     	for (let j = 0; j < usersAttending[i].eventsAttending.length; j++) {
     		// check if the event has the same id as the event we're deleting
-    		if (usersAttending[i].eventsAttending[j].event_id === req.params.id) {
+    		if (usersAttending[i].eventsAttending[j].event_id === req.params.id.toString()) {
     			// if it has the same id, remove that event
 	    		usersAttending[i].eventsAttending.remove(usersAttending[i].eventsAttending[j]);
 	    		savedUsers = await usersAttending[i].save();
