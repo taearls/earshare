@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <title>Edit Artist</title>
-    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -48,8 +48,8 @@
               <label class="control-label" for="artistImage">Edit Image:</label>
               <input type="text" class="form-control" name="avatar" placeholder="Image Link" value="<%=artist.avatar%>"><br />
 
-              <label class= "control-label" for="artistDescription">Edit Artist Description:</label><br />
-              <textarea name="description" class="form-control" rows="8" placeholder="Description" value="<%=artist.description%>"></textarea><br /><br />
+              <label class="control-label" for="artistDescription">Edit Artist Description:</label><br />
+              <input name="description" class="form-control" placeholder="Description" value="<%=artist.description%>"></input><br /><br />
 
               <button id="edit-submit" class="btn btn-dark mb-2 btn-block" type="submit">Submit Changes</button>
             </form>
