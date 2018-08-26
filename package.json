@@ -38,6 +38,7 @@
     "mongoose": "^5.2.7",
     "nodemailer": "^4.6.7",
     "nodemon": "^1.18.3",
-    "npm": "^6.3.0"
+    "npm": "^6.3.0",
+    "serve-favicon": "^2.5.0"
   }
 }
