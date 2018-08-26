@@ -5,9 +5,6 @@ const Artist = require('../models/artist');
 const Event = require('../models/event');
 const bcrypt = require('bcrypt');
 
-// Math.floor(Math.random() * number)
-
-
 router.get('/', async (req, res, next) => {
 	try {
 		
@@ -35,7 +32,7 @@ router.get('/', async (req, res, next) => {
 	} catch (err) {
 		next(err);
 	} 
-})
+});
 
 // ********USER LOGIN******
 
@@ -66,7 +63,7 @@ router.post('/login', async (req, res, next) => {
 	} catch (err) {
 		next(err)
 	}
-})
+});
 
 // *****USER REGISTER*****
 
@@ -110,7 +107,7 @@ router.post('/register', async (req, res, next) => {
 		next(err);
 	}
 
-})
+});
 
 // *** LOGOUT ROUTE ***
 router.get('/logout', async (req, res, next) => {
@@ -122,6 +119,6 @@ router.get('/logout', async (req, res, next) => {
 	} catch (err) {
 		next(err);
 	}
-})
+});
 
 module.exports = router;
