@@ -15,6 +15,8 @@ ul {
   font-size: 20px;
 }
 #home-message {
+  z-index: 1000;
+  margin-bottom: 0;
   color: white;
   text-align: center;
   font-family: 'Permanent Marker', cursive;
@@ -217,7 +219,7 @@ a:hover,
 #tab2 ul,
 #tab3 ul,
 #tab4 ul {
-  font-size: 1.5em;
+  font-size: 24px;
 }
 #tab2 a,
 #tab3 a,
