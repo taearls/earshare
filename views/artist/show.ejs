@@ -119,16 +119,19 @@
             <h3> <%=artist.name%> Members </h3>
 
             <ul>
-              <% for (let i = 0; i < artist.bandMembers.length; i++) { -%>
-                <li> <a href="/user/<%=artist.bandMembers[i].user_id%>"> <%= artist.bandMembers[i].username%></a></li>
-              <% } -%>
+              <% for (let i = 0; i < artist.bandMembers.length; i++) { %>
+                <li> 
+                  <a href="/user/<%=artist.bandMembers[i].user_id%>"> <%= artist.bandMembers[i].username%>  
+                  </a>
+                </li>
+              <% } %>
             </ul>
 
 
             <!-- ADD MEMBERS -->               
             <!-- only band members should be able to add a member -->
-            <% for (let i = 0; i < artist.bandMembers.length; i++) { -%>
-              <%if (currentUser.id.toString() === artist.bandMembers[i].user_id.toString()) {%>
+            <% for (let i = 0; i < artist.bandMembers.length; i++) { %>
+              <% if (currentUser.id.toString() === artist.bandMembers[i].user_id.toString()) { %>
                 <div class="btn-group dropright">
                   <button type="button" class="btn btn-success">
                     Add Member
@@ -150,9 +153,11 @@
 
                   </div>
                 </div>
-              <%}%>
-            <%}%>
+              <% } %>
+            <% } %>
+            
             <br/>
+
             <!-- REMOVE MEMBER -->
             <!-- only band members should be able to remove a member -->
             <% for (let i = 0; i < artist.bandMembers.length; i++) { -%>
