@@ -15,7 +15,6 @@
     <nav id="navbar" class="landing-nav">
       <a class="navbar-brand" id="nav-responsive" href="/">Home</a>
       <ul class="nav navbar-nav">
-
         <li class="nav-item dropdown">
           <a class="dropdown-toggle" id="browse" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Browse</a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
@@ -36,169 +35,171 @@
     </nav>
   </header>
 
-      <main>
-        <% if (message) { -%>
-          <p id="home-message"><%= message %></p>
-        <% } -%>
+  <main>
+    <% if (message) { -%>
+      <p id="home-message"><%= message %></p>
+    <% } -%>
 
 
-      <div id="homepage-jumbo">
-        <div class = "jumbotron">
-          <div class="container text-center">
-            <h1>EarShare</h1>
-            <h3>Share Your Ears With Your Peers!</h3>
+    <div id="homepage-jumbo">
+      <div class = "jumbotron">
+        <div class="container text-center">
+          <h1>EarShare</h1>
+          <h3>Share Your Ears With Your Peers!</h3>
+        </div>
+      </div>
+    </div>
+
+    <div id="carousel">
+      <div class="row">
+        <div class="col-md-12">
+          <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+
+            <ol class="carousel-indicators">
+              <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+              <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+              <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+            </ol>
+
+            <div class="carousel-inner">
+              <div class="item active">
+                <img src="../images/Webp.net-resizeimage.jpg" alt="First slide">
+                <div class="carousel-caption">
+                  <%if (users[0] === undefined) {%>
+                    <img id="userCarouselPic" alt="Static User Image" src="">
+                    <h3>User</h3>
+                  <%} else {%>
+                    <img id="userCarouselPic" class="backup_picture" alt="<%=users[userNum].username%> Image" src="<%=users[userNum].avatar%>">
+                      <h3>
+                        <a id="user-carousel" href="/user"><%=users[userNum].username%></a>
+                      </h3>
+                  <%}%>
+                </div>
+              </div>
+
+              <div class="item">
+                <img src="../images/Webp.net-resizeimage.jpg" alt="Second slide">
+                <div class="carousel-caption">
+                  <%if (artists[0] === undefined) {%>
+                    <img id="artistCarouselPic" alt="Static Artist Image" src="">
+                    <h3>Artist</h3>
+                  <%} else {%>
+                    <img class="backup_picture" id="artistCarouselPic" alt="<%=artists[artistNum].name%> Image" src="<%=artists[artistNum].avatar%>">
+                    <h3>
+                      <a id="artist-carousel" href="/artist"><%=artists[artistNum].name%></a>
+                    </h3>
+                  <%}%>
+               </div>
+              </div>
+
+
+              <div class="item">
+                <img src="/images/Webp.net-resizeimage.jpg" alt="Third slide">
+                <div class="carousel-caption">
+                  <%if (events[0] === undefined) {%>
+                    <img class="backup_picture" id="eventCarouselPic" alt="Static Event Image" src="">
+                    <h3>Event</h3>
+                  <%} else {%>
+                    <img class="backup_picture" id="eventCarouselPic" alt="<%=events[eventNum].name%> Image" src="<%=events[eventNum].img%>">
+                    <h3>
+                     <a id="event-carousel" href="/event"><%=events[eventNum].name%></a>
+                    </h3>
+                  <%}%>
+                </div>
+              </div>
+
+            </div>
+
+            <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a>
+            <a class="right carousel-control" href="#carousel-example-generic" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
+
+          </div>
+
+          <div class="main-text hidden-xs">
+            <div class="col-md-12 text-center">
+              <div class=""></div>
+            </div>
           </div>
         </div>
       </div>
+      <div id="push"></div>
+    </div>
 
-      <div id="carousel">
-            <div class="row">
-                <div class="col-md-12">
-                    <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+     <!-- Log In Modal -->
+    <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
 
-                        <ol class="carousel-indicators">
-                            <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-                            <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-                            <li data-target="#carousel-example-generic" data-slide-to="2"></li>
-                        </ol>
+          <div class="modal-header">
+            <h4 class="modal-title" id="loginModalLabel">Login Below</h4>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
 
-                        <div class="carousel-inner">
-                            <div class="item active">
-                               <img src="../images/Webp.net-resizeimage.jpg" alt="First slide">
-                                <div class="carousel-caption">
-                                  <%if (users[0] === undefined) {%>
-                                  <img id="userCarouselPic" alt="Static User Image" src="">
-                                  <h3>User</h3>
-                                  <%} else {%>
-                                    <img id="userCarouselPic" class="backup_picture" alt="<%=users[userNum].username%> Image" src="<%=users[userNum].avatar%>">
-                                     <h3>
-                                     <a id="user-carousel" href="/user"><%=users[userNum].username%></a></h3>
-                                  <%}%>
-                                </div>
-                              </div>
+          <div class="modal-body">
+            <div class="container-fluid">
+              <div class="row">
+                <form action="/login" method="POST" id="login">
+                  <div class="form-group">
+                    <h4>Sign In</h4>
 
-                            <div class="item">
-                              <img src="../images/Webp.net-resizeimage.jpg" alt="Second slide">
-                                 <div class="carousel-caption">
-                                   <%if (artists[0] === undefined) {%>
-                                    <img id="artistCarouselPic" alt="Static Artist Image" src="">
-                                    <h3>Artist</h3>
-                                    <%} else {%>
-                                      <img class="backup_picture" id="artistCarouselPic" alt="<%=artists[artistNum].name%> Image" src="<%=artists[artistNum].avatar%>">
-                                      <h3>
-                                        <a id="artist-carousel" href="/artist">
-                                          <%=artists[artistNum].name%>
-                                        </a>
-                                      </h3>
-                                  <%}%>
-                               </div>
-                             </div>
+                    <input type="text" name="username" placeholder="Username" required>
+                    <input type="password" name="password" placeholder="Password" required>
+                    <button type="submit" class= "btn btn-outline-secondary">Submit</button>
 
-
-                            <div class="item">
-                              <img src="/images/Webp.net-resizeimage.jpg" alt="Third slide">
-                                <div class="carousel-caption">
-                                <%if (events[0] === undefined) {%>
-                                  <img class="backup_picture" id="eventCarouselPic" alt="Static Event Image" src="">
-                                  <h3>Event</h3>
-                                <%} else {%>
-                                  <img class="backup_picture" id="eventCarouselPic" alt="<%=events[eventNum].name%> Image" src="<%=events[eventNum].img%>">
-                                  <h3>
-                                   <a id="event-carousel" href="/event"><%=events[eventNum].name%></a></h3>
-                                <%}%>
-                               </div>
-                            </div>
-
-                        </div>
-
-                        <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a>
-                        <a class="right carousel-control" href="#carousel-example-generic" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
-
-                      </div>
-
-                      <div class="main-text hidden-xs">
-                        <div class="col-md-12 text-center">
-                          <div class=""></div>
-                        </div>
-                    </div>
-                </div>
-        </div>
-
-         <div id="push"></div>
-
-      </div>
-
-       <!-- Log In Modal -->
-       <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
-         <div class="modal-dialog" role="document">
-           <div class="modal-content">
-
-             <div class="modal-header">
-               <h4 class="modal-title" id="loginModalLabel">Login Below</h4>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                      <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-
-               <div class="modal-body">
-                 <div class="container-fluid">
-                  <div class="row">
-                     <form action="/login" method="POST" id="login">
-                         <div class="form-group">
-                           <h4>Sign In</h4>
-                               <input type="text" name="username" placeholder="Username" required>
-                               <input type="password" name="password" placeholder="Password" required>
-                               <button type="submit" class= "btn btn-outline-secondary">Submit</button>
-                         </div>
-                         </form>
-                      </div>
-                   </div>
-                </div>
-
-            </div>
-         </div>
-       </div>
-
-       <!-- Register Modal -->
-       <div class="modal fade" id="registerModal" tabindex="-1" role="dialog" aria-labelledby="registerModalLabel" aria-hidden="true">
-         <div class="modal-dialog" role="document">
-           <div class="modal-content">
-             <div class="modal-header">
-               <h4 class="modal-title" id="registerModalLabel">Register Below</h4>
-
-               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                 <span aria-hidden="true">&times;</span>
-               </button>
-
-             </div>
-
-               <div class="modal-body">
-                 <div class="container-fluid">
-                  <div class="row">
-
-                     <form action="/register" method="POST" id="registration">
-                       <div class="form-group">
-                         <h4>Sign Up</h4>
-                           <input type="text" name="username" placeholder="Username" required>
-                           <input type="text" name="email" placeholder="Email" required>
-                           <input type="password" name="password" placeholder="Password" required>
-                           <button type="submit" class="btn btn-primary">Register</button>
-                       </div>
-                     </form>
-
-                   </div>
-                 </div>
-               </div>
+                  </div>
+                </form>
               </div>
             </div>
-           </div>
-         </div>
-        </main>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- Register Modal -->
+    <div class="modal fade" id="registerModal" tabindex="-1" role="dialog" aria-labelledby="registerModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title" id="registerModalLabel">Register Below</h4>
+
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+
+          </div>
+
+          <div class="modal-body">
+            <div class="container-fluid">
+              <div class="row">
+
+                <form action="/register" method="POST" id="registration">
+                  <div class="form-group">
+                    <h4>Sign Up</h4>
+
+                    <input type="text" name="username" placeholder="Username" required>
+                    <input type="text" name="email" placeholder="Email" required>
+                    <input type="password" name="password" placeholder="Password" required>
+                    <button type="submit" class="btn btn-primary">Register</button>
+
+                  </div>
+                </form>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
   <script src="/js/app.js"></script>
-  </body>
+
+</body>
 </html>
