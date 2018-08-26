@@ -128,7 +128,7 @@ router.post('/', async (req, res, next) => {
     });
 
     const savedArtist = await artistHost.save();
-    res.redirect('/event');
+    res.redirect('/event/' + createdEvent.id);
 
   } catch(err) {
     next(err);
@@ -229,7 +229,7 @@ router.put("/:id", async (req, res, next) => {
 		const savedEvent = await updatedEvent.save();
 
 
-		res.redirect("/event");
+		res.redirect("/event/" + req.params.id);
 	} catch (err) {
 		next(err);
 	}
