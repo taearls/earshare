@@ -19,7 +19,7 @@ const seedArtists = async () => {
       name: 'Cuckoo and the Birds',
       genre: 'Rock',
       location: 'Chicago, IL',
-      website: 'https://www.facebook.com/cuckooandthebirds',
+      website: 'www.facebook.com/cuckooandthebirds',
       avatar: 'https://scontent-ort2-1.xx.fbcdn.net/v/t31.0-8/27500149_2011774789041241_7136954156686171001_o.jpg?_nc_cat=0&oh=79cae2f9ed2aa1d04f787fe6fe3bb64a&oe=5C0B600F',
       description: "For now, it's just one guy playing guitar in his bedroom. Soon to be a full band.",
       bandMembers: {
@@ -35,7 +35,7 @@ const seedArtists = async () => {
       name: 'What About This',
       genre: 'Rock',
       location: 'Chicago, IL',
-      website: 'https://www.facebook.com/whataboutthisband',
+      website: 'www.facebook.com/whataboutthisband',
       avatar: 'https://scontent-ort2-1.xx.fbcdn.net/v/t1.0-9/33199062_452847725159045_7614513043375915008_o.jpg?_nc_cat=0&oh=62778cd4f5c5a8eddcac640db588e772&oe=5BF916DC',
       description: 'Three dudes rocking out.',
       bandMembers: {

@@ -259,22 +259,11 @@ router.get('/:id', async (req, res, next) => {
     console.log(typeof currentUser.id, " this is the type of id for currentUser");
 		// the members in the band have an id in userIds,
 		// non members do not have an id in userIds
-		// const bandMembers = await User.find({ "id": { "$in": userIds } });
-		// const nonMembers = await User.find({ "id": { "$nin": userIds } });
+		const bandMembers = await User.find({ "id": { "$in": userIds } });
+		const nonMembers = await User.find({ "id": { "$nin": userIds } });
 		const allUsers = await User.find();
-    const bandMembers = await allUsers.filter((user, index, arr) => arr.indexOf(user) === index);
-    const nonMembers = await allUsers.filter((user, index, arr) => arr.indexOf(user) !== index);
-
-    // const bandMembers = await allUsers.filter(function(users) {
-    //   for (let i = 0; i < userIds.length; i++) {
-    //     return user => user._id.toString() == userIds[i];
-    //   }
-    // })
-    // const nonMembers = await allUsers.filter(function(users) {
-    //   for (let i = 0; i < userIds.length; i++) {
-    //     return user => user._id.toString() != userIds[i];
-    //   }
-    // })
+    // const bandMembers = await allUsers.filter((user, index, arr) => arr.indexOf(user) === index);
+    // const nonMembers = await allUsers.filter((user, index, arr) => arr.index(user));
 
 
     console.log(bandMembers, " this should be all the users who are band members");
